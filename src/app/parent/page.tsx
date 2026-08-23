@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Bell, Receipt, Users } from "lucide-react";
+import { Bell, MessageSquareText, Receipt, Users } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { getIconComponent } from "@/lib/course-icons";
 
 type Invoice = { id: string; description: string; amount: string; date: string; status: string };
 type Notification = { id: string; message: string; date: string };
+type Note = { id: string; note: string; date: string };
 type AttendanceEntry = { id: string; date: string; present: boolean };
 type CourseSummary = {
   id: string;
@@ -30,6 +31,7 @@ type Child = {
   status: string;
   invoices: Invoice[];
   notifications: Notification[];
+  notes: Note[];
 };
 type ParentMe = { name: string; children: Child[] } | null;
 
@@ -69,9 +71,17 @@ const STATUS_STYLE: Record<string, string> = {
   PARTIAL: "bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300",
 };
 
+const INVOICE_STATUS_KEY: Record<string, string> = {
+  PAID: "invoiceStatusPaid",
+  PENDING: "invoiceStatusPending",
+  OVERDUE: "invoiceStatusOverdue",
+  PARTIAL: "invoiceStatusPartial",
+};
+
 export default function ParentOverviewPage() {
   const t = useTranslations("ParentPortal");
   const tCommon = useTranslations("Common");
+  const tNotes = useTranslations("ProgressNotes");
   const locale = useLocale();
   const [parent, setParent] = useState<ParentMe | undefined>(undefined);
 
@@ -198,7 +208,7 @@ export default function ParentOverviewPage() {
             </div>
           )}
 
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-4 lg:grid-cols-3">
             <div>
               <h3 className="text-sm font-semibold text-foreground">{t("invoices")}</h3>
               <div className="mt-2 flex flex-col gap-2">
@@ -222,7 +232,7 @@ export default function ParentOverviewPage() {
                       <span
                         className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${STATUS_STYLE[invoice.status] ?? "bg-secondary text-muted-foreground"}`}
                       >
-                        {invoice.status}
+                        {tCommon(INVOICE_STATUS_KEY[invoice.status] ?? "invoiceStatusPending")}
                       </span>
                     </CardContent>
                   </Card>
@@ -246,6 +256,30 @@ export default function ParentOverviewPage() {
                         <p className="text-xs text-foreground">{notification.message}</p>
                         <p className="mt-0.5 text-[11px] text-muted-foreground">
                           {new Date(notification.date).toLocaleDateString(locale)}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">{tNotes("title")}</h3>
+              <div className="mt-2 flex flex-col gap-2">
+                {child.notes.length === 0 && (
+                  <p className="text-xs text-muted-foreground">{tNotes("noNotesYet")}</p>
+                )}
+                {child.notes.slice(0, 3).map((note) => (
+                  <Card key={note.id} className="border-none shadow-sm">
+                    <CardContent className="flex items-start gap-3 p-3">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
+                        <MessageSquareText className="h-3.5 w-3.5" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs text-foreground">{note.note}</p>
+                        <p className="mt-0.5 text-[11px] text-muted-foreground">
+                          {new Date(note.date).toLocaleDateString(locale)}
                         </p>
                       </div>
                     </CardContent>

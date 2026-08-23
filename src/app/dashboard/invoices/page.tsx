@@ -23,8 +23,16 @@ const STATUS_STYLE: Record<string, string> = {
   PARTIAL: "bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300",
 };
 
+const STATUS_KEY: Record<string, string> = {
+  PAID: "invoiceStatusPaid",
+  PENDING: "invoiceStatusPending",
+  OVERDUE: "invoiceStatusOverdue",
+  PARTIAL: "invoiceStatusPartial",
+};
+
 export default function InvoicesPage() {
   const t = useTranslations("InvoicesPage");
+  const tCommon = useTranslations("Common");
   const locale = useLocale();
   const [invoices, setInvoices] = useState<Invoice[] | null>(null);
 
@@ -108,7 +116,7 @@ export default function InvoicesPage() {
               <span
                 className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${STATUS_STYLE[invoice.status] ?? "bg-secondary text-muted-foreground"}`}
               >
-                {invoice.status}
+                {tCommon(STATUS_KEY[invoice.status] ?? "invoiceStatusPending")}
               </span>
             </CardContent>
           </Card>

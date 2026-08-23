@@ -293,7 +293,21 @@
     "levelIntermediate": "Mittelstufe",
     "levelAdvanced": "Fortgeschritten",
     "statusActive": "Aktiv",
-    "statusInactive": "Inaktiv"
+    "statusInactive": "Inaktiv",
+    "invoiceStatusPaid": "Bezahlt",
+    "invoiceStatusPending": "Ausstehend",
+    "invoiceStatusOverdue": "Überfällig",
+    "invoiceStatusPartial": "Teilweise"
+  },
+  "Notification": {
+    "invoiceGenerated": "Rechnung {invoiceNumber} ({amount}) wurde erstellt.",
+    "paymentReminder": "Rechnung {invoiceNumber} ({amount}) ist bald fällig.",
+    "weeklyReport": "Ihr Wochenbericht für {courseName} (Woche vom {date}) ist fertig.",
+    "monthlyReport": "Ihr Monatsbericht für {courseName} ({month} {year}) ist fertig."
+  },
+  "ProgressNotes": {
+    "title": "Lehrernotizen",
+    "noNotesYet": "Noch keine Notizen."
   },
   "DashboardOverview": {
     "loading": "Wird geladen...",

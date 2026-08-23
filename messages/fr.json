@@ -293,7 +293,21 @@
     "levelIntermediate": "Intermédiaire",
     "levelAdvanced": "Avancé",
     "statusActive": "Actif",
-    "statusInactive": "Inactif"
+    "statusInactive": "Inactif",
+    "invoiceStatusPaid": "Payée",
+    "invoiceStatusPending": "En attente",
+    "invoiceStatusOverdue": "En retard",
+    "invoiceStatusPartial": "Partielle"
+  },
+  "Notification": {
+    "invoiceGenerated": "La facture {invoiceNumber} ({amount}) a été générée.",
+    "paymentReminder": "La facture {invoiceNumber} ({amount}) arrive bientôt à échéance.",
+    "weeklyReport": "Votre rapport hebdomadaire pour {courseName} (semaine du {date}) est prêt.",
+    "monthlyReport": "Votre rapport mensuel pour {courseName} ({month} {year}) est prêt."
+  },
+  "ProgressNotes": {
+    "title": "Notes de l'Enseignant",
+    "noNotesYet": "Aucune note pour le moment."
   },
   "DashboardOverview": {
     "loading": "Chargement...",

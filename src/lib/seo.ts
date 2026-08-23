@@ -6,9 +6,15 @@ export const SITE_URL = (process.env.SITE_URL ?? "http://localhost:3000").replac
 export const SITE_DESCRIPTION =
   "Live one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.";
 
-/** English (the default locale) has no URL prefix; other locales do. */
+/**
+ * English (the default locale) has no URL prefix; other locales do.
+ * Never returns a trailing slash (e.g. the Urdu home page is "/ur", not
+ * "/ur/" — the latter 308-redirects to the former, which is the wrong
+ * thing for a canonical/hreflang/sitemap URL to point at).
+ */
 export function localizedPath(locale: string, path: string) {
-  return locale === routing.defaultLocale ? path : `/${locale}${path}`;
+  if (locale === routing.defaultLocale) return path;
+  return path === "/" ? `/${locale}` : `/${locale}${path}`;
 }
 
 /** IETF/OG-style locale tags (og:locale wants "en_US", not bare "en"). */

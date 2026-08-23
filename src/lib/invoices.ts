@@ -54,6 +54,7 @@ export async function createInvoiceForStudent({
       studentId,
       type: "INVOICE_GENERATED",
       message: `Invoice ${invoiceNumber} (${amount}) has been generated.`,
+      params: { invoiceNumber, amount },
     },
   });
 

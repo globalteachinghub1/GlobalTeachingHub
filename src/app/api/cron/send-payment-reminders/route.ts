@@ -40,6 +40,7 @@ export async function GET(request: Request) {
         studentId: student.id,
         type: "PAYMENT_REMINDER",
         message: `Invoice ${invoice.invoiceNumber} (${invoice.amount}) is due soon.`,
+        params: { invoiceNumber: invoice.invoiceNumber, amount: invoice.amount },
       },
     });
 

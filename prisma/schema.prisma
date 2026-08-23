@@ -213,6 +213,24 @@ model ProgressNote {
   student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
   note      String
   date      DateTime @default(now())
+
+  translations ProgressNoteTranslation[]
+}
+
+/**
+ * Cached machine translation of a progress note's text into one locale —
+ * translated once via DeepL on first read in that locale, then reused,
+ * since the original note text never changes after it's written.
+ */
+model ProgressNoteTranslation {
+  id        String       @id @default(cuid())
+  noteId    String
+  note      ProgressNote @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  locale    String
+  text      String
+  createdAt DateTime     @default(now())
+
+  @@unique([noteId, locale])
 }
 
 model Invoice {
@@ -291,7 +309,32 @@ model Notification {
   student   Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
   type      NotificationType @default(GENERAL)
   message   String
+  /// Structured data for templated types (INVOICE_GENERATED, PAYMENT_REMINDER,
+  /// WEEKLY_REPORT, MONTHLY_REPORT) so the sentence can be rendered in the
+  /// viewer's own locale at read time. `message` stays as the English
+  /// fallback for older rows and any type without a template.
+  params    Json?
   date      DateTime         @default(now())
+
+  translations NotificationTranslation[]
+}
+
+/**
+ * Cached machine translation of a notification's stored `message` — used
+ * as the fallback when the notification's type/params don't match a known
+ * template (older rows created before templating existed, and the free-form
+ * GENERAL type). Translated once via DeepL on first read in that locale,
+ * then reused, since a notification's message never changes after creation.
+ */
+model NotificationTranslation {
+  id             String       @id @default(cuid())
+  notificationId String
+  notification   Notification @relation(fields: [notificationId], references: [id], onDelete: Cascade)
+  locale         String
+  text           String
+  createdAt      DateTime     @default(now())
+
+  @@unique([notificationId, locale])
 }
 
 /**

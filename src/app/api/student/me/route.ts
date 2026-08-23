@@ -2,10 +2,16 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireRole } from "@/lib/auth";
 import { notFound } from "@/lib/api-errors";
+import { getPortalLocale } from "@/lib/portal-locale";
+import { localizeCourse } from "@/lib/course-translations";
+import { localizeNotifications } from "@/lib/notification-i18n";
+import { localizeProgressNotes } from "@/lib/progress-notes-i18n";
 
 export async function GET() {
   const auth = await requireRole("STUDENT");
   if (auth instanceof NextResponse) return auth;
+
+  const locale = await getPortalLocale();
 
   const student = await prisma.student.findUnique({
     where: { userId: auth.sub },
@@ -13,18 +19,24 @@ export async function GET() {
       teacher: { include: { user: true } },
       enrollments: {
         include: {
-          course: true,
+          course: { include: { translations: { where: { locale } } } },
           attendance: { orderBy: { date: "desc" }, take: 7 },
         },
       },
       invoices: { orderBy: { date: "desc" } },
       notifications: { orderBy: { date: "desc" } },
+      notes: { orderBy: { date: "desc" }, take: 10 },
     },
   });
 
   if (!student) {
     return NextResponse.json({ student: null });
   }
+
+  const [notifications, notes] = await Promise.all([
+    localizeNotifications(student.notifications, locale),
+    localizeProgressNotes(student.notes, locale),
+  ]);
 
   return NextResponse.json({
     student: {
@@ -35,24 +47,28 @@ export async function GET() {
       whatsapp: student.whatsapp,
       parentName: student.parentName,
       parentContact: student.parentContact,
-      courses: student.enrollments.map((e) => ({
-        id: e.course.id,
-        slug: e.course.slug,
-        name: e.course.name,
-        color: e.course.color,
-        icon: e.course.icon,
-        classStartTime: e.classStartTime,
-        classEndTime: e.classEndTime,
-        classDays: e.classDays,
-        attendance: e.attendance,
-      })),
+      courses: student.enrollments.map((e) => {
+        const course = localizeCourse(e.course);
+        return {
+          id: course.id,
+          slug: course.slug,
+          name: course.name,
+          color: course.color,
+          icon: course.icon,
+          classStartTime: e.classStartTime,
+          classEndTime: e.classEndTime,
+          classDays: e.classDays,
+          attendance: e.attendance,
+        };
+      }),
       teacherName: student.teacher?.user.name ?? null,
       level: student.level,
       progress: student.progress,
       status: student.status,
       joined: student.joined,
       invoices: student.invoices,
-      notifications: student.notifications,
+      notifications,
+      notes,
     },
   });
 }

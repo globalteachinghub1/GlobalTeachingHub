@@ -293,7 +293,21 @@
     "levelIntermediate": "متوسط",
     "levelAdvanced": "متقدم",
     "statusActive": "نشط",
-    "statusInactive": "غير نشط"
+    "statusInactive": "غير نشط",
+    "invoiceStatusPaid": "مدفوعة",
+    "invoiceStatusPending": "قيد الانتظار",
+    "invoiceStatusOverdue": "متأخرة",
+    "invoiceStatusPartial": "جزئية"
+  },
+  "Notification": {
+    "invoiceGenerated": "تم إصدار الفاتورة {invoiceNumber} ({amount}).",
+    "paymentReminder": "الفاتورة {invoiceNumber} ({amount}) مستحقة قريبًا.",
+    "weeklyReport": "تقريرك الأسبوعي لـ {courseName} (أسبوع {date}) جاهز.",
+    "monthlyReport": "تقريرك الشهري لـ {courseName} ({month} {year}) جاهز."
+  },
+  "ProgressNotes": {
+    "title": "ملاحظات المعلم",
+    "noNotesYet": "لا توجد ملاحظات بعد."
   },
   "DashboardOverview": {
     "loading": "جارٍ التحميل...",

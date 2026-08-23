@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Bell, Receipt, Sparkles } from "lucide-react";
+import { Bell, MessageSquareText, Receipt, Sparkles } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { getIconComponent } from "@/lib/course-icons";
@@ -10,6 +10,7 @@ import { ProgressRing } from "@/components/dashboard/progress-ring";
 
 type Invoice = { id: string; description: string; amount: string; date: string; status: string };
 type Notification = { id: string; message: string; date: string };
+type Note = { id: string; note: string; date: string };
 type AttendanceEntry = { id: string; date: string; present: boolean };
 type CourseSummary = {
   id: string;
@@ -28,6 +29,7 @@ type StudentMe = {
   progress: number;
   invoices: Invoice[];
   notifications: Notification[];
+  notes: Note[];
 } | null;
 
 const DAY_SHORT: Record<string, string> = {
@@ -55,8 +57,17 @@ const STATUS_STYLE: Record<string, string> = {
   PARTIAL: "bg-blue-100 text-blue-700 dark:bg-blue-500/15 dark:text-blue-300",
 };
 
+const STATUS_KEY: Record<string, string> = {
+  PAID: "invoiceStatusPaid",
+  PENDING: "invoiceStatusPending",
+  OVERDUE: "invoiceStatusOverdue",
+  PARTIAL: "invoiceStatusPartial",
+};
+
 export default function DashboardPage() {
   const t = useTranslations("DashboardOverview");
+  const tCommon = useTranslations("Common");
+  const tNotes = useTranslations("ProgressNotes");
   const locale = useLocale();
   const [student, setStudent] = useState<StudentMe | undefined>(undefined);
 
@@ -216,7 +227,7 @@ export default function DashboardPage() {
                   <span
                     className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${STATUS_STYLE[invoice.status] ?? "bg-secondary text-muted-foreground"}`}
                   >
-                    {invoice.status}
+                    {tCommon(STATUS_KEY[invoice.status] ?? "invoiceStatusPending")}
                   </span>
                 </CardContent>
               </Card>
@@ -252,6 +263,34 @@ export default function DashboardPage() {
               </Card>
             ))}
           </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-base font-semibold text-foreground">{tNotes("title")}</h2>
+        <div className="mt-3 flex flex-col gap-2">
+          {student?.notes.length === 0 && (
+            <Card className="border-dashed">
+              <CardContent className="py-8 text-center text-sm text-muted-foreground">
+                {tNotes("noNotesYet")}
+              </CardContent>
+            </Card>
+          )}
+          {student?.notes.map((note) => (
+            <Card key={note.id} className="border-none shadow-sm">
+              <CardContent className="flex items-start gap-3 p-4">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-secondary text-muted-foreground">
+                  <MessageSquareText className="h-4 w-4" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm text-foreground">{note.note}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {new Date(note.date).toLocaleDateString(locale)}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </div>

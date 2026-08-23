@@ -293,7 +293,21 @@
     "levelIntermediate": "درمیانہ",
     "levelAdvanced": "اعلیٰ",
     "statusActive": "فعال",
-    "statusInactive": "غیر فعال"
+    "statusInactive": "غیر فعال",
+    "invoiceStatusPaid": "ادا شدہ",
+    "invoiceStatusPending": "زیر التوا",
+    "invoiceStatusOverdue": "میعاد گزشتہ",
+    "invoiceStatusPartial": "جزوی"
+  },
+  "Notification": {
+    "invoiceGenerated": "انوائس {invoiceNumber} ({amount}) بن گئی ہے۔",
+    "paymentReminder": "انوائس {invoiceNumber} ({amount}) کی ادائیگی جلد واجب الادا ہے۔",
+    "weeklyReport": "{courseName} کے لیے آپ کی ہفتہ وار رپورٹ ({date} کے ہفتے کی) تیار ہے۔",
+    "monthlyReport": "{courseName} کے لیے آپ کی ماہانہ رپورٹ ({month} {year}) تیار ہے۔"
+  },
+  "ProgressNotes": {
+    "title": "اساتذہ کے نوٹس",
+    "noNotesYet": "ابھی تک کوئی نوٹ نہیں۔"
   },
   "DashboardOverview": {
     "loading": "لوڈ ہو رہا ہے...",

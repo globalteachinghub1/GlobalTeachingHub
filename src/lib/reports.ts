@@ -77,6 +77,7 @@ export async function generateWeeklyReport(enrollmentId: string, weekStart: Date
       studentId: student.id,
       type: "WEEKLY_REPORT",
       message: `Your weekly report for ${course.name} (week of ${start.toLocaleDateString()}) is ready.`,
+      params: { courseId: course.id, weekStart: start.toISOString() },
     },
   });
 
@@ -161,6 +162,7 @@ export async function generateMonthlyReport(enrollmentId: string, month: number,
       studentId: student.id,
       type: "MONTHLY_REPORT",
       message: `Your monthly report for ${course.name} (${monthName} ${year}) is ready.`,
+      params: { courseId: course.id, month, year },
     },
   });
 

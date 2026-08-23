@@ -3,13 +3,20 @@ import { prisma } from "@/lib/prisma";
 import { requireRole } from "@/lib/auth";
 import { notFound } from "@/lib/api-errors";
 import { notifyStaff } from "@/lib/system-notifications";
+import { getPortalLocale } from "@/lib/portal-locale";
+import { localizeCourse } from "@/lib/course-translations";
 
 export async function GET() {
   const auth = await requireRole("STUDENT");
   if (auth instanceof NextResponse) return auth;
 
+  const locale = await getPortalLocale();
+
   const [courses, student] = await Promise.all([
-    prisma.course.findMany({ orderBy: { createdAt: "asc" } }),
+    prisma.course.findMany({
+      orderBy: { createdAt: "asc" },
+      include: { translations: { where: { locale } } },
+    }),
     prisma.student.findUnique({
       where: { userId: auth.sub },
       include: { enrollments: { select: { courseId: true } } },
@@ -20,15 +27,18 @@ export async function GET() {
   const enrolledCourseIds = new Set(student.enrollments.map((e) => e.courseId));
 
   return NextResponse.json({
-    courses: courses.map((c) => ({
-      id: c.id,
-      slug: c.slug,
-      name: c.name,
-      summary: c.summary,
-      color: c.color,
-      icon: c.icon,
-      enrolled: enrolledCourseIds.has(c.id),
-    })),
+    courses: courses.map((raw) => {
+      const c = localizeCourse(raw);
+      return {
+        id: c.id,
+        slug: c.slug,
+        name: c.name,
+        summary: c.summary,
+        color: c.color,
+        icon: c.icon,
+        enrolled: enrolledCourseIds.has(c.id),
+      };
+    }),
   });
 }
 
