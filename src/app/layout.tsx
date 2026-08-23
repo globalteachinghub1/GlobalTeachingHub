@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,10 +13,27 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE = `${SITE_NAME} — Learn from Expert Teachers, Anytime, Anywhere`;
+
 export const metadata: Metadata = {
-  title: "Global Teaching Hub — Learn from Expert Teachers, Anytime, Anywhere",
-  description:
-    "Live one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: SITE_DESCRIPTION,
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: "website",
+    images: [{ url: `${SITE_URL}/logo-full.png` }],
+  },
+  twitter: {
+    card: "summary",
+    title: TITLE,
+    description: SITE_DESCRIPTION,
+    images: [`${SITE_URL}/logo-full.png`],
+  },
 };
 
 export default function RootLayout({

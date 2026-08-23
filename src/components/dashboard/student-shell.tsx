@@ -4,17 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogOut } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { usePresenceHeartbeat } from "@/lib/use-presence-heartbeat";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-
-const NAV_ITEMS = [
-  { label: "Overview", href: "/dashboard" },
-  { label: "Profile", href: "/dashboard/profile" },
-  { label: "Invoices", href: "/dashboard/invoices" },
-];
+import { PortalLanguageSwitcher } from "@/components/dashboard/portal-language-switcher";
 
 function initials(name: string) {
   return name
@@ -35,8 +31,17 @@ export function StudentShell({
   onLogout: () => void;
   children: React.ReactNode;
 }) {
+  const t = useTranslations("Portal");
+  const tNav = useTranslations("StudentNav");
   const pathname = usePathname();
   usePresenceHeartbeat();
+
+  const NAV_ITEMS = [
+    { label: tNav("overview"), href: "/dashboard" },
+    { label: tNav("myCourses"), href: "/dashboard/courses" },
+    { label: tNav("profile"), href: "/dashboard/profile" },
+    { label: tNav("invoices"), href: "/dashboard/invoices" },
+  ];
 
   return (
     <ThemeProvider>
@@ -45,7 +50,7 @@ export function StudentShell({
           <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
             <Link href="/" className="flex shrink-0 items-center gap-2 font-bold">
               <Image
-                src="/logo-icon.png"
+                src="/icon.png"
                 alt=""
                 width={32}
                 height={32}
@@ -77,6 +82,7 @@ export function StudentShell({
             </nav>
 
             <div className="flex shrink-0 items-center gap-3">
+              <PortalLanguageSwitcher />
               <ThemeToggle />
               <Avatar size="sm" className="hidden sm:flex">
                 <AvatarFallback className="bg-primary/15 text-xs font-semibold text-primary">
@@ -89,7 +95,7 @@ export function StudentShell({
                 className="flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 <LogOut className="h-4 w-4" />
-                <span className="hidden sm:inline">Log out</span>
+                <span className="hidden sm:inline">{t("logout")}</span>
               </button>
             </div>
           </div>

@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -13,20 +14,21 @@ import {
   type FieldErrors,
 } from "@/lib/validation";
 
-type FormState = { name: string; phone: string; email: string; course: string };
+type FormState = { name: string; phone: string; email: string; courseId: string };
 
-const EMPTY_FORM: FormState = { name: "", phone: "", email: "", course: "" };
+const EMPTY_FORM: FormState = { name: "", phone: "", email: "", courseId: "" };
 
 function validate(form: FormState) {
   const errors: FieldErrors = {};
   requireString(errors, "name", form.name, "Full name", { min: 2, max: 100 });
   requirePhone(errors, "phone", form.phone);
   requireEmail(errors, "email", form.email);
-  requireString(errors, "course", form.course, "Course", { min: 1 });
+  requireString(errors, "course", form.courseId, "Course", { min: 1 });
   return errors;
 }
 
-export function FreeTrialForm({ courses }: { courses: string[] }) {
+export function FreeTrialForm({ courses }: { courses: { id: string; name: string }[] }) {
+  const t = useTranslations("FreeTrialForm");
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -38,13 +40,8 @@ export function FreeTrialForm({ courses }: { courses: string[] }) {
       <Card className="mx-auto max-w-lg border-none bg-secondary/40 shadow-none">
         <CardContent className="flex flex-col items-center gap-3 p-10 text-center">
           <CheckCircle2 className="h-10 w-10 text-primary" />
-          <p className="text-lg font-semibold text-foreground">
-            Thank you! Your request has been received.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Our team will reach out to you shortly to schedule your free
-            demo class.
-          </p>
+          <p className="text-lg font-semibold text-foreground">{t("successTitle")}</p>
+          <p className="text-sm text-muted-foreground">{t("successBody")}</p>
         </CardContent>
       </Card>
     );
@@ -93,11 +90,11 @@ export function FreeTrialForm({ courses }: { courses: string[] }) {
       <CardContent className="p-8">
         <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="name">Full Name</Label>
+            <Label htmlFor="name">{t("fullName")}</Label>
             <Input
               id="name"
               name="name"
-              placeholder="Your name"
+              placeholder={t("fullNamePlaceholder")}
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               aria-invalid={!!errors.name}
@@ -108,7 +105,7 @@ export function FreeTrialForm({ courses }: { courses: string[] }) {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="phone">Phone / WhatsApp</Label>
+            <Label htmlFor="phone">{t("phone")}</Label>
             <Input
               id="phone"
               name="phone"
@@ -126,12 +123,12 @@ export function FreeTrialForm({ courses }: { courses: string[] }) {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{t("email")}</Label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder={t("emailPlaceholder")}
               value={form.email}
               onChange={(e) =>
                 setForm((f) => ({ ...f, email: e.target.value }))
@@ -144,22 +141,22 @@ export function FreeTrialForm({ courses }: { courses: string[] }) {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="course">Course</Label>
+            <Label htmlFor="course">{t("course")}</Label>
             <select
               id="course"
               name="course"
-              value={form.course}
+              value={form.courseId}
               onChange={(e) =>
-                setForm((f) => ({ ...f, course: e.target.value }))
+                setForm((f) => ({ ...f, courseId: e.target.value }))
               }
               aria-invalid={!!errors.course}
               className="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm dark:bg-input/30 aria-invalid:border-destructive"
             >
               <option value="" disabled>
-                Select a course
+                {t("selectCourse")}
               </option>
-              {courses.map((name) => (
-                <option key={name} value={name}>
+              {courses.map(({ id, name }) => (
+                <option key={id} value={id}>
                   {name}
                 </option>
               ))}
@@ -174,7 +171,7 @@ export function FreeTrialForm({ courses }: { courses: string[] }) {
           )}
 
           <Button type="submit" size="lg" className="mt-2" disabled={submitting}>
-            {submitting ? "Sending..." : "Book My Free Demo"}
+            {submitting ? t("submitting") : t("submit")}
           </Button>
         </form>
       </CardContent>

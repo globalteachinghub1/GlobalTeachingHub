@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { BookOpen, TrendingUp, Users } from "lucide-react";
+import { BookOpen, FileText, TrendingUp, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useSession } from "@/lib/use-session";
 
 type TeacherInfo = { name: string; courseNames: string[] };
 type Student = { progress: number };
 
 export default function TeacherOverviewPage() {
+  const user = useSession();
   const [teacher, setTeacher] = useState<TeacherInfo | null>(null);
   const [students, setStudents] = useState<Student[] | null>(null);
 
@@ -25,6 +27,35 @@ export default function TeacherOverviewPage() {
       active = false;
     };
   }, []);
+
+  // Staff share this portal but have no students/courses of their own.
+  if (user?.role === "STAFF") {
+    return (
+      <div className="flex flex-col gap-8">
+        <div>
+          <h1 className="text-2xl font-bold text-foreground">Welcome, {user.name}</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Here&apos;s your staff overview.
+          </p>
+        </div>
+        <Link href="/teacher/sops" className="block">
+          <Card className="border-none bg-background shadow-none transition hover:-translate-y-1 hover:shadow-md">
+            <CardContent className="flex items-center gap-4 p-6">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-indigo-600 bg-indigo-100">
+                <FileText className="h-4.5 w-4.5" />
+              </span>
+              <div>
+                <p className="text-sm font-semibold text-foreground">Company SOPs</p>
+                <p className="text-xs text-muted-foreground">
+                  Browse approved standard operating procedures.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
+      </div>
+    );
+  }
 
   if (!students) {
     return (

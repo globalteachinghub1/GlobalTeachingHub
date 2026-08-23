@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Receipt } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 
 type Invoice = {
@@ -23,6 +24,8 @@ const STATUS_STYLE: Record<string, string> = {
 };
 
 export default function InvoicesPage() {
+  const t = useTranslations("InvoicesPage");
+  const locale = useLocale();
   const [invoices, setInvoices] = useState<Invoice[] | null>(null);
 
   useEffect(() => {
@@ -43,31 +46,25 @@ export default function InvoicesPage() {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Invoices</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Your billing history and payment status.
-          </p>
+          <h1 className="text-2xl font-bold text-foreground">{t("title")}</h1>
+          <p className="mt-1 text-sm text-muted-foreground">{t("subtitle")}</p>
         </div>
         {invoices && invoices.length > 0 && (
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-muted-foreground">
-            {pendingCount === 0
-              ? "All invoices paid"
-              : `${pendingCount} awaiting payment`}
+            {pendingCount === 0 ? t("allPaid") : t("awaitingPayment", { count: pendingCount })}
           </span>
         )}
       </div>
 
       <div className="flex flex-col gap-3">
         {invoices === null && (
-          <p className="py-6 text-center text-sm text-muted-foreground">
-            Loading...
-          </p>
+          <p className="py-6 text-center text-sm text-muted-foreground">{t("loading")}</p>
         )}
         {invoices?.length === 0 && (
           <Card className="border-dashed">
             <CardContent className="flex flex-col items-center gap-2 py-12 text-center">
               <Receipt className="h-8 w-8 text-muted-foreground" />
-              <p className="text-sm text-muted-foreground">No invoices yet.</p>
+              <p className="text-sm text-muted-foreground">{t("noInvoicesYet")}</p>
             </CardContent>
           </Card>
         )}
@@ -86,15 +83,17 @@ export default function InvoicesPage() {
                 </p>
                 <p className="text-xs text-muted-foreground">
                   {invoice.invoiceNumber} ·{" "}
-                  {new Date(invoice.date).toLocaleDateString(undefined, {
+                  {new Date(invoice.date).toLocaleDateString(locale, {
                     month: "long",
                     day: "numeric",
                     year: "numeric",
                   })}
                   {invoice.dueDate &&
-                    ` · Due ${new Date(invoice.dueDate).toLocaleDateString(undefined, {
-                      month: "short",
-                      day: "numeric",
+                    ` · ${t("due", {
+                      date: new Date(invoice.dueDate).toLocaleDateString(locale, {
+                        month: "short",
+                        day: "numeric",
+                      }),
                     })}`}
                 </p>
               </div>
@@ -102,7 +101,7 @@ export default function InvoicesPage() {
                 <p className="text-lg font-bold text-foreground">{invoice.amount}</p>
                 {invoice.status === "PARTIAL" && invoice.amountPaid && (
                   <p className="text-xs text-muted-foreground">
-                    {invoice.amountPaid} paid
+                    {t("paidAmount", { amount: invoice.amountPaid })}
                   </p>
                 )}
               </div>

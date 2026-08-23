@@ -1,9 +1,0 @@
-#SMTP USER
-GMAIL_SMTP_USER=globalteachinghub1@gmail.com
-GMAIL_SMTP_APP_PASSWORD=hypj mnkj rtcg dqso
-
-# Where form submissions are sent. Defaults to khushboohahbaz425@gmail.com if unset.
-CONTACT_RECEIVER_EMAIL=globalteachinghub1@gmail.com
-
-# Secret used to sign staff/student login session tokens. Keep this private.
-AUTH_SECRET=/GudENKgqMcUYBM5hhGyKM8k0bkB4Qkca11ipqy0GqY=

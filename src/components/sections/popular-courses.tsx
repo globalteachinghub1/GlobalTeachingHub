@@ -1,23 +1,25 @@
-import Link from "next/link";
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { prisma } from "@/lib/prisma";
 import { getIconComponent } from "@/lib/course-icons";
+import { localizeCourse } from "@/lib/course-translations";
 
 export async function PopularCourses() {
-  const courses = await prisma.course.findMany({ orderBy: { createdAt: "asc" } });
+  const [locale, t] = await Promise.all([getLocale(), getTranslations("PopularCourses")]);
+  const rawCourses = await prisma.course.findMany({
+    orderBy: { createdAt: "asc" },
+    include: { translations: { where: { locale } } },
+  });
+  const courses = rawCourses.map(localizeCourse);
 
   if (courses.length === 0) return null;
 
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-          Popular Courses
-        </h2>
-        <p className="mt-3 text-muted-foreground">
-          Choose from a wide range of courses and start your learning journey
-          today.
-        </p>
+        <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{t("title")}</h2>
+        <p className="mt-3 text-muted-foreground">{t("subtitle")}</p>
       </div>
 
       <div className="mt-12 flex flex-wrap justify-center gap-8">

@@ -8,24 +8,27 @@ import {
   Video,
   Wallet,
 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-const FEATURES = [
-  { icon: Video, label: "Live Interactive Classes" },
-  { icon: ShieldCheck, label: "Certified & Experienced Teachers" },
-  { icon: Clock, label: "Flexible Timings" },
-  { icon: FileText, label: "Recorded Lectures" },
-  { icon: Monitor, label: "Weekly Progress Reports" },
-  { icon: Wallet, label: "Affordable Fees" },
-  { icon: Users, label: "One-to-One Learning" },
-  { icon: Headphones, label: "24/7 Student Support" },
-];
+export async function WhyChooseUs() {
+  const t = await getTranslations("WhyChooseUs");
 
-export function WhyChooseUs() {
+  const FEATURES = [
+    { icon: Video, label: t("liveClasses") },
+    { icon: ShieldCheck, label: t("certifiedTeachers") },
+    { icon: Clock, label: t("flexibleTimings") },
+    { icon: FileText, label: t("recordedLectures") },
+    { icon: Monitor, label: t("progressReports") },
+    { icon: Wallet, label: t("affordableFees") },
+    { icon: Users, label: t("oneToOne") },
+    { icon: Headphones, label: t("support247") },
+  ];
+
   return (
     <section className="bg-secondary/50 py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
-          Why Choose Global Teaching Hub?
+          {t("title")}
         </h2>
 
         <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-8">

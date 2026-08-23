@@ -3,7 +3,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import { CheckCircle2, Trash2 } from "lucide-react";
+import { CheckCircle2, Trash2, UserPlus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -43,6 +43,7 @@ type StudentDetail = {
   parentContact: string | null;
   monthlyFee: string | null;
   joined: string;
+  parents: { id: string; name: string; email: string }[];
 };
 type Teacher = { id: string; name: string; courseIds: string[] };
 type Course = { id: string; name: string };
@@ -186,6 +187,11 @@ function StudentEditor({
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [parents, setParents] = useState(student.parents);
+  const [parentForm, setParentForm] = useState({ name: "", email: "" });
+  const [invitingParent, setInvitingParent] = useState(false);
+  const [parentErrors, setParentErrors] = useState<Record<string, string>>({});
+  const [removingParentId, setRemovingParentId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!saved) return;
@@ -249,6 +255,46 @@ function StudentEditor({
       const data = await res.json();
       setNotes((prev) => [data.note, ...prev]);
       setNoteText("");
+    }
+  }
+
+  async function handleInviteParent(e: FormEvent) {
+    e.preventDefault();
+    setInvitingParent(true);
+    setParentErrors({});
+    try {
+      const res = await fetch(`/api/admin/students/${student.id}/parent`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parentForm),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setParents((prev) => [...prev, data.parent]);
+        setParentForm({ name: "", email: "" });
+      } else {
+        setParentErrors(data.errors ?? { form: data.error ?? "Something went wrong." });
+      }
+    } finally {
+      setInvitingParent(false);
+    }
+  }
+
+  async function handleRemoveParent(parent: { id: string; name: string }) {
+    const confirmed = window.confirm(`Remove ${parent.name}'s access to this student?`);
+    if (!confirmed) return;
+    setRemovingParentId(parent.id);
+    try {
+      const res = await fetch(`/api/admin/students/${student.id}/parent`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ parentId: parent.id }),
+      });
+      if (res.ok) {
+        setParents((prev) => prev.filter((p) => p.id !== parent.id));
+      }
+    } finally {
+      setRemovingParentId(null);
     }
   }
 
@@ -550,6 +596,61 @@ function StudentEditor({
             Add Note
           </Button>
         </form>
+      </div>
+
+      <div className="max-w-2xl">
+        <h2 className="text-sm font-semibold text-foreground">Parent Access</h2>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Parents linked here can log in at the student login page with a read-only view of
+          attendance, invoices, and reports.
+        </p>
+        <Card className="mt-3 border-none bg-background shadow-none">
+          <CardContent className="flex flex-col divide-y divide-border p-0">
+            {parents.length === 0 && (
+              <p className="px-6 py-4 text-sm text-muted-foreground">No parent linked yet.</p>
+            )}
+            {parents.map((parent) => (
+              <div key={parent.id} className="flex items-center justify-between px-6 py-4">
+                <div>
+                  <p className="text-sm font-medium text-foreground">{parent.name}</p>
+                  <p className="text-xs text-muted-foreground">{parent.email}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveParent(parent)}
+                  disabled={removingParentId === parent.id}
+                  aria-label={`Remove ${parent.name}`}
+                  className="flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-destructive/10 hover:text-destructive disabled:opacity-50"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <form onSubmit={handleInviteParent} className="mt-3 flex flex-col gap-2 sm:flex-row">
+          <Input
+            placeholder="Parent name"
+            value={parentForm.name}
+            onChange={(e) => setParentForm((f) => ({ ...f, name: e.target.value }))}
+          />
+          <Input
+            type="email"
+            placeholder="Parent email"
+            value={parentForm.email}
+            onChange={(e) => setParentForm((f) => ({ ...f, email: e.target.value }))}
+          />
+          <Button type="submit" variant="outline" disabled={invitingParent} className="shrink-0">
+            <UserPlus className="h-4 w-4" />
+            {invitingParent ? "Inviting..." : "Invite Parent"}
+          </Button>
+        </form>
+        {(parentErrors.name || parentErrors.email || parentErrors.form) && (
+          <p className="mt-1.5 text-xs text-destructive">
+            {parentErrors.name || parentErrors.email || parentErrors.form}
+          </p>
+        )}
       </div>
 
       <AttendancePanel

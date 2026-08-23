@@ -2,8 +2,9 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,10 +12,13 @@ import { Label } from "@/components/ui/label";
 const ROLE_REDIRECT: Record<string, string> = {
   ADMIN: "/admin",
   TEACHER: "/teacher",
+  STAFF: "/teacher",
   STUDENT: "/dashboard",
+  PARENT: "/parent",
 };
 
 export function LoginForm() {
+  const t = useTranslations("LoginForm");
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,7 +56,7 @@ export function LoginForm() {
   return (
     <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="email">Email address</Label>
+        <Label htmlFor="email">{t("email")}</Label>
         <div className="relative">
           <Mail className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -69,7 +73,12 @@ export function LoginForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="password">Password</Label>
+        <div className="flex items-center justify-between">
+          <Label htmlFor="password">{t("password")}</Label>
+          <Link href="/forgot-password" className="text-xs font-medium text-primary hover:underline">
+            {t("forgotPassword")}
+          </Link>
+        </div>
         <div className="relative">
           <Lock className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -104,13 +113,13 @@ export function LoginForm() {
       )}
 
       <Button type="submit" size="lg" className="mt-1 h-11" disabled={submitting}>
-        {submitting ? "Logging in..." : "Log In"}
+        {submitting ? t("submitting") : t("submit")}
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
-        Don&apos;t have an account?{" "}
+        {t("noAccount")}{" "}
         <Link href="/register" className="font-medium text-primary hover:underline">
-          Sign up for free
+          {t("signUp")}
         </Link>
       </p>
     </form>

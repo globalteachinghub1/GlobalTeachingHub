@@ -84,6 +84,51 @@ async function main() {
   const hafsaTeacherId = hafsa.teacher!.id;
   const bilalTeacherId = bilal.teacher!.id;
 
+  const staffPassword = await hash("Staff@12345");
+  const staffUser = await prisma.user.upsert({
+    where: { email: "sana.tariq@edusphereacademy.com" },
+    update: {},
+    create: {
+      name: "Sana Tariq",
+      email: "sana.tariq@edusphereacademy.com",
+      passwordHash: staffPassword,
+      role: "STAFF",
+    },
+  });
+
+  const hrCategory = await prisma.sopCategory.upsert({
+    where: { name: "HR & Onboarding" },
+    update: {},
+    create: { name: "HR & Onboarding" },
+  });
+  const teachingCategory = await prisma.sopCategory.upsert({
+    where: { name: "Teaching Standards" },
+    update: {},
+    create: { name: "Teaching Standards" },
+  });
+
+  await prisma.sopDocument.createMany({
+    data: [
+      {
+        categoryId: hrCategory.id,
+        title: "New Hire Checklist",
+        description: "Steps for onboarding a new teacher or staff member.",
+        fileUrl: "https://docs.google.com/document/d/example-new-hire-checklist",
+        status: "APPROVED",
+        createdById: staffUser.id,
+      },
+      {
+        categoryId: teachingCategory.id,
+        title: "Tajweed Class Delivery Guide",
+        description: "Standard structure for a 30-minute Quran with Tajweed lesson.",
+        fileUrl: "https://docs.google.com/document/d/example-tajweed-guide",
+        status: "APPROVED",
+        createdById: staffUser.id,
+      },
+    ],
+    skipDuplicates: true,
+  });
+
   const studentPassword = await hash("Student@12345");
 
   const aliUser = await prisma.user.upsert({
@@ -152,6 +197,23 @@ async function main() {
     },
   });
 
+  const aliStudent = await prisma.student.findUniqueOrThrow({
+    where: { email: "ali.raza@example.com" },
+  });
+
+  const parentPassword = await hash("Parent@12345");
+  await prisma.user.upsert({
+    where: { email: "muhammad.raza@example.com" },
+    update: {},
+    create: {
+      name: "Muhammad Raza",
+      email: "muhammad.raza@example.com",
+      passwordHash: parentPassword,
+      role: "PARENT",
+      parent: { create: { students: { connect: { id: aliStudent.id } } } },
+    },
+  });
+
   await prisma.student.upsert({
     where: { email: "mahnoor.ali@example.com" },
     update: {},
@@ -199,7 +261,9 @@ async function main() {
   console.log("Admin login:   admin@edusphereacademy.com / Admin@12345");
   console.log("Teacher login: hafsa.siddiqui@edusphereacademy.com / Teacher@12345");
   console.log("Teacher login: bilal.ahmed@edusphereacademy.com / Teacher@12345");
+  console.log("Staff login:   sana.tariq@edusphereacademy.com / Staff@12345");
   console.log("Student login: ali.raza@example.com / Student@12345 (userId:", aliUser.id, ")");
+  console.log("Parent login:  muhammad.raza@example.com / Parent@12345");
 }
 
 main()

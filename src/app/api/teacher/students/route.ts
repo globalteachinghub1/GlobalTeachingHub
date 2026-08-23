@@ -1,17 +1,18 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireRole } from "@/lib/auth";
-import { forbidden } from "@/lib/api-errors";
 
 export async function GET() {
-  const auth = await requireRole("TEACHER");
+  const auth = await requireRole(["TEACHER", "STAFF"]);
   if (auth instanceof NextResponse) return auth;
 
   const teacher = await prisma.teacher.findUnique({
     where: { userId: auth.sub },
     include: { user: true, courses: true },
   });
-  if (!teacher) return forbidden();
+  // Staff members aren't tied to a Teacher record — they share this portal
+  // route but have no students/courses of their own.
+  if (!teacher) return NextResponse.json({ teacher: null, students: [] });
 
   const students = await prisma.student.findMany({
     where: { teacherId: teacher.id },

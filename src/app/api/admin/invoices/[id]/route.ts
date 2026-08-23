@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireRole } from "@/lib/auth";
 import { notFound } from "@/lib/api-errors";
+import { notifyStaff } from "@/lib/system-notifications";
 
 type Params = { params: Promise<{ id: string }> };
 
@@ -60,6 +61,16 @@ export async function PATCH(request: Request, { params }: Params) {
     },
     include: { student: { select: { id: true, name: true, email: true } } },
   });
+
+  if (status === "PAID" && existing.status !== "PAID") {
+    notifyStaff(
+      "PAYMENT_RECEIVED",
+      `Payment received: ${invoice.amount} from ${invoice.student.name}`,
+      `/admin/invoices`
+    ).catch((error) => {
+      console.error("Failed to create payment-received notification", error);
+    });
+  }
 
   return NextResponse.json({ invoice });
 }

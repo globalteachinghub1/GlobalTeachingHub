@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -10,6 +11,7 @@ import { Label } from "@/components/ui/label";
 const ROLE_REDIRECT: Record<string, string> = {
   ADMIN: "/admin",
   TEACHER: "/teacher",
+  STAFF: "/teacher",
 };
 
 export function StaffLoginForm() {
@@ -71,7 +73,15 @@ export function StaffLoginForm() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="password">Password</Label>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="password">Password</Label>
+              <Link
+                href="/forgot-password"
+                className="text-xs font-medium text-primary hover:underline"
+              >
+                Forgot password?
+              </Link>
+            </div>
             <Input
               id="password"
               name="password"

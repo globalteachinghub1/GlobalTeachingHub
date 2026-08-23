@@ -12,6 +12,7 @@ enum Role {
   TEACHER
   STAFF
   STUDENT
+  PARENT
 }
 
 enum StudentLevel {
@@ -49,12 +50,29 @@ enum NotificationType {
   WEEKLY_REPORT
   MONTHLY_REPORT
   ATTENDANCE_ALERT
+  STUDENT_JOINED
+  PAYMENT_RECEIVED
+  SOP_PUBLISHED
+  NEW_LEAD
 }
 
 enum DocumentStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+enum LeadSource {
+  FREE_TRIAL
+  CONTACT
+}
+
+enum LeadStage {
+  NEW
+  CONTACTED
+  QUALIFIED
+  ENROLLED
+  LOST
 }
 
 model User {
@@ -68,6 +86,32 @@ model User {
 
   teacher Teacher?
   student Student?
+  parent  Parent?
+
+  sopDocuments        SopDocument[]
+  leadNotes           LeadNote[]
+  passwordResetTokens PasswordResetToken[]
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+}
+
+/**
+ * A parent/guardian account with read-only access to their linked
+ * students' attendance, invoices, reports, and notifications.
+ */
+model Parent {
+  id       String    @id @default(cuid())
+  userId   String    @unique
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  students Student[] @relation("ParentStudents")
 }
 
 model Course {
@@ -81,8 +125,30 @@ model Course {
   icon        String   @default("BookOpen")
   createdAt   DateTime @default(now())
 
-  teachers    Teacher[]
-  enrollments Enrollment[]
+  teachers     Teacher[]
+  enrollments  Enrollment[]
+  leads        Lead[]
+  translations CourseTranslation[]
+}
+
+/**
+ * Per-locale override of a course's name/summary/description/topics. The
+ * base Course fields are the content for the default locale (English);
+ * a visitor in another language sees the matching row here if one exists,
+ * or falls back to the base fields otherwise.
+ */
+model CourseTranslation {
+  id          String   @id @default(cuid())
+  courseId    String
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  locale      String
+  name        String
+  summary     String
+  description String?
+  topics      String[]
+  updatedAt   DateTime @updatedAt
+
+  @@unique([courseId, locale])
 }
 
 model Teacher {
@@ -117,6 +183,7 @@ model Student {
   invoices      Invoice[]
   notifications Notification[]
   documents     Document[]
+  parents       Parent[]       @relation("ParentStudents")
 }
 
 /**
@@ -225,4 +292,75 @@ model Notification {
   type      NotificationType @default(GENERAL)
   message   String
   date      DateTime         @default(now())
+}
+
+/**
+ * Company-wide SOP library, organized into categories. Shared by Admin,
+ * Teacher, and Staff — not tied to a single student.
+ */
+model SopCategory {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+
+  documents SopDocument[]
+}
+
+model SopDocument {
+  id          String         @id @default(cuid())
+  categoryId  String
+  category    SopCategory    @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  fileUrl     String
+  version     Int            @default(1)
+  status      DocumentStatus @default(PENDING)
+  createdById String
+  createdBy   User           @relation(fields: [createdById], references: [id])
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+/**
+ * Broadcast notifications for Admin/Teacher/Staff (student joined, payment
+ * received, SOP published, ...). `readBy` tracks which users have dismissed
+ * it — there's one org-wide feed rather than a per-recipient row.
+ */
+model SystemNotification {
+  id        String           @id @default(cuid())
+  type      NotificationType @default(GENERAL)
+  message   String
+  link      String?
+  readBy    String[]         @default([])
+  createdAt DateTime         @default(now())
+}
+
+/**
+ * A prospective student captured from the Free Trial or Contact forms,
+ * tracked through a simple CRM pipeline until enrolled or lost.
+ */
+model Lead {
+  id        String     @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  courseId  String?
+  course    Course?    @relation(fields: [courseId], references: [id], onDelete: SetNull)
+  message   String?
+  source    LeadSource
+  stage     LeadStage  @default(NEW)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  notes LeadNote[]
+}
+
+model LeadNote {
+  id          String   @id @default(cuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  note        String
+  createdById String?
+  createdBy   User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
 }

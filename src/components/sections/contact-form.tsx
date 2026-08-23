@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -37,6 +38,7 @@ function validate(form: FormState) {
 }
 
 export function ContactForm() {
+  const t = useTranslations("ContactForm");
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -48,13 +50,8 @@ export function ContactForm() {
       <Card className="border-none bg-secondary/40 shadow-none">
         <CardContent className="flex flex-col items-center gap-3 p-10 text-center">
           <CheckCircle2 className="h-10 w-10 text-primary" />
-          <p className="text-lg font-semibold text-foreground">
-            Thank you for reaching out!
-          </p>
-          <p className="text-sm text-muted-foreground">
-            We&apos;ve received your message and will get back to you
-            shortly.
-          </p>
+          <p className="text-lg font-semibold text-foreground">{t("successTitle")}</p>
+          <p className="text-sm text-muted-foreground">{t("successBody")}</p>
         </CardContent>
       </Card>
     );
@@ -103,11 +100,11 @@ export function ContactForm() {
       <CardContent className="p-8">
         <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="name">Full Name</Label>
+            <Label htmlFor="name">{t("fullName")}</Label>
             <Input
               id="name"
               name="name"
-              placeholder="Your name"
+              placeholder={t("fullNamePlaceholder")}
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               aria-invalid={!!errors.name}
@@ -118,12 +115,12 @@ export function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{t("email")}</Label>
             <Input
               id="email"
               name="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder={t("emailPlaceholder")}
               value={form.email}
               onChange={(e) =>
                 setForm((f) => ({ ...f, email: e.target.value }))
@@ -136,11 +133,11 @@ export function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="subject">Subject</Label>
+            <Label htmlFor="subject">{t("subject")}</Label>
             <Input
               id="subject"
               name="subject"
-              placeholder="How can we help?"
+              placeholder={t("subjectPlaceholder")}
               value={form.subject}
               onChange={(e) =>
                 setForm((f) => ({ ...f, subject: e.target.value }))
@@ -153,12 +150,12 @@ export function ContactForm() {
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="message">Message</Label>
+            <Label htmlFor="message">{t("message")}</Label>
             <textarea
               id="message"
               name="message"
               rows={5}
-              placeholder="Write your message here..."
+              placeholder={t("messagePlaceholder")}
               value={form.message}
               onChange={(e) =>
                 setForm((f) => ({ ...f, message: e.target.value }))
@@ -176,7 +173,7 @@ export function ContactForm() {
           )}
 
           <Button type="submit" size="lg" className="mt-2" disabled={submitting}>
-            {submitting ? "Sending..." : "Send Message"}
+            {submitting ? t("submitting") : t("submit")}
           </Button>
         </form>
       </CardContent>

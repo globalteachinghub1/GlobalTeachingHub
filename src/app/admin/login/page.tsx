@@ -4,6 +4,7 @@ import { StaffLoginForm } from "@/components/sections/staff-login-form";
 
 export const metadata: Metadata = {
   title: "Staff Login — Global Teaching Hub",
+  robots: { index: false, follow: false },
 };
 
 export default function StaffLoginPage() {

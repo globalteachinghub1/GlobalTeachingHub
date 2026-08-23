@@ -5,6 +5,7 @@ import { requireEmail, requireString, type FieldErrors } from "@/lib/validation"
 import { checkTeacherTeachesStudentCourse } from "@/lib/teacher-course-match";
 import { generateTempPassword, hashPassword } from "@/lib/password";
 import { sendAccountCreatedEmail } from "@/lib/mailer";
+import { notifyStaff } from "@/lib/system-notifications";
 
 export async function GET() {
   const auth = await requireRole("ADMIN");
@@ -152,6 +153,12 @@ export async function POST(request: Request) {
   }).catch((error) => {
     console.error("Failed to send account-created email", error);
   });
+
+  notifyStaff("STUDENT_JOINED", `New student joined: ${name}`, `/admin/students/${student.id}`).catch(
+    (error) => {
+      console.error("Failed to create student-joined notification", error);
+    }
+  );
 
   return NextResponse.json({
     student: {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import { BookOpen, Pencil, Plus, Trash2 } from "lucide-react";
+import { BookOpen, CheckCircle2, Pencil, Plus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,11 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { COLOR_OPTIONS, ICON_OPTIONS, getIconComponent } from "@/lib/course-icons";
+import { routing, LOCALE_LABELS, type Locale } from "@/i18n/routing";
+
+const TRANSLATABLE_LOCALES = routing.locales.filter(
+  (l) => l !== routing.defaultLocale
+) as Locale[];
 
 type Course = {
   id: string;
@@ -261,6 +266,8 @@ export default function AdminCoursesPage() {
                 </div>
               </div>
 
+              {editingId && <CourseTranslationsEditor courseId={editingId} />}
+
               {errors.form && (
                 <p className="text-xs text-destructive">{errors.form}</p>
               )}
@@ -348,6 +355,214 @@ export default function AdminCoursesPage() {
           );
         })}
       </div>
+    </div>
+  );
+}
+
+type TranslationForm = { name: string; summary: string; description: string; topics: string };
+
+const EMPTY_TRANSLATION: TranslationForm = { name: "", summary: "", description: "", topics: "" };
+
+function CourseTranslationsEditor({ courseId }: { courseId: string }) {
+  const [translations, setTranslations] = useState<Record<string, TranslationForm> | null>(null);
+  const [activeLocale, setActiveLocale] = useState<Locale>(TRANSLATABLE_LOCALES[0]);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    fetch(`/api/admin/courses/${courseId}/translations`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (!active) return;
+        const map: Record<string, TranslationForm> = {};
+        for (const t of data.translations ?? []) {
+          map[t.locale] = {
+            name: t.name,
+            summary: t.summary,
+            description: t.description ?? "",
+            topics: (t.topics ?? []).join(", "),
+          };
+        }
+        setTranslations(map);
+      });
+    return () => {
+      active = false;
+    };
+  }, [courseId]);
+
+  const current = translations?.[activeLocale] ?? EMPTY_TRANSLATION;
+  const hasContent = Boolean(translations?.[activeLocale]);
+
+  function updateField(field: keyof TranslationForm, value: string) {
+    setSaved(false);
+    setTranslations((prev) => ({
+      ...(prev ?? {}),
+      [activeLocale]: { ...current, [field]: value },
+    }));
+  }
+
+  async function handleSaveTranslation() {
+    setSaving(true);
+    setSaved(false);
+    setError(null);
+    try {
+      const res = await fetch(`/api/admin/courses/${courseId}/translations`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          locale: activeLocale,
+          name: current.name,
+          summary: current.summary,
+          description: current.description,
+          topics: current.topics
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean),
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setSaved(true);
+      } else {
+        setError(data.errors?.name ?? data.errors?.summary ?? data.error ?? "Something went wrong.");
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleClearTranslation() {
+    const confirmed = window.confirm(
+      `Remove the ${LOCALE_LABELS[activeLocale]} translation? Visitors in that language will see the default-language content instead.`
+    );
+    if (!confirmed) return;
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/admin/courses/${courseId}/translations`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ locale: activeLocale }),
+      });
+      if (res.ok) {
+        setTranslations((prev) => {
+          const next = { ...(prev ?? {}) };
+          delete next[activeLocale];
+          return next;
+        });
+        setSaved(false);
+      }
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="flex flex-col gap-3 rounded-lg border border-border/60 p-4">
+      <div>
+        <p className="text-sm font-semibold text-foreground">Translations</p>
+        <p className="mt-0.5 text-xs text-muted-foreground">
+          Optional per-language name, summary, description, and topics. Languages without a
+          translation fall back to the fields above.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap gap-1.5">
+        {TRANSLATABLE_LOCALES.map((locale) => (
+          <button
+            key={locale}
+            type="button"
+            onClick={() => {
+              setActiveLocale(locale);
+              setSaved(false);
+              setError(null);
+            }}
+            className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors ${
+              activeLocale === locale
+                ? "border-primary bg-primary/10 text-primary"
+                : "border-input text-muted-foreground hover:bg-secondary/60"
+            }`}
+          >
+            {LOCALE_LABELS[locale]}
+            {translations?.[locale] && (
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {translations === null ? (
+        <p className="text-xs text-muted-foreground">Loading...</p>
+      ) : (
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="t-name">Course Name</Label>
+            <Input
+              id="t-name"
+              value={current.name}
+              onChange={(e) => updateField("name", e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="t-description">Short Description</Label>
+            <Input
+              id="t-description"
+              value={current.description}
+              onChange={(e) => updateField("description", e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="t-summary">Summary</Label>
+            <textarea
+              id="t-summary"
+              rows={3}
+              value={current.summary}
+              onChange={(e) => updateField("summary", e.target.value)}
+              className="w-full min-w-0 resize-none rounded-lg border border-input bg-transparent px-2.5 py-2 text-base outline-none transition-colors placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm dark:bg-input/30"
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="t-topics">Topics</Label>
+            <Input
+              id="t-topics"
+              placeholder="Comma-separated"
+              value={current.topics}
+              onChange={(e) => updateField("topics", e.target.value)}
+            />
+          </div>
+
+          {error && <p className="text-xs text-destructive">{error}</p>}
+
+          <div className="flex items-center gap-3">
+            <Button
+              type="button"
+              size="sm"
+              variant="outline"
+              onClick={handleSaveTranslation}
+              disabled={saving || !current.name || !current.summary}
+            >
+              {saving ? "Saving..." : `Save ${LOCALE_LABELS[activeLocale]}`}
+            </Button>
+            {hasContent && (
+              <button
+                type="button"
+                onClick={handleClearTranslation}
+                disabled={saving}
+                className="text-xs font-medium text-destructive hover:underline"
+              >
+                Remove translation
+              </button>
+            )}
+            {saved && (
+              <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
+                Saved
+              </span>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

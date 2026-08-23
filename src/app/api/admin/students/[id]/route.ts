@@ -21,6 +21,7 @@ export async function GET(_request: Request, { params }: Params) {
           attendance: { orderBy: { date: "desc" }, take: 30 },
         },
       },
+      parents: { include: { user: { select: { name: true, email: true } } } },
     },
   });
 
@@ -39,6 +40,11 @@ export async function GET(_request: Request, { params }: Params) {
         classEndTime: e.classEndTime,
         classDays: e.classDays,
         attendance: e.attendance,
+      })),
+      parents: student.parents.map((p) => ({
+        id: p.id,
+        name: p.user.name,
+        email: p.user.email,
       })),
     },
   });

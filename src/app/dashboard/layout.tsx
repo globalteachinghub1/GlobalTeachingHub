@@ -1,41 +1,19 @@
-"use client";
+import type { ReactNode } from "react";
+import { NextIntlClientProvider } from "next-intl";
+import { getPortalLocale } from "@/lib/portal-locale";
+import { RTL_LOCALES } from "@/i18n/routing";
+import { DashboardAuthGuard } from "@/components/dashboard/dashboard-auth-guard";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { StudentShell } from "@/components/dashboard/student-shell";
-import { useSession } from "@/lib/use-session";
-
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const router = useRouter();
-  const user = useSession();
-  const loading = user === undefined;
-  const authorized = user?.role === "STUDENT";
-
-  useEffect(() => {
-    if (!loading && !authorized) router.replace("/login");
-  }, [loading, authorized, router]);
-
-  if (loading || !authorized) {
-    return (
-      <div className="flex min-h-screen items-center justify-center text-sm text-muted-foreground">
-        Checking access...
-      </div>
-    );
-  }
+export default async function DashboardLayout({ children }: { children: ReactNode }) {
+  const locale = await getPortalLocale();
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+  const dir = RTL_LOCALES.includes(locale) ? "rtl" : "ltr";
 
   return (
-    <StudentShell
-      name={user.name}
-      onLogout={async () => {
-        await fetch("/api/auth/logout", { method: "POST" });
-        router.push("/login");
-      }}
-    >
-      {children}
-    </StudentShell>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <div dir={dir} lang={locale} className="contents">
+        <DashboardAuthGuard>{children}</DashboardAuthGuard>
+      </div>
+    </NextIntlClientProvider>
   );
 }

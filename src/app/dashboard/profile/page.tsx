@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { Calendar, Mail } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,7 @@ type StudentMe = {
 } | null;
 
 export default function ProfilePage() {
+  const t = useTranslations("ProfilePage");
   const [student, setStudent] = useState<StudentMe | undefined>(undefined);
 
   useEffect(() => {
@@ -30,15 +32,11 @@ export default function ProfilePage() {
   }, []);
 
   if (student === undefined) {
-    return <p className="text-sm text-muted-foreground">Loading...</p>;
+    return <p className="text-sm text-muted-foreground">{t("loading")}</p>;
   }
 
   if (!student) {
-    return (
-      <p className="text-sm text-muted-foreground">
-        Your student profile hasn&apos;t been set up yet.
-      </p>
-    );
+    return <p className="text-sm text-muted-foreground">{t("notSetUp")}</p>;
   }
 
   return <ProfileForm student={student} />;
@@ -55,6 +53,8 @@ function initials(name: string) {
 }
 
 function ProfileForm({ student }: { student: NonNullable<StudentMe> }) {
+  const t = useTranslations("ProfilePage");
+  const locale = useLocale();
   const [name, setName] = useState(student.name);
   const [phone, setPhone] = useState(student.phone ?? "");
   const [saving, setSaving] = useState(false);
@@ -100,7 +100,12 @@ function ProfileForm({ student }: { student: NonNullable<StudentMe> }) {
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Calendar className="h-3.5 w-3.5" />
-                Student since {new Date(student.joined).toLocaleDateString(undefined, { month: "long", year: "numeric" })}
+                {t("studentSince", {
+                  date: new Date(student.joined).toLocaleDateString(locale, {
+                    month: "long",
+                    year: "numeric",
+                  }),
+                })}
               </span>
             </div>
           </div>
@@ -109,15 +114,11 @@ function ProfileForm({ student }: { student: NonNullable<StudentMe> }) {
 
       <Card className="max-w-lg border-none shadow-sm">
         <CardContent className="p-8">
-          <h2 className="text-base font-semibold text-foreground">
-            Edit your details
-          </h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Your name and phone number are visible to your teachers.
-          </p>
+          <h2 className="text-base font-semibold text-foreground">{t("editDetails")}</h2>
+          <p className="mt-1 text-sm text-muted-foreground">{t("editSubtitle")}</p>
           <form className="mt-5 flex flex-col gap-5" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="name">Full Name</Label>
+              <Label htmlFor="name">{t("fullName")}</Label>
               <Input
                 id="name"
                 name="name"
@@ -127,13 +128,13 @@ function ProfileForm({ student }: { student: NonNullable<StudentMe> }) {
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <Label htmlFor="phone">Phone</Label>
+              <Label htmlFor="phone">{t("phone")}</Label>
               <Input
                 id="phone"
                 name="phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="Add a phone number"
+                placeholder={t("addPhone")}
               />
             </div>
 
@@ -141,9 +142,9 @@ function ProfileForm({ student }: { student: NonNullable<StudentMe> }) {
 
             <div className="flex items-center gap-3">
               <Button type="submit" size="lg" disabled={saving}>
-                {saving ? "Saving..." : "Save Changes"}
+                {saving ? t("saving") : t("save")}
               </Button>
-              {saved && <p className="text-xs text-muted-foreground">Saved.</p>}
+              {saved && <p className="text-xs text-muted-foreground">{t("saved")}</p>}
             </div>
           </form>
         </CardContent>

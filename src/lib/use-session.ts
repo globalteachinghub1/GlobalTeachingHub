@@ -6,7 +6,7 @@ export type SessionUser = {
   id: string;
   name: string;
   email: string;
-  role: "ADMIN" | "TEACHER" | "STUDENT";
+  role: "ADMIN" | "TEACHER" | "STAFF" | "STUDENT" | "PARENT";
   teacherId: string | null;
   studentId: string | null;
 };

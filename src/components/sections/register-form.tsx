@@ -2,8 +2,9 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Eye, EyeOff, Lock, Mail, User } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -23,6 +24,7 @@ const EMPTY_FORM = {
 };
 
 export function RegisterForm({ courses }: { courses: Course[] }) {
+  const t = useTranslations("RegisterForm");
   const router = useRouter();
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState<FieldErrors>({});
@@ -73,13 +75,13 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
   return (
     <form className="flex flex-col gap-5" onSubmit={handleSubmit} noValidate>
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="name">Full Name</Label>
+        <Label htmlFor="name">{t("fullName")}</Label>
         <div className="relative">
           <User className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             id="name"
             name="name"
-            placeholder="Your name"
+            placeholder={t("fullNamePlaceholder")}
             value={form.name}
             onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
             aria-invalid={!!errors.name}
@@ -90,14 +92,14 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="email">Email address</Label>
+        <Label htmlFor="email">{t("email")}</Label>
         <div className="relative">
           <Mail className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             id="email"
             name="email"
             type="email"
-            placeholder="you@example.com"
+            placeholder={t("emailPlaceholder")}
             value={form.email}
             onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
             aria-invalid={!!errors.email}
@@ -108,7 +110,7 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label htmlFor="password">Password</Label>
+        <Label htmlFor="password">{t("password")}</Label>
         <div className="relative">
           <Lock className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -143,7 +145,7 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
 
       <div className="grid grid-cols-2 gap-3">
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="phone">Phone</Label>
+          <Label htmlFor="phone">{t("phone")}</Label>
           <Input
             id="phone"
             value={form.phone}
@@ -152,7 +154,7 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="whatsapp">WhatsApp</Label>
+          <Label htmlFor="whatsapp">{t("whatsapp")}</Label>
           <Input
             id="whatsapp"
             value={form.whatsapp}
@@ -164,7 +166,7 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
 
       <div className="grid grid-cols-2 gap-3">
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="parentName">Parent Name</Label>
+          <Label htmlFor="parentName">{t("parentName")}</Label>
           <Input
             id="parentName"
             value={form.parentName}
@@ -173,7 +175,7 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="parentContact">Parent Contact</Label>
+          <Label htmlFor="parentContact">{t("parentContact")}</Label>
           <Input
             id="parentContact"
             value={form.parentContact}
@@ -184,11 +186,9 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label>Courses</Label>
+        <Label>{t("courses")}</Label>
         {courses.length === 0 && (
-          <p className="text-xs text-muted-foreground">
-            No courses are open for enrollment right now.
-          </p>
+          <p className="text-xs text-muted-foreground">{t("noCoursesOpen")}</p>
         )}
         <div className="flex flex-col gap-1.5">
           {courses.map((course) => (
@@ -218,13 +218,13 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
       )}
 
       <Button type="submit" size="lg" className="mt-1 h-11" disabled={submitting}>
-        {submitting ? "Creating account..." : "Sign Up"}
+        {submitting ? t("submitting") : t("submit")}
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
-        Already have an account?{" "}
+        {t("alreadyHaveAccount")}{" "}
         <Link href="/login" className="font-medium text-primary hover:underline">
-          Login
+          {t("login")}
         </Link>
       </p>
     </form>

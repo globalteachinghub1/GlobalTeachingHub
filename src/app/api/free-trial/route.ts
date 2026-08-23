@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendNotificationEmail } from "@/lib/mailer";
 import { prisma } from "@/lib/prisma";
+import { notifyStaff } from "@/lib/system-notifications";
 import {
   requireEmail,
   requirePhone,
@@ -25,38 +26,57 @@ export async function POST(request: Request) {
   });
   const phone = requirePhone(errors, "phone", data.phone);
   const email = requireEmail(errors, "email", data.email);
-  const course = requireString(errors, "course", data.course, "Course", {
+  const courseId = requireString(errors, "course", data.courseId, "Course", {
     min: 1,
     max: 100,
   });
 
-  if (course) {
-    const match = await prisma.course.findFirst({ where: { name: course } });
-    if (!match) errors.course = "Select a valid course.";
+  let matchedCourse: { id: string; name: string } | null = null;
+  if (courseId) {
+    matchedCourse = await prisma.course.findUnique({
+      where: { id: courseId },
+      select: { id: true, name: true },
+    });
+    if (!matchedCourse) errors.course = "Select a valid course.";
   }
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ errors }, { status: 422 });
   }
 
+  await prisma.lead.create({
+    data: {
+      name,
+      email,
+      phone,
+      courseId: matchedCourse?.id ?? null,
+      source: "FREE_TRIAL",
+    },
+  });
+
+  const courseName = matchedCourse!.name;
+
+  notifyStaff("NEW_LEAD", `New free trial lead: ${name} (${courseName})`, "/admin/leads").catch(
+    (error) => {
+      console.error("Failed to create new-lead notification", error);
+    }
+  );
+
   try {
     await sendNotificationEmail({
       type: "demo",
-      subject: `🎓 New Free Demo Request — ${course} — ${name}`,
+      subject: `🎓 New Free Demo Request — ${courseName} — ${name}`,
       replyTo: email,
       lines: [
         { label: "Name", value: name },
         { label: "Phone / WhatsApp", value: phone },
         { label: "Email", value: email },
-        { label: "Course", value: course },
+        { label: "Course", value: courseName },
       ],
     });
   } catch (error) {
     console.error("Failed to send free trial email", error);
-    return NextResponse.json(
-      { error: "Something went wrong sending your request. Please try again later." },
-      { status: 500 }
-    );
+    // The lead is already saved, so don't fail the request over the email.
   }
 
   return NextResponse.json({ ok: true });

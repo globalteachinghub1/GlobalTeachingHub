@@ -1,0 +1,385 @@
+{
+  "Nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "courses": "Kurse",
+    "howItWorks": "So funktioniert's",
+    "reviews": "Bewertungen",
+    "contact": "Kontakt",
+    "login": "Anmelden",
+    "getStarted": "Loslegen"
+  },
+  "Footer": {
+    "tagline": "Wir stärken Schüler durch hochwertige Bildung. Lernen, wachsen und Ihre Träume mit uns verwirklichen.",
+    "quickLinks": "Schnellzugriff",
+    "resources": "Ressourcen",
+    "support": "Support",
+    "faqs": "Häufige Fragen",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsAndConditions": "Allgemeine Geschäftsbedingungen",
+    "contactUs": "Kontaktieren Sie uns",
+    "helpCenter": "Hilfe-Center",
+    "liveChat": "Live-Chat",
+    "rightsReserved": "Alle Rechte vorbehalten."
+  },
+  "LanguageSwitcher": {
+    "label": "Sprache"
+  },
+  "Hero": {
+    "titleLine1": "Lernen von",
+    "titleHighlight": "Erfahrenen Lehrern",
+    "titleLine2": "Jederzeit, überall.",
+    "subtitle": "Live-Einzelunterricht, erfahrene Lehrer, flexible Zeitpläne und personalisiertes Lernen für Schüler aus Pakistan und der ganzen Welt.",
+    "bookDemo": "Kostenlose Probestunde Buchen",
+    "exploreCourses": "Kurse Entdecken",
+    "socialProof": "Über 10.000 Schüler lernen bereits mit uns",
+    "liveClassInProgress": "Live-Unterricht läuft",
+    "live": "LIVE",
+    "statStudents": "Schüler",
+    "statTeachers": "Erfahrene Lehrer",
+    "statCountries": "Länder",
+    "statRating": "Schülerbewertung"
+  },
+  "WhyChooseUs": {
+    "title": "Warum Global Teaching Hub wählen?",
+    "liveClasses": "Interaktiver Live-Unterricht",
+    "certifiedTeachers": "Zertifizierte, Erfahrene Lehrer",
+    "flexibleTimings": "Flexible Zeiten",
+    "recordedLectures": "Aufgezeichnete Vorlesungen",
+    "progressReports": "Wöchentliche Fortschrittsberichte",
+    "affordableFees": "Erschwingliche Gebühren",
+    "oneToOne": "Einzelunterricht",
+    "support247": "Schülersupport rund um die Uhr"
+  },
+  "HowItWorks": {
+    "title": "So funktioniert's",
+    "subtitle": "Beginnen Sie Ihre Lernreise in nur wenigen einfachen Schritten.",
+    "registerTitle": "Registrieren",
+    "registerDescription": "Erstellen Sie Ihr kostenloses Konto",
+    "bookDemoTitle": "Kostenlose Probestunde buchen",
+    "bookDemoDescription": "Wählen Sie ein Fach und buchen Sie Ihre Probestunde",
+    "chooseTeacherTitle": "Lehrer wählen",
+    "chooseTeacherDescription": "Wählen Sie den perfekten Lehrer für sich",
+    "startLearningTitle": "Lernen beginnen",
+    "startLearningDescription": "Starten Sie Ihren Unterricht und erreichen Sie Ihre Ziele"
+  },
+  "PopularCourses": {
+    "title": "Beliebte Kurse",
+    "subtitle": "Wählen Sie aus einer Vielzahl von Kursen und beginnen Sie noch heute Ihre Lernreise."
+  },
+  "FreeTrialForm": {
+    "fullName": "Vollständiger Name",
+    "fullNamePlaceholder": "Ihr Name",
+    "phone": "Telefon / WhatsApp",
+    "email": "E-Mail",
+    "emailPlaceholder": "sie@beispiel.com",
+    "course": "Kurs",
+    "selectCourse": "Kurs auswählen",
+    "submit": "Meine Kostenlose Probestunde Buchen",
+    "submitting": "Wird gesendet...",
+    "successTitle": "Vielen Dank! Ihre Anfrage ist eingegangen.",
+    "successBody": "Unser Team wird sich in Kürze bei Ihnen melden, um Ihre kostenlose Probestunde zu vereinbaren."
+  },
+  "ContactForm": {
+    "fullName": "Vollständiger Name",
+    "fullNamePlaceholder": "Ihr Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "sie@beispiel.com",
+    "subject": "Betreff",
+    "subjectPlaceholder": "Wie können wir helfen?",
+    "message": "Nachricht",
+    "messagePlaceholder": "Schreiben Sie hier Ihre Nachricht...",
+    "submit": "Nachricht Senden",
+    "submitting": "Wird gesendet...",
+    "successTitle": "Vielen Dank für Ihre Nachricht!",
+    "successBody": "Wir haben Ihre Nachricht erhalten und melden uns in Kürze bei Ihnen."
+  },
+  "LoginForm": {
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "forgotPassword": "Passwort vergessen?",
+    "submit": "Anmelden",
+    "submitting": "Anmeldung läuft...",
+    "noAccount": "Noch kein Konto?",
+    "signUp": "Kostenlos registrieren"
+  },
+  "RegisterForm": {
+    "fullName": "Vollständiger Name",
+    "fullNamePlaceholder": "Ihr Name",
+    "email": "E-Mail-Adresse",
+    "emailPlaceholder": "sie@beispiel.com",
+    "password": "Passwort",
+    "phone": "Telefon",
+    "whatsapp": "WhatsApp",
+    "parentName": "Name der Eltern",
+    "parentContact": "Kontakt der Eltern",
+    "courses": "Kurse",
+    "noCoursesOpen": "Derzeit sind keine Kurse für die Anmeldung geöffnet.",
+    "submit": "Registrieren",
+    "submitting": "Konto wird erstellt...",
+    "alreadyHaveAccount": "Bereits ein Konto?",
+    "login": "Anmelden"
+  },
+  "ForgotPasswordForm": {
+    "email": "E-Mail-Adresse",
+    "submit": "Link zum Zurücksetzen Senden",
+    "submitting": "Wird gesendet...",
+    "backToLogin": "Zurück zur Anmeldung",
+    "successBody": "Falls ein Konto für {email} existiert, haben wir Ihnen einen Link zum Zurücksetzen des Passworts gesendet. Er läuft in 1 Stunde ab."
+  },
+  "ResetPasswordForm": {
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Neues Passwort bestätigen",
+    "submit": "Passwort Zurücksetzen",
+    "submitting": "Wird zurückgesetzt...",
+    "successBody": "Ihr Passwort wurde zurückgesetzt. Sie werden zur Anmeldung weitergeleitet...",
+    "rememberedIt": "Wieder eingefallen?",
+    "backToLogin": "Zurück zur Anmeldung"
+  },
+  "About": {
+    "title": "Über Global Teaching Hub",
+    "intro": "Global Teaching Hub ist eine Online-Nachhilfeplattform mit Live-Einzelunterricht, erfahrenen Lehrern, flexiblen Zeitplänen und personalisiertem Lernen für Schüler aus Pakistan und der ganzen Welt.",
+    "missionTitle": "Unsere Mission",
+    "missionBody": "Hochwertige, personalisierte Bildung für Schüler überall zugänglich zu machen — durch Live-Einzelunterricht mit erfahrenen, engagierten Lehrern.",
+    "visionTitle": "Unsere Vision",
+    "visionBody": "Eine vertrauenswürdige Online-Akademie zu werden, in der Schüler aus Pakistan und der ganzen Welt selbstbewusst lernen, wachsen und ihre Ziele erreichen können.",
+    "teachersTitle": "Unsere Lehrer",
+    "teachersBody": "Jeder Unterricht wird von einem qualifizierten, erfahrenen Lehrer geleitet, der sich für Ihren Fortschritt einsetzt, mit flexibler Zeitplanung passend zu Ihrem Leben.",
+    "ctaTitle": "Bereit, mit dem Lernen zu beginnen?",
+    "ctaBody": "Buchen Sie eine kostenlose Probestunde und erleben Sie Global Teaching Hub selbst.",
+    "ctaButton": "Kostenlose Probestunde Buchen"
+  },
+  "Faq": {
+    "title": "Häufig Gestellte Fragen",
+    "subtitle": "Alles, was Sie über das Lernen mit Global Teaching Hub wissen müssen.",
+    "items": [
+      {
+        "question": "Wie funktioniert der Online-Unterricht?",
+        "answer": "Der Unterricht findet live, im Einzelunterricht, per Videoanruf mit einem festen Lehrer statt. Die Sitzungen werden zu einer für Sie passenden Zeit geplant, und Aufzeichnungen werden anschließend geteilt, damit Sie jede Lektion wiederholen können."
+      },
+      {
+        "question": "Welche Kurse bieten Sie derzeit an?",
+        "answer": "Wir bieten derzeit Koran mit Tajweed (einschließlich Übersetzung und Tafsir) sowie Computerkurse (MS Word, PowerPoint und Programmiersprachen) an. Weitere Kurse folgen in Kürze."
+      },
+      {
+        "question": "Wie buche ich eine kostenlose Probestunde?",
+        "answer": "Klicken Sie auf der Startseite auf „Kostenlose Probestunde Buchen“, geben Sie Ihre Daten und den gewünschten Kurs ein, und unser Team kontaktiert Sie, um Ihre kostenlose Probestunde zu vereinbaren."
+      },
+      {
+        "question": "Was benötige ich, um am Unterricht teilzunehmen?",
+        "answer": "Sie benötigen lediglich eine stabile Internetverbindung und einen Laptop, ein Tablet oder ein Smartphone mit Kamera und Mikrofon, um am Unterricht teilzunehmen."
+      },
+      {
+        "question": "Wie kann ich den Support kontaktieren?",
+        "answer": "Sie erreichen uns jederzeit über die Kontaktseite oder über die im Footer angegebene Telefonnummer und E-Mail-Adresse."
+      }
+    ]
+  },
+  "Legal": {
+    "lastUpdated": "Zuletzt aktualisiert: August 2026",
+    "privacyTitle": "Datenschutzrichtlinie",
+    "termsTitle": "Allgemeine Geschäftsbedingungen",
+    "privacySections": [
+      {
+        "title": "Von uns erfasste Informationen",
+        "body": "Wenn Sie eine kostenlose Probestunde buchen, uns kontaktieren oder sich für einen Kurs anmelden, erfassen wir Informationen wie Ihren Namen, Ihre E-Mail-Adresse, Ihre Telefonnummer und den gewünschten Kurs. Wir erfassen nur, was zur Bereitstellung und Verbesserung unserer Dienste erforderlich ist."
+      },
+      {
+        "title": "Wie wir Ihre Informationen verwenden",
+        "body": "Wir verwenden Ihre Informationen, um Unterricht zu planen, auf Ihre Anfragen zu antworten, Ihnen relevante Updates zu Ihrer Anmeldung zu senden und die Qualität unseres Unterrichts und Supports zu verbessern."
+      },
+      {
+        "title": "Weitergabe von Informationen",
+        "body": "Wir verkaufen oder vermieten Ihre persönlichen Daten nicht an Dritte. Ihre Daten werden nur mit Mitarbeitern und Lehrern von Global Teaching Hub geteilt, die direkt an Ihrem Lernerlebnis beteiligt sind."
+      },
+      {
+        "title": "Datensicherheit",
+        "body": "Wir ergreifen angemessene Maßnahmen, um Ihre persönlichen Daten vor unbefugtem Zugriff, Änderung oder Offenlegung zu schützen."
+      },
+      {
+        "title": "Ihre Rechte",
+        "body": "Sie können jederzeit Zugriff auf, Berichtigung oder Löschung Ihrer persönlichen Daten beantragen, indem Sie uns kontaktieren."
+      },
+      {
+        "title": "Änderungen dieser Richtlinie",
+        "body": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Änderungen werden auf dieser Seite veröffentlicht."
+      }
+    ],
+    "termsSections": [
+      {
+        "title": "Annahme der Bedingungen",
+        "body": "Durch die Anmeldung zu einem Kurs oder die Nutzung unserer Website stimmen Sie diesen Allgemeinen Geschäftsbedingungen zu. Wenn Sie nicht einverstanden sind, nutzen Sie bitte unsere Dienste nicht."
+      },
+      {
+        "title": "Anmeldung & Unterricht",
+        "body": "Unterrichtszeiten werden nach gegenseitiger Verfügbarkeit von Schülern und Lehrern vereinbart. Wir bitten Schüler, uns rechtzeitig zu informieren, falls ein geplanter Unterricht verschoben oder abgesagt werden muss."
+      },
+      {
+        "title": "Kostenlose Probestunden",
+        "body": "Kostenlose Probestunden helfen Ihnen, unseren Unterricht vor der Anmeldung zu bewerten. Sie unterliegen der Verfügbarkeit der Lehrer und können auf eine pro Schüler begrenzt sein."
+      },
+      {
+        "title": "Gebühren & Zahlungen",
+        "body": "Kursgebühren werden Ihnen, falls zutreffend, direkt von unserem Team mitgeteilt, bevor die Anmeldung bestätigt wird."
+      },
+      {
+        "title": "Verhaltenskodex",
+        "body": "Schüler und Lehrer wird erwartet, sich während des Unterrichts gegenseitig mit Respekt zu behandeln. Global Teaching Hub behält sich das Recht vor, den Zugang bei Verhalten, das diese Erwartung verletzt, zu sperren."
+      },
+      {
+        "title": "Änderungen dieser Bedingungen",
+        "body": "Wir können diese Allgemeinen Geschäftsbedingungen von Zeit zu Zeit aktualisieren. Die fortgesetzte Nutzung unserer Dienste nach Veröffentlichung von Änderungen gilt als Zustimmung zu den aktualisierten Bedingungen."
+      }
+    ]
+  },
+  "LoginPage": {
+    "welcomeBack": "Willkommen zurück",
+    "subtitle": "Melden Sie sich an, um auf Ihr Schüler-Dashboard zuzugreifen.",
+    "taglineLine1": "Machen Sie genau dort weiter, wo",
+    "taglineHighlight": "Sie aufgehört haben.",
+    "panelSubtitle": "Live-Einzelunterricht, erfahrene Lehrer und ein Dashboard rund um Ihren Fortschritt.",
+    "rightsReserved": "Alle Rechte vorbehalten.",
+    "features": [
+      { "title": "Live-Einzelunterricht", "description": "Echte Lehrer, in Echtzeit — keine vorab aufgezeichneten Videos." },
+      { "title": "Flexible Zeitplanung", "description": "Buchen Sie Unterricht nach Ihrem Zeitplan, nicht umgekehrt." },
+      { "title": "Fortschritt verfolgen", "description": "Sehen Sie Ihre Anmeldungen, Rechnungen und Ihren Fortschritt an einem Ort." }
+    ]
+  },
+  "RegisterPage": {
+    "createAccount": "Erstellen Sie Ihr Konto",
+    "subtitle": "Registrieren Sie sich, um Unterricht zu buchen und Ihren Lernfortschritt zu verfolgen.",
+    "taglineLine1": "Beginnen Sie zu lernen,",
+    "taglineHighlight": "heute.",
+    "panelSubtitle": "Erstellen Sie Ihr kostenloses Konto und buchen Sie Ihre erste Live-Stunde in wenigen Minuten.",
+    "rightsReserved": "Alle Rechte vorbehalten.",
+    "features": [
+      { "title": "Buchen Sie Ihre erste kostenlose Probestunde", "description": "Testen Sie eine Live-Stunde, bevor Sie sich verpflichten." },
+      { "title": "Einzelunterricht lernen", "description": "Jede Stunde ist nur Sie und Ihr Lehrer, keine Gruppe." },
+      { "title": "Schließen Sie sich Schülern weltweit an", "description": "Tausende Schüler lernen bereits mit uns." }
+    ]
+  },
+  "ContactPage": {
+    "title": "Kontaktieren Sie Uns",
+    "subtitle": "Haben Sie eine Frage? Senden Sie uns eine Nachricht, und unser Team meldet sich bei Ihnen."
+  },
+  "CoursesPage": {
+    "title": "Unsere Kurse",
+    "subtitle": "Entdecken Sie unser aktuelles Kursangebot und beginnen Sie noch heute Ihre Lernreise.",
+    "noCourses": "Derzeit sind keine Kurse verfügbar — schauen Sie bald wieder vorbei.",
+    "getInTouch": "Kontakt Aufnehmen"
+  },
+  "FreeTrialPage": {
+    "title": "Kostenlose Probestunde Buchen",
+    "subtitle": "Geben Sie Ihre Daten ein, und unser Team plant Ihre kostenlose Probestunde."
+  },
+  "CourseDetailPage": {
+    "whatYoullLearn": "Was Sie Lernen Werden",
+    "bookDemo": "Kostenlose Probestunde Buchen",
+    "backToAllCourses": "Zurück zu allen Kursen"
+  },
+  "Portal": {
+    "checkingAccess": "Zugriff wird geprüft...",
+    "logout": "Abmelden",
+    "parentPortal": "Elternportal"
+  },
+  "StudentNav": {
+    "overview": "Übersicht",
+    "myCourses": "Meine Kurse",
+    "profile": "Profil",
+    "invoices": "Rechnungen"
+  },
+  "Common": {
+    "levelBeginner": "Anfänger",
+    "levelIntermediate": "Mittelstufe",
+    "levelAdvanced": "Fortgeschritten",
+    "statusActive": "Aktiv",
+    "statusInactive": "Inaktiv"
+  },
+  "DashboardOverview": {
+    "loading": "Wird geladen...",
+    "keepItUp": "Weiter so!",
+    "welcomeBack": "Willkommen zurück",
+    "subtitle": "Das passiert heute in Ihren Kursen.",
+    "overallProgress": "Gesamtfortschritt",
+    "acrossCourses": "In {count, plural, one {# Kurs} other {# Kursen}}",
+    "myEnrollments": "Meine Anmeldungen",
+    "notEnrolledYet": "Sie sind noch für keinen Kurs angemeldet.",
+    "scheduleNotSet": "Zeitplan noch nicht festgelegt",
+    "recentInvoices": "Neueste Rechnungen",
+    "viewAll": "Alle anzeigen",
+    "noInvoicesYet": "Noch keine Rechnungen.",
+    "notifications": "Benachrichtigungen",
+    "noNotificationsYet": "Noch keine Benachrichtigungen."
+  },
+  "ProfilePage": {
+    "loading": "Wird geladen...",
+    "notSetUp": "Ihr Schülerprofil wurde noch nicht eingerichtet.",
+    "studentSince": "Schüler seit {date}",
+    "editDetails": "Bearbeiten Sie Ihre Daten",
+    "editSubtitle": "Ihr Name und Ihre Telefonnummer sind für Ihre Lehrer sichtbar.",
+    "fullName": "Vollständiger Name",
+    "phone": "Telefon",
+    "addPhone": "Telefonnummer hinzufügen",
+    "saving": "Wird gespeichert...",
+    "save": "Änderungen Speichern",
+    "saved": "Gespeichert."
+  },
+  "InvoicesPage": {
+    "title": "Rechnungen",
+    "subtitle": "Ihre Rechnungshistorie und Ihr Zahlungsstatus.",
+    "allPaid": "Alle Rechnungen bezahlt",
+    "awaitingPayment": "{count, plural, one {# ausstehend} other {# ausstehend}}",
+    "loading": "Wird geladen...",
+    "noInvoicesYet": "Noch keine Rechnungen.",
+    "due": "Fällig am {date}",
+    "paidAmount": "{amount} bezahlt"
+  },
+  "MyCoursesPage": {
+    "title": "Meine Kurse",
+    "subtitle": "Melden Sie sich jederzeit für Kurse an oder ab. Änderungen wirken sich sofort aus, und unser Team meldet sich, um Ihren Zeitplan zu bestätigen.",
+    "loading": "Wird geladen...",
+    "willBeRemoved": "Wird zusammen mit der Anwesenheitshistorie entfernt",
+    "confirmRemoveOne": "Das Entfernen von {name} löscht auch Ihre Anwesenheits- und Fortschrittshistorie für diesen Kurs. Fortfahren?",
+    "confirmRemoveMany": "Das Entfernen von {names} löscht auch Ihre Anwesenheits- und Fortschrittshistorie für diese Kurse. Fortfahren?",
+    "saving": "Wird gespeichert...",
+    "save": "Änderungen Speichern",
+    "saved": "Gespeichert"
+  },
+  "ParentPortal": {
+    "loading": "Wird geladen...",
+    "welcome": "Willkommen",
+    "subtitleMultiple": "Verfolgen Sie den Unterricht, die Anwesenheit und die Rechnungen Ihrer Kinder.",
+    "subtitleSingle": "Verfolgen Sie den Unterricht, die Anwesenheit und die Rechnungen Ihres Kindes.",
+    "noChildrenLinked": "Es sind noch keine Schüler mit Ihrem Konto verknüpft. Wenden Sie sich an die Akademie, um dies einzurichten.",
+    "levelSuffix": "Niveau {level}",
+    "teacherSuffix": "Lehrer: {name}",
+    "progressSuffix": "{percent} % Fortschritt",
+    "notEnrolledYet": "Noch für keinen Kurs angemeldet.",
+    "scheduleNotSet": "Zeitplan noch nicht festgelegt",
+    "invoices": "Rechnungen",
+    "noInvoicesYet": "Noch keine Rechnungen.",
+    "notifications": "Benachrichtigungen",
+    "noNotificationsYet": "Noch keine Benachrichtigungen."
+  },
+  "TestimonialsSection": {
+    "title": "Das Sagen Unsere Schüler",
+    "goToTestimonial": "Zu Erfahrungsbericht {number} wechseln",
+    "items": [
+      {
+        "quote": "Global Teaching Hub hat mir geholfen, meine Noten zu verbessern und Selbstvertrauen aufzubauen. Die Lehrer sind großartig und der Unterricht ist sehr interaktiv.",
+        "name": "Mahnoor Ali",
+        "role": "Schülerin"
+      },
+      {
+        "quote": "Die Koran-mit-Tajweed-Kurse sind ausgezeichnet. Meine Rezitation hat sich enorm verbessert, und die Lehrer sind geduldig und ermutigend.",
+        "name": "Hassan Raza",
+        "role": "Schüler"
+      },
+      {
+        "quote": "Ich habe MS Office und die Grundlagen des Programmierens durch die Computerkurse gelernt. Flexible Zeiten machten es leicht, das mit der Schule zu vereinbaren.",
+        "name": "Areeba Khan",
+        "role": "Schülerin"
+      }
+    ]
+  }
+}

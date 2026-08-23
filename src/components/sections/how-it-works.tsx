@@ -1,42 +1,41 @@
 import { ClipboardCheck, GraduationCap, UserCheck, UserPlus } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-const STEPS = [
-  {
-    icon: UserPlus,
-    title: "Register",
-    description: "Create your free account",
-    color: "bg-emerald-500",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Book Free Demo",
-    description: "Choose a subject and book your demo class",
-    color: "bg-blue-500",
-  },
-  {
-    icon: UserCheck,
-    title: "Choose Your Teacher",
-    description: "Select the perfect teacher for you",
-    color: "bg-violet-500",
-  },
-  {
-    icon: GraduationCap,
-    title: "Start Learning",
-    description: "Begin your classes and achieve your goals",
-    color: "bg-orange-500",
-  },
-];
+export async function HowItWorks() {
+  const t = await getTranslations("HowItWorks");
 
-export function HowItWorks() {
+  const STEPS = [
+    {
+      icon: UserPlus,
+      title: t("registerTitle"),
+      description: t("registerDescription"),
+      color: "bg-emerald-500",
+    },
+    {
+      icon: ClipboardCheck,
+      title: t("bookDemoTitle"),
+      description: t("bookDemoDescription"),
+      color: "bg-blue-500",
+    },
+    {
+      icon: UserCheck,
+      title: t("chooseTeacherTitle"),
+      description: t("chooseTeacherDescription"),
+      color: "bg-violet-500",
+    },
+    {
+      icon: GraduationCap,
+      title: t("startLearningTitle"),
+      description: t("startLearningDescription"),
+      color: "bg-orange-500",
+    },
+  ];
+
   return (
     <section id="how-it-works" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
-          How It Works
-        </h2>
-        <p className="mt-3 text-muted-foreground">
-          Start your learning journey in just a few simple steps.
-        </p>
+        <h2 className="text-3xl font-bold text-foreground sm:text-4xl">{t("title")}</h2>
+        <p className="mt-3 text-muted-foreground">{t("subtitle")}</p>
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">

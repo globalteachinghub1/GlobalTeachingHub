@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Bell, Receipt, Sparkles } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { getIconComponent } from "@/lib/course-icons";
 import { ProgressRing } from "@/components/dashboard/progress-ring";
@@ -47,14 +48,6 @@ function formatTime(time: string) {
   return `${displayHour}:${minute} ${period}`;
 }
 
-function scheduleLine(course: CourseSummary) {
-  if (course.classDays.length === 0 || !course.classStartTime || !course.classEndTime) {
-    return null;
-  }
-  const days = course.classDays.map((d) => DAY_SHORT[d]).join(" & ");
-  return `${days}, ${formatTime(course.classStartTime)} – ${formatTime(course.classEndTime)}`;
-}
-
 const STATUS_STYLE: Record<string, string> = {
   PAID: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300",
   PENDING: "bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300",
@@ -63,6 +56,8 @@ const STATUS_STYLE: Record<string, string> = {
 };
 
 export default function DashboardPage() {
+  const t = useTranslations("DashboardOverview");
+  const locale = useLocale();
   const [student, setStudent] = useState<StudentMe | undefined>(undefined);
 
   useEffect(() => {
@@ -77,8 +72,16 @@ export default function DashboardPage() {
     };
   }, []);
 
+  function scheduleLine(course: CourseSummary) {
+    if (course.classDays.length === 0 || !course.classStartTime || !course.classEndTime) {
+      return null;
+    }
+    const days = course.classDays.map((d) => DAY_SHORT[d]).join(" & ");
+    return `${days}, ${formatTime(course.classStartTime)} – ${formatTime(course.classEndTime)}`;
+  }
+
   if (student === undefined) {
-    return <p className="text-sm text-muted-foreground">Loading...</p>;
+    return <p className="text-sm text-muted-foreground">{t("loading")}</p>;
   }
 
   const firstName = student?.name.split(" ")[0] ?? "";
@@ -92,25 +95,21 @@ export default function DashboardPage() {
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-teal-50">
               <Sparkles className="h-3.5 w-3.5" />
-              Keep it up!
+              {t("keepItUp")}
             </span>
             <h1 className="mt-3 text-3xl font-bold">
-              Welcome back{firstName ? `, ${firstName}` : ""}
+              {t("welcomeBack")}
+              {firstName ? `, ${firstName}` : ""}
             </h1>
-            <p className="mt-2 max-w-md text-sm text-teal-50/90">
-              Here&apos;s what&apos;s happening with your classes today.
-            </p>
+            <p className="mt-2 max-w-md text-sm text-teal-50/90">{t("subtitle")}</p>
           </div>
           {student && student.courses.length > 0 && (
             <div className="flex items-center gap-4 rounded-2xl bg-white/10 p-4">
               <ProgressRing value={student.progress} />
               <div>
-                <p className="text-sm font-semibold text-white">
-                  Overall progress
-                </p>
+                <p className="text-sm font-semibold text-white">{t("overallProgress")}</p>
                 <p className="text-xs text-teal-50/80">
-                  Across {student.courses.length}{" "}
-                  {student.courses.length === 1 ? "course" : "courses"}
+                  {t("acrossCourses", { count: student.courses.length })}
                 </p>
               </div>
             </div>
@@ -119,15 +118,11 @@ export default function DashboardPage() {
       </div>
 
       <div>
-        <h2 className="text-base font-semibold text-foreground">
-          My Enrollments
-        </h2>
+        <h2 className="text-base font-semibold text-foreground">{t("myEnrollments")}</h2>
         {(!student || student.courses.length === 0) && (
           <Card className="mt-3 border-dashed">
             <CardContent className="flex flex-col items-center gap-2 py-10 text-center">
-              <p className="text-sm text-muted-foreground">
-                You&apos;re not enrolled in a course yet.
-              </p>
+              <p className="text-sm text-muted-foreground">{t("notEnrolledYet")}</p>
             </CardContent>
           </Card>
         )}
@@ -154,7 +149,7 @@ export default function DashboardPage() {
                           {course.name}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          {schedule ?? "Schedule not set yet"}
+                          {schedule ?? t("scheduleNotSet")}
                         </p>
                       </div>
                     </div>
@@ -163,14 +158,14 @@ export default function DashboardPage() {
                         {recentAttendance.map((entry) => (
                           <span
                             key={entry.id}
-                            title={new Date(entry.date).toLocaleDateString()}
+                            title={new Date(entry.date).toLocaleDateString(locale)}
                             className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${
                               entry.present
                                 ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300"
                                 : "bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300"
                             }`}
                           >
-                            {new Date(entry.date).toLocaleDateString(undefined, {
+                            {new Date(entry.date).toLocaleDateString(locale, {
                               weekday: "short",
                             })}
                           </span>
@@ -188,21 +183,19 @@ export default function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         <div>
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-semibold text-foreground">
-              Recent Invoices
-            </h2>
+            <h2 className="text-base font-semibold text-foreground">{t("recentInvoices")}</h2>
             <Link
               href="/dashboard/invoices"
               className="text-xs font-medium text-primary hover:underline"
             >
-              View all
+              {t("viewAll")}
             </Link>
           </div>
           <div className="mt-3 flex flex-col gap-2">
             {student?.invoices.length === 0 && (
               <Card className="border-dashed">
                 <CardContent className="py-8 text-center text-sm text-muted-foreground">
-                  No invoices yet.
+                  {t("noInvoicesYet")}
                 </CardContent>
               </Card>
             )}
@@ -217,8 +210,7 @@ export default function DashboardPage() {
                       {invoice.description}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      {invoice.amount} ·{" "}
-                      {new Date(invoice.date).toLocaleDateString()}
+                      {invoice.amount} · {new Date(invoice.date).toLocaleDateString(locale)}
                     </p>
                   </div>
                   <span
@@ -233,14 +225,12 @@ export default function DashboardPage() {
         </div>
 
         <div>
-          <h2 className="text-base font-semibold text-foreground">
-            Notifications
-          </h2>
+          <h2 className="text-base font-semibold text-foreground">{t("notifications")}</h2>
           <div className="mt-3 flex flex-col gap-2">
             {student?.notifications.length === 0 && (
               <Card className="border-dashed">
                 <CardContent className="py-8 text-center text-sm text-muted-foreground">
-                  No notifications yet.
+                  {t("noNotificationsYet")}
                 </CardContent>
               </Card>
             )}
@@ -255,7 +245,7 @@ export default function DashboardPage() {
                       {notification.message}
                     </p>
                     <p className="mt-0.5 text-xs text-muted-foreground">
-                      {new Date(notification.date).toLocaleDateString()}
+                      {new Date(notification.date).toLocaleDateString(locale)}
                     </p>
                   </div>
                 </CardContent>

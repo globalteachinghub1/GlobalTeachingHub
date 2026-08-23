@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendNotificationEmail } from "@/lib/mailer";
+import { prisma } from "@/lib/prisma";
+import { notifyStaff } from "@/lib/system-notifications";
 import {
   requireEmail,
   requireString,
@@ -68,6 +70,21 @@ export async function POST(request: Request) {
     );
   }
 
+  await prisma.lead.create({
+    data: {
+      name,
+      email,
+      message: `${subject}\n\n${message}`,
+      source: "CONTACT",
+    },
+  });
+
+  notifyStaff("NEW_LEAD", `New contact message: ${name} — ${subject}`, "/admin/leads").catch(
+    (error) => {
+      console.error("Failed to create new-lead notification", error);
+    }
+  );
+
   try {
     await sendNotificationEmail({
       type: "contact",
@@ -85,14 +102,7 @@ export async function POST(request: Request) {
       "Failed to send contact form email",
       error
     );
-
-    return NextResponse.json(
-      {
-        error:
-          "Something went wrong sending your message. Please try again later.",
-      },
-      { status: 500 }
-    );
+    // The lead is already saved, so don't fail the request over the email.
   }
 
   return NextResponse.json({

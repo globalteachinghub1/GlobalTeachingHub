@@ -2,16 +2,18 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { BookOpen, LayoutDashboard, Users, GraduationCap, Receipt } from "lucide-react";
+import { BookOpen, LayoutDashboard, Users, GraduationCap, Receipt, FileText, UserPlus } from "lucide-react";
 import { PortalShell, type PortalNavItem } from "@/components/dashboard/portal-shell";
 import { useSession } from "@/lib/use-session";
 
 const ADMIN_NAV: PortalNavItem[] = [
   { label: "Overview", href: "/admin", icon: LayoutDashboard },
+  { label: "Leads", href: "/admin/leads", icon: UserPlus },
   { label: "Students", href: "/admin/students", icon: Users },
   { label: "Teachers", href: "/admin/teachers", icon: GraduationCap },
   { label: "Courses", href: "/admin/courses", icon: BookOpen },
   { label: "Invoices", href: "/admin/invoices", icon: Receipt },
+  { label: "SOPs", href: "/admin/sops", icon: FileText },
 ];
 
 export default function AdminPortalLayout({

@@ -1,0 +1,403 @@
+{
+  "Nav": {
+    "home": "Home",
+    "about": "About",
+    "courses": "Courses",
+    "howItWorks": "How It Works",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "login": "Login",
+    "getStarted": "Get Started"
+  },
+  "Footer": {
+    "tagline": "Empowering students through quality education. Learn, grow, and achieve your dreams with us.",
+    "quickLinks": "Quick Links",
+    "resources": "Resources",
+    "support": "Support",
+    "faqs": "FAQs",
+    "privacyPolicy": "Privacy Policy",
+    "termsAndConditions": "Terms & Conditions",
+    "contactUs": "Contact Us",
+    "helpCenter": "Help Center",
+    "liveChat": "Live Chat",
+    "rightsReserved": "All Rights Reserved."
+  },
+  "LanguageSwitcher": {
+    "label": "Language"
+  },
+  "Hero": {
+    "titleLine1": "Learn from",
+    "titleHighlight": "Expert Teachers",
+    "titleLine2": "Anytime, Anywhere.",
+    "subtitle": "Live one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.",
+    "bookDemo": "Book a Free Demo",
+    "exploreCourses": "Explore Courses",
+    "socialProof": "10,000+ students are already learning with us",
+    "liveClassInProgress": "Live Class in Progress",
+    "live": "LIVE",
+    "statStudents": "Students",
+    "statTeachers": "Expert Teachers",
+    "statCountries": "Countries",
+    "statRating": "Student Rating"
+  },
+  "WhyChooseUs": {
+    "title": "Why Choose Global Teaching Hub?",
+    "liveClasses": "Live Interactive Classes",
+    "certifiedTeachers": "Certified & Experienced Teachers",
+    "flexibleTimings": "Flexible Timings",
+    "recordedLectures": "Recorded Lectures",
+    "progressReports": "Weekly Progress Reports",
+    "affordableFees": "Affordable Fees",
+    "oneToOne": "One-to-One Learning",
+    "support247": "24/7 Student Support"
+  },
+  "HowItWorks": {
+    "title": "How It Works",
+    "subtitle": "Start your learning journey in just a few simple steps.",
+    "registerTitle": "Register",
+    "registerDescription": "Create your free account",
+    "bookDemoTitle": "Book Free Demo",
+    "bookDemoDescription": "Choose a subject and book your demo class",
+    "chooseTeacherTitle": "Choose Your Teacher",
+    "chooseTeacherDescription": "Select the perfect teacher for you",
+    "startLearningTitle": "Start Learning",
+    "startLearningDescription": "Begin your classes and achieve your goals"
+  },
+  "PopularCourses": {
+    "title": "Popular Courses",
+    "subtitle": "Choose from a wide range of courses and start your learning journey today."
+  },
+  "FreeTrialForm": {
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Your name",
+    "phone": "Phone / WhatsApp",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "course": "Course",
+    "selectCourse": "Select a course",
+    "submit": "Book My Free Demo",
+    "submitting": "Sending...",
+    "successTitle": "Thank you! Your request has been received.",
+    "successBody": "Our team will reach out to you shortly to schedule your free demo class."
+  },
+  "ContactForm": {
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "How can we help?",
+    "message": "Message",
+    "messagePlaceholder": "Write your message here...",
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "successTitle": "Thank you for reaching out!",
+    "successBody": "We've received your message and will get back to you shortly."
+  },
+  "LoginForm": {
+    "email": "Email address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "submit": "Log In",
+    "submitting": "Logging in...",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up for free"
+  },
+  "RegisterForm": {
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Your name",
+    "email": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "parentName": "Parent Name",
+    "parentContact": "Parent Contact",
+    "courses": "Courses",
+    "noCoursesOpen": "No courses are open for enrollment right now.",
+    "submit": "Sign Up",
+    "submitting": "Creating account...",
+    "alreadyHaveAccount": "Already have an account?",
+    "login": "Login"
+  },
+  "ForgotPasswordForm": {
+    "email": "Email address",
+    "submit": "Send Reset Link",
+    "submitting": "Sending...",
+    "backToLogin": "Back to login",
+    "successBody": "If an account exists for {email}, we've sent a link to reset your password. It expires in 1 hour."
+  },
+  "ResetPasswordForm": {
+    "newPassword": "New password",
+    "confirmPassword": "Confirm new password",
+    "submit": "Reset Password",
+    "submitting": "Resetting...",
+    "successBody": "Your password has been reset. Redirecting you to login...",
+    "rememberedIt": "Remembered it?",
+    "backToLogin": "Back to login"
+  },
+  "About": {
+    "title": "About Global Teaching Hub",
+    "intro": "Global Teaching Hub is an online tutoring platform offering live, one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.",
+    "missionTitle": "Our Mission",
+    "missionBody": "To make quality, personalized education accessible to students everywhere, through live one-to-one classes with experienced, caring teachers.",
+    "visionTitle": "Our Vision",
+    "visionBody": "To become a trusted online academy where students from Pakistan and around the world can learn, grow, and achieve their goals with confidence.",
+    "teachersTitle": "Our Teachers",
+    "teachersBody": "Every class is led by a qualified, experienced teacher who is committed to your progress, with flexible scheduling built around your life.",
+    "ctaTitle": "Ready to start learning?",
+    "ctaBody": "Book a free demo class and experience Global Teaching Hub for yourself.",
+    "ctaButton": "Book a Free Demo"
+  },
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about learning with Global Teaching Hub.",
+    "items": [
+      {
+        "question": "How do the online classes work?",
+        "answer": "Classes are conducted live, one-to-one, over video call with a dedicated teacher. Sessions are scheduled at a time that works for you, and recordings are shared afterward so you can revisit any lesson."
+      },
+      {
+        "question": "Which courses do you currently offer?",
+        "answer": "We currently offer Quran with Tajweed (including Translation and Tafseer) and Computer Courses (MS Word, PowerPoint, and Programming Languages). More courses will be added soon."
+      },
+      {
+        "question": "How do I book a free demo class?",
+        "answer": "Click “Book a Free Demo” on the homepage, fill in your details and preferred course, and our team will contact you to schedule your free trial class."
+      },
+      {
+        "question": "What do I need to attend a class?",
+        "answer": "A stable internet connection and a laptop, tablet, or smartphone with a camera and microphone are all you need to join a class."
+      },
+      {
+        "question": "How can I get in touch with support?",
+        "answer": "You can reach us anytime through the Contact page, or via the phone number and email listed in the footer."
+      }
+    ]
+  },
+  "Legal": {
+    "lastUpdated": "Last updated: August 2026",
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms & Conditions",
+    "privacySections": [
+      {
+        "title": "Information We Collect",
+        "body": "When you book a free demo, contact us, or enroll in a course, we collect information such as your name, email address, phone number, and the course you're interested in. We only collect what's needed to provide and improve our services."
+      },
+      {
+        "title": "How We Use Your Information",
+        "body": "We use your information to schedule classes, respond to your inquiries, send you relevant updates about your enrollment, and improve the quality of our teaching and support."
+      },
+      {
+        "title": "Information Sharing",
+        "body": "We do not sell or rent your personal information to third parties. Your details are only shared with Global Teaching Hub staff and teachers directly involved in your learning experience."
+      },
+      {
+        "title": "Data Security",
+        "body": "We take reasonable measures to protect your personal information from unauthorized access, alteration, or disclosure."
+      },
+      {
+        "title": "Your Rights",
+        "body": "You may request access to, correction of, or deletion of your personal information at any time by contacting us."
+      },
+      {
+        "title": "Changes to This Policy",
+        "body": "We may update this Privacy Policy from time to time. Any changes will be posted on this page."
+      }
+    ],
+    "termsSections": [
+      {
+        "title": "Acceptance of Terms",
+        "body": "By enrolling in a course or using our website, you agree to these Terms & Conditions. If you do not agree, please do not use our services."
+      },
+      {
+        "title": "Enrollment & Classes",
+        "body": "Class schedules are arranged based on mutual availability between students and teachers. We ask that students provide reasonable notice if a scheduled class needs to be rescheduled or cancelled."
+      },
+      {
+        "title": "Free Demo Classes",
+        "body": "Free demo classes are offered to help you evaluate our teaching before enrolling. They are subject to teacher availability and may be limited to one per student."
+      },
+      {
+        "title": "Fees & Payments",
+        "body": "Course fees, where applicable, will be communicated to you directly by our team before enrollment is confirmed."
+      },
+      {
+        "title": "Code of Conduct",
+        "body": "Students and teachers are expected to treat one another with respect during classes. Global Teaching Hub reserves the right to suspend access for behavior that violates this expectation."
+      },
+      {
+        "title": "Changes to These Terms",
+        "body": "We may update these Terms & Conditions from time to time. Continued use of our services after changes are posted constitutes acceptance of the updated terms."
+      }
+    ]
+  },
+  "LoginPage": {
+    "welcomeBack": "Welcome back",
+    "subtitle": "Login to access your student dashboard.",
+    "taglineLine1": "Pick up right where",
+    "taglineHighlight": "you left off.",
+    "panelSubtitle": "Live one-to-one classes, expert teachers, and a dashboard built around your progress.",
+    "rightsReserved": "All Rights Reserved.",
+    "features": [
+      {
+        "title": "Live one-to-one classes",
+        "description": "Real teachers, real time — not pre-recorded videos."
+      },
+      {
+        "title": "Flexible scheduling",
+        "description": "Book classes around your routine, not the other way around."
+      },
+      {
+        "title": "Track your progress",
+        "description": "See your enrollments, invoices, and growth in one place."
+      }
+    ]
+  },
+  "RegisterPage": {
+    "createAccount": "Create your account",
+    "subtitle": "Sign up to book classes and track your learning journey.",
+    "taglineLine1": "Start learning,",
+    "taglineHighlight": "today.",
+    "panelSubtitle": "Create your free account and book your first live class in minutes.",
+    "rightsReserved": "All Rights Reserved.",
+    "features": [
+      {
+        "title": "Book your first free demo",
+        "description": "Try a live class before you commit to anything."
+      },
+      {
+        "title": "Learn one-to-one",
+        "description": "Every class is just you and your teacher, no crowd."
+      },
+      {
+        "title": "Join students worldwide",
+        "description": "Thousands of students already learning with us."
+      }
+    ]
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "subtitle": "Have a question? Send us a message and our team will get back to you."
+  },
+  "CoursesPage": {
+    "title": "Our Courses",
+    "subtitle": "Explore our current course offerings and start your learning journey today.",
+    "noCourses": "No courses are available right now — check back soon.",
+    "getInTouch": "Get in Touch"
+  },
+  "FreeTrialPage": {
+    "title": "Book a Free Demo",
+    "subtitle": "Fill in your details and our team will schedule your free demo class."
+  },
+  "CourseDetailPage": {
+    "whatYoullLearn": "What You'll Learn",
+    "bookDemo": "Book a Free Demo",
+    "backToAllCourses": "Back to all courses"
+  },
+  "Portal": {
+    "checkingAccess": "Checking access...",
+    "logout": "Log out",
+    "parentPortal": "Parent Portal"
+  },
+  "StudentNav": {
+    "overview": "Overview",
+    "myCourses": "My Courses",
+    "profile": "Profile",
+    "invoices": "Invoices"
+  },
+  "Common": {
+    "levelBeginner": "Beginner",
+    "levelIntermediate": "Intermediate",
+    "levelAdvanced": "Advanced",
+    "statusActive": "Active",
+    "statusInactive": "Inactive"
+  },
+  "DashboardOverview": {
+    "loading": "Loading...",
+    "keepItUp": "Keep it up!",
+    "welcomeBack": "Welcome back",
+    "subtitle": "Here's what's happening with your classes today.",
+    "overallProgress": "Overall progress",
+    "acrossCourses": "Across {count, plural, one {# course} other {# courses}}",
+    "myEnrollments": "My Enrollments",
+    "notEnrolledYet": "You're not enrolled in a course yet.",
+    "scheduleNotSet": "Schedule not set yet",
+    "recentInvoices": "Recent Invoices",
+    "viewAll": "View all",
+    "noInvoicesYet": "No invoices yet.",
+    "notifications": "Notifications",
+    "noNotificationsYet": "No notifications yet."
+  },
+  "ProfilePage": {
+    "loading": "Loading...",
+    "notSetUp": "Your student profile hasn't been set up yet.",
+    "studentSince": "Student since {date}",
+    "editDetails": "Edit your details",
+    "editSubtitle": "Your name and phone number are visible to your teachers.",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "addPhone": "Add a phone number",
+    "saving": "Saving...",
+    "save": "Save Changes",
+    "saved": "Saved."
+  },
+  "InvoicesPage": {
+    "title": "Invoices",
+    "subtitle": "Your billing history and payment status.",
+    "allPaid": "All invoices paid",
+    "awaitingPayment": "{count, plural, one {# awaiting payment} other {# awaiting payment}}",
+    "loading": "Loading...",
+    "noInvoicesYet": "No invoices yet.",
+    "due": "Due {date}",
+    "paidAmount": "{amount} paid"
+  },
+  "MyCoursesPage": {
+    "title": "My Courses",
+    "subtitle": "Enroll in or drop courses anytime. Changes take effect immediately, and our team will follow up to confirm your schedule.",
+    "loading": "Loading...",
+    "willBeRemoved": "Will be removed, along with its attendance history",
+    "confirmRemoveOne": "Removing {name} will also delete your attendance and progress history for that course. Continue?",
+    "confirmRemoveMany": "Removing {names} will also delete your attendance and progress history for those courses. Continue?",
+    "saving": "Saving...",
+    "save": "Save Changes",
+    "saved": "Saved"
+  },
+  "ParentPortal": {
+    "loading": "Loading...",
+    "welcome": "Welcome",
+    "subtitleMultiple": "Track your children's classes, attendance, and invoices.",
+    "subtitleSingle": "Track your child's classes, attendance, and invoices.",
+    "noChildrenLinked": "No students are linked to your account yet. Contact the academy to get set up.",
+    "levelSuffix": "{level} level",
+    "teacherSuffix": "Teacher: {name}",
+    "progressSuffix": "{percent}% progress",
+    "notEnrolledYet": "Not enrolled in a course yet.",
+    "scheduleNotSet": "Schedule not set yet",
+    "invoices": "Invoices",
+    "noInvoicesYet": "No invoices yet.",
+    "notifications": "Notifications",
+    "noNotificationsYet": "No notifications yet."
+  },
+  "TestimonialsSection": {
+    "title": "What Our Students Say",
+    "goToTestimonial": "Go to testimonial {number}",
+    "items": [
+      {
+        "quote": "Global Teaching Hub has helped me improve my grades and build confidence. The teachers are amazing and classes are very interactive.",
+        "name": "Mahnoor Ali",
+        "role": "Student"
+      },
+      {
+        "quote": "The Quran with Tajweed classes are excellent. My recitation has improved so much, and the teachers are patient and encouraging.",
+        "name": "Hassan Raza",
+        "role": "Student"
+      },
+      {
+        "quote": "I learned MS Office and the basics of programming through the computer courses. Flexible timings made it easy to balance with school.",
+        "name": "Areeba Khan",
+        "role": "Student"
+      }
+    ]
+  }
+}

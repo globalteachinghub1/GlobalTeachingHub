@@ -1,0 +1,385 @@
+{
+  "Nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "courses": "Cursos",
+    "howItWorks": "Cómo Funciona",
+    "reviews": "Opiniones",
+    "contact": "Contacto",
+    "login": "Iniciar Sesión",
+    "getStarted": "Comenzar"
+  },
+  "Footer": {
+    "tagline": "Impulsando a los estudiantes a través de una educación de calidad. Aprende, crece y alcanza tus sueños con nosotros.",
+    "quickLinks": "Enlaces Rápidos",
+    "resources": "Recursos",
+    "support": "Soporte",
+    "faqs": "Preguntas Frecuentes",
+    "privacyPolicy": "Política de Privacidad",
+    "termsAndConditions": "Términos y Condiciones",
+    "contactUs": "Contáctanos",
+    "helpCenter": "Centro de Ayuda",
+    "liveChat": "Chat en Vivo",
+    "rightsReserved": "Todos los derechos reservados."
+  },
+  "LanguageSwitcher": {
+    "label": "Idioma"
+  },
+  "Hero": {
+    "titleLine1": "Aprende con",
+    "titleHighlight": "Profesores Expertos",
+    "titleLine2": "En Cualquier Momento y Lugar.",
+    "subtitle": "Clases en vivo uno a uno, profesores experimentados, horarios flexibles y aprendizaje personalizado para estudiantes de Pakistán y de todo el mundo.",
+    "bookDemo": "Reserva una Clase Gratis",
+    "exploreCourses": "Explorar Cursos",
+    "socialProof": "Más de 10,000 estudiantes ya aprenden con nosotros",
+    "liveClassInProgress": "Clase en Vivo en Curso",
+    "live": "EN VIVO",
+    "statStudents": "Estudiantes",
+    "statTeachers": "Profesores Expertos",
+    "statCountries": "Países",
+    "statRating": "Calificación de Estudiantes"
+  },
+  "WhyChooseUs": {
+    "title": "¿Por Qué Elegir Global Teaching Hub?",
+    "liveClasses": "Clases Interactivas en Vivo",
+    "certifiedTeachers": "Profesores Certificados y Experimentados",
+    "flexibleTimings": "Horarios Flexibles",
+    "recordedLectures": "Clases Grabadas",
+    "progressReports": "Informes de Progreso Semanales",
+    "affordableFees": "Tarifas Accesibles",
+    "oneToOne": "Aprendizaje Uno a Uno",
+    "support247": "Soporte al Estudiante 24/7"
+  },
+  "HowItWorks": {
+    "title": "Cómo Funciona",
+    "subtitle": "Comienza tu viaje de aprendizaje en solo unos simples pasos.",
+    "registerTitle": "Regístrate",
+    "registerDescription": "Crea tu cuenta gratuita",
+    "bookDemoTitle": "Reserva una Clase Gratis",
+    "bookDemoDescription": "Elige una materia y reserva tu clase de prueba",
+    "chooseTeacherTitle": "Elige tu Profesor",
+    "chooseTeacherDescription": "Selecciona el profesor perfecto para ti",
+    "startLearningTitle": "Comienza a Aprender",
+    "startLearningDescription": "Empieza tus clases y alcanza tus metas"
+  },
+  "PopularCourses": {
+    "title": "Cursos Populares",
+    "subtitle": "Elige entre una amplia gama de cursos y comienza hoy tu viaje de aprendizaje."
+  },
+  "FreeTrialForm": {
+    "fullName": "Nombre Completo",
+    "fullNamePlaceholder": "Tu nombre",
+    "phone": "Teléfono / WhatsApp",
+    "email": "Correo Electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "course": "Curso",
+    "selectCourse": "Selecciona un curso",
+    "submit": "Reservar Mi Clase Gratis",
+    "submitting": "Enviando...",
+    "successTitle": "¡Gracias! Hemos recibido tu solicitud.",
+    "successBody": "Nuestro equipo se pondrá en contacto contigo pronto para programar tu clase de prueba gratuita."
+  },
+  "ContactForm": {
+    "fullName": "Nombre Completo",
+    "fullNamePlaceholder": "Tu nombre",
+    "email": "Correo Electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "subject": "Asunto",
+    "subjectPlaceholder": "¿Cómo podemos ayudarte?",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje aquí...",
+    "submit": "Enviar Mensaje",
+    "submitting": "Enviando...",
+    "successTitle": "¡Gracias por contactarnos!",
+    "successBody": "Hemos recibido tu mensaje y te responderemos pronto."
+  },
+  "LoginForm": {
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "submit": "Iniciar Sesión",
+    "submitting": "Iniciando sesión...",
+    "noAccount": "¿No tienes una cuenta?",
+    "signUp": "Regístrate gratis"
+  },
+  "RegisterForm": {
+    "fullName": "Nombre Completo",
+    "fullNamePlaceholder": "Tu nombre",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "password": "Contraseña",
+    "phone": "Teléfono",
+    "whatsapp": "WhatsApp",
+    "parentName": "Nombre del Padre/Madre",
+    "parentContact": "Contacto del Padre/Madre",
+    "courses": "Cursos",
+    "noCoursesOpen": "No hay cursos abiertos para inscripción en este momento.",
+    "submit": "Registrarse",
+    "submitting": "Creando cuenta...",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "login": "Iniciar Sesión"
+  },
+  "ForgotPasswordForm": {
+    "email": "Correo electrónico",
+    "submit": "Enviar Enlace de Restablecimiento",
+    "submitting": "Enviando...",
+    "backToLogin": "Volver al inicio de sesión",
+    "successBody": "Si existe una cuenta para {email}, te hemos enviado un enlace para restablecer tu contraseña. Caduca en 1 hora."
+  },
+  "ResetPasswordForm": {
+    "newPassword": "Nueva contraseña",
+    "confirmPassword": "Confirmar nueva contraseña",
+    "submit": "Restablecer Contraseña",
+    "submitting": "Restableciendo...",
+    "successBody": "Tu contraseña ha sido restablecida. Redirigiendo al inicio de sesión...",
+    "rememberedIt": "¿La recordaste?",
+    "backToLogin": "Volver al inicio de sesión"
+  },
+  "About": {
+    "title": "Sobre Global Teaching Hub",
+    "intro": "Global Teaching Hub es una plataforma de tutoría en línea que ofrece clases en vivo uno a uno, profesores experimentados, horarios flexibles y aprendizaje personalizado para estudiantes de Pakistán y de todo el mundo.",
+    "missionTitle": "Nuestra Misión",
+    "missionBody": "Hacer que una educación de calidad y personalizada sea accesible para estudiantes de todo el mundo, a través de clases en vivo uno a uno con profesores experimentados y comprometidos.",
+    "visionTitle": "Nuestra Visión",
+    "visionBody": "Convertirnos en una academia en línea de confianza donde estudiantes de Pakistán y de todo el mundo puedan aprender, crecer y alcanzar sus metas con confianza.",
+    "teachersTitle": "Nuestros Profesores",
+    "teachersBody": "Cada clase es impartida por un profesor calificado y experimentado, comprometido con tu progreso, con horarios flexibles adaptados a tu vida.",
+    "ctaTitle": "¿Listo para empezar a aprender?",
+    "ctaBody": "Reserva una clase de prueba gratuita y descubre Global Teaching Hub por ti mismo.",
+    "ctaButton": "Reserva una Clase Gratis"
+  },
+  "Faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre aprender con Global Teaching Hub.",
+    "items": [
+      {
+        "question": "¿Cómo funcionan las clases en línea?",
+        "answer": "Las clases se imparten en vivo, uno a uno, por videollamada con un profesor dedicado. Las sesiones se programan a la hora que más te convenga, y las grabaciones se comparten después para que puedas repasar cualquier lección."
+      },
+      {
+        "question": "¿Qué cursos ofrecen actualmente?",
+        "answer": "Actualmente ofrecemos Corán con Tajwid (incluyendo Traducción y Tafsir) y Cursos de Computación (MS Word, PowerPoint y lenguajes de programación). Pronto se añadirán más cursos."
+      },
+      {
+        "question": "¿Cómo reservo una clase de prueba gratuita?",
+        "answer": "Haz clic en “Reserva una Clase Gratis” en la página de inicio, completa tus datos y el curso de tu preferencia, y nuestro equipo te contactará para programar tu clase de prueba gratuita."
+      },
+      {
+        "question": "¿Qué necesito para asistir a una clase?",
+        "answer": "Solo necesitas una conexión a internet estable y una laptop, tablet o smartphone con cámara y micrófono para unirte a una clase."
+      },
+      {
+        "question": "¿Cómo puedo contactar con soporte?",
+        "answer": "Puedes contactarnos en cualquier momento a través de la página de Contacto, o mediante el teléfono y correo electrónico indicados en el pie de página."
+      }
+    ]
+  },
+  "Legal": {
+    "lastUpdated": "Última actualización: agosto de 2026",
+    "privacyTitle": "Política de Privacidad",
+    "termsTitle": "Términos y Condiciones",
+    "privacySections": [
+      {
+        "title": "Información que Recopilamos",
+        "body": "Cuando reservas una clase gratuita, nos contactas o te inscribes en un curso, recopilamos información como tu nombre, correo electrónico, número de teléfono y el curso que te interesa. Solo recopilamos lo necesario para prestar y mejorar nuestros servicios."
+      },
+      {
+        "title": "Cómo Usamos tu Información",
+        "body": "Usamos tu información para programar clases, responder tus consultas, enviarte actualizaciones relevantes sobre tu inscripción y mejorar la calidad de nuestra enseñanza y soporte."
+      },
+      {
+        "title": "Compartir Información",
+        "body": "No vendemos ni alquilamos tu información personal a terceros. Tus datos solo se comparten con el personal y los profesores de Global Teaching Hub directamente involucrados en tu experiencia de aprendizaje."
+      },
+      {
+        "title": "Seguridad de los Datos",
+        "body": "Tomamos medidas razonables para proteger tu información personal contra el acceso, alteración o divulgación no autorizados."
+      },
+      {
+        "title": "Tus Derechos",
+        "body": "Puedes solicitar acceso, corrección o eliminación de tu información personal en cualquier momento contactándonos."
+      },
+      {
+        "title": "Cambios a Esta Política",
+        "body": "Podemos actualizar esta Política de Privacidad de vez en cuando. Cualquier cambio se publicará en esta página."
+      }
+    ],
+    "termsSections": [
+      {
+        "title": "Aceptación de los Términos",
+        "body": "Al inscribirte en un curso o usar nuestro sitio web, aceptas estos Términos y Condiciones. Si no estás de acuerdo, por favor no uses nuestros servicios."
+      },
+      {
+        "title": "Inscripción y Clases",
+        "body": "Los horarios de clase se organizan según la disponibilidad mutua entre estudiantes y profesores. Pedimos a los estudiantes que avisen con tiempo razonable si una clase programada necesita reprogramarse o cancelarse."
+      },
+      {
+        "title": "Clases de Prueba Gratuitas",
+        "body": "Las clases de prueba gratuitas se ofrecen para ayudarte a evaluar nuestra enseñanza antes de inscribirte. Están sujetas a la disponibilidad del profesor y pueden limitarse a una por estudiante."
+      },
+      {
+        "title": "Tarifas y Pagos",
+        "body": "Las tarifas de los cursos, cuando corresponda, te serán comunicadas directamente por nuestro equipo antes de confirmar la inscripción."
+      },
+      {
+        "title": "Código de Conducta",
+        "body": "Se espera que estudiantes y profesores se traten con respeto durante las clases. Global Teaching Hub se reserva el derecho de suspender el acceso por comportamiento que viole esta expectativa."
+      },
+      {
+        "title": "Cambios a Estos Términos",
+        "body": "Podemos actualizar estos Términos y Condiciones de vez en cuando. El uso continuado de nuestros servicios después de publicados los cambios constituye la aceptación de los términos actualizados."
+      }
+    ]
+  },
+  "LoginPage": {
+    "welcomeBack": "Bienvenido de nuevo",
+    "subtitle": "Inicia sesión para acceder a tu panel de estudiante.",
+    "taglineLine1": "Continúa justo donde",
+    "taglineHighlight": "lo dejaste.",
+    "panelSubtitle": "Clases en vivo uno a uno, profesores expertos y un panel diseñado en torno a tu progreso.",
+    "rightsReserved": "Todos los derechos reservados.",
+    "features": [
+      { "title": "Clases en vivo uno a uno", "description": "Profesores reales, en tiempo real — no videos pregrabados." },
+      { "title": "Horarios flexibles", "description": "Reserva clases según tu rutina, no al revés." },
+      { "title": "Sigue tu progreso", "description": "Ve tus inscripciones, facturas y avances en un solo lugar." }
+    ]
+  },
+  "RegisterPage": {
+    "createAccount": "Crea tu cuenta",
+    "subtitle": "Regístrate para reservar clases y seguir tu progreso de aprendizaje.",
+    "taglineLine1": "Empieza a aprender,",
+    "taglineHighlight": "hoy.",
+    "panelSubtitle": "Crea tu cuenta gratuita y reserva tu primera clase en vivo en minutos.",
+    "rightsReserved": "Todos los derechos reservados.",
+    "features": [
+      { "title": "Reserva tu primera clase gratis", "description": "Prueba una clase en vivo antes de comprometerte a algo." },
+      { "title": "Aprende uno a uno", "description": "Cada clase es solo tú y tu profesor, sin multitudes." },
+      { "title": "Únete a estudiantes de todo el mundo", "description": "Miles de estudiantes ya aprenden con nosotros." }
+    ]
+  },
+  "ContactPage": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes alguna pregunta? Envíanos un mensaje y nuestro equipo se pondrá en contacto contigo."
+  },
+  "CoursesPage": {
+    "title": "Nuestros Cursos",
+    "subtitle": "Explora nuestra oferta actual de cursos y comienza hoy tu viaje de aprendizaje.",
+    "noCourses": "No hay cursos disponibles por el momento — vuelve pronto.",
+    "getInTouch": "Ponte en Contacto"
+  },
+  "FreeTrialPage": {
+    "title": "Reserva una Clase Gratis",
+    "subtitle": "Completa tus datos y nuestro equipo programará tu clase de prueba gratuita."
+  },
+  "CourseDetailPage": {
+    "whatYoullLearn": "Lo Que Aprenderás",
+    "bookDemo": "Reserva una Clase Gratis",
+    "backToAllCourses": "Volver a todos los cursos"
+  },
+  "Portal": {
+    "checkingAccess": "Verificando acceso...",
+    "logout": "Cerrar sesión",
+    "parentPortal": "Portal de Padres"
+  },
+  "StudentNav": {
+    "overview": "Resumen",
+    "myCourses": "Mis Cursos",
+    "profile": "Perfil",
+    "invoices": "Facturas"
+  },
+  "Common": {
+    "levelBeginner": "Principiante",
+    "levelIntermediate": "Intermedio",
+    "levelAdvanced": "Avanzado",
+    "statusActive": "Activo",
+    "statusInactive": "Inactivo"
+  },
+  "DashboardOverview": {
+    "loading": "Cargando...",
+    "keepItUp": "¡Sigue así!",
+    "welcomeBack": "Bienvenido de nuevo",
+    "subtitle": "Esto es lo que está pasando con tus clases hoy.",
+    "overallProgress": "Progreso general",
+    "acrossCourses": "En {count, plural, one {# curso} other {# cursos}}",
+    "myEnrollments": "Mis Inscripciones",
+    "notEnrolledYet": "Aún no estás inscrito en ningún curso.",
+    "scheduleNotSet": "Horario aún no definido",
+    "recentInvoices": "Facturas Recientes",
+    "viewAll": "Ver todas",
+    "noInvoicesYet": "Aún no hay facturas.",
+    "notifications": "Notificaciones",
+    "noNotificationsYet": "Aún no hay notificaciones."
+  },
+  "ProfilePage": {
+    "loading": "Cargando...",
+    "notSetUp": "Tu perfil de estudiante aún no ha sido configurado.",
+    "studentSince": "Estudiante desde {date}",
+    "editDetails": "Edita tus datos",
+    "editSubtitle": "Tu nombre y número de teléfono son visibles para tus profesores.",
+    "fullName": "Nombre Completo",
+    "phone": "Teléfono",
+    "addPhone": "Agrega un número de teléfono",
+    "saving": "Guardando...",
+    "save": "Guardar Cambios",
+    "saved": "Guardado."
+  },
+  "InvoicesPage": {
+    "title": "Facturas",
+    "subtitle": "Tu historial de facturación y estado de pagos.",
+    "allPaid": "Todas las facturas pagadas",
+    "awaitingPayment": "{count, plural, one {# pendiente de pago} other {# pendientes de pago}}",
+    "loading": "Cargando...",
+    "noInvoicesYet": "Aún no hay facturas.",
+    "due": "Vence el {date}",
+    "paidAmount": "{amount} pagado"
+  },
+  "MyCoursesPage": {
+    "title": "Mis Cursos",
+    "subtitle": "Inscríbete o cancela cursos en cualquier momento. Los cambios surten efecto de inmediato, y nuestro equipo se pondrá en contacto para confirmar tu horario.",
+    "loading": "Cargando...",
+    "willBeRemoved": "Se eliminará, junto con su historial de asistencia",
+    "confirmRemoveOne": "Eliminar {name} también borrará tu historial de asistencia y progreso de ese curso. ¿Continuar?",
+    "confirmRemoveMany": "Eliminar {names} también borrará tu historial de asistencia y progreso de esos cursos. ¿Continuar?",
+    "saving": "Guardando...",
+    "save": "Guardar Cambios",
+    "saved": "Guardado"
+  },
+  "ParentPortal": {
+    "loading": "Cargando...",
+    "welcome": "Bienvenido",
+    "subtitleMultiple": "Sigue las clases, asistencia y facturas de tus hijos.",
+    "subtitleSingle": "Sigue las clases, asistencia y facturas de tu hijo.",
+    "noChildrenLinked": "Aún no hay estudiantes vinculados a tu cuenta. Contacta a la academia para configurarlo.",
+    "levelSuffix": "Nivel {level}",
+    "teacherSuffix": "Profesor: {name}",
+    "progressSuffix": "{percent}% de progreso",
+    "notEnrolledYet": "Aún no está inscrito en ningún curso.",
+    "scheduleNotSet": "Horario aún no definido",
+    "invoices": "Facturas",
+    "noInvoicesYet": "Aún no hay facturas.",
+    "notifications": "Notificaciones",
+    "noNotificationsYet": "Aún no hay notificaciones."
+  },
+  "TestimonialsSection": {
+    "title": "Lo Que Dicen Nuestros Estudiantes",
+    "goToTestimonial": "Ir al testimonio {number}",
+    "items": [
+      {
+        "quote": "Global Teaching Hub me ha ayudado a mejorar mis calificaciones y ganar confianza. Los profesores son increíbles y las clases muy interactivas.",
+        "name": "Mahnoor Ali",
+        "role": "Estudiante"
+      },
+      {
+        "quote": "Las clases de Corán con Tajwid son excelentes. Mi recitación ha mejorado muchísimo, y los profesores son pacientes y motivadores.",
+        "name": "Hassan Raza",
+        "role": "Estudiante"
+      },
+      {
+        "quote": "Aprendí MS Office y los fundamentos de programación con los cursos de computación. Los horarios flexibles facilitaron combinarlo con la escuela.",
+        "name": "Areeba Khan",
+        "role": "Estudiante"
+      }
+    ]
+  }
+}

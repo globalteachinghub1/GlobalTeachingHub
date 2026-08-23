@@ -10,6 +10,7 @@ import { useSession } from "@/lib/use-session";
 import { usePresenceHeartbeat } from "@/lib/use-presence-heartbeat";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { NotificationBell } from "@/components/dashboard/notification-bell";
 
 export type PortalNavItem = {
   label: string;
@@ -71,7 +72,7 @@ export function PortalShell({
             )}
           >
             <Image
-              src="/logo-icon.png"
+              src="/icon.png"
               alt=""
               width={36}
               height={36}
@@ -149,7 +150,7 @@ export function PortalShell({
           <header className="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-border/60 bg-background px-4 sm:px-6 lg:px-8">
             <Link href="/" className="flex items-center gap-2 font-bold sm:hidden">
               <Image
-                src="/logo-icon.png"
+                src="/icon.png"
                 alt=""
                 width={32}
                 height={32}
@@ -161,6 +162,7 @@ export function PortalShell({
 
             <div className="flex items-center gap-3">
               <ThemeToggle />
+              <NotificationBell />
               <div className="flex items-center gap-2.5 rounded-full py-1 pr-1 pl-3">
                 <div className="hidden text-right leading-tight sm:block">
                   <p className="text-sm font-medium text-foreground">

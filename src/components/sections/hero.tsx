@@ -1,49 +1,45 @@
-import Link from "next/link";
 import { CalendarCheck, PlayCircle, Users2 } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 
-const STATS = [
-  { icon: Users2, value: "10,000+", label: "Students" },
-  { icon: CalendarCheck, value: "500+", label: "Expert Teachers" },
-  { icon: PlayCircle, value: "20+", label: "Countries" },
-  { icon: Users2, value: "4.9/5", label: "Student Rating" },
-];
+export async function Hero() {
+  const t = await getTranslations("Hero");
 
-export function Hero() {
+  const STATS = [
+    { icon: Users2, value: "10,000+", label: t("statStudents") },
+    { icon: CalendarCheck, value: "500+", label: t("statTeachers") },
+    { icon: PlayCircle, value: "20+", label: t("statCountries") },
+    { icon: Users2, value: "4.9/5", label: t("statRating") },
+  ];
+
   return (
     <section className="relative overflow-hidden bg-linear-to-b from-secondary/60 to-background">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 pt-16 pb-24 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8 lg:pt-24">
         <div>
           <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-            Learn from{" "}
-            <span className="text-primary">Expert Teachers</span>,<br />
-            Anytime, Anywhere.
+            {t("titleLine1")} <span className="text-primary">{t("titleHighlight")}</span>,
+            <br />
+            {t("titleLine2")}
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Live one-to-one classes, experienced teachers, flexible
-            schedules, and personalized learning for students from Pakistan
-            and around the world.
-          </p>
+          <p className="mt-6 max-w-xl text-lg text-muted-foreground">{t("subtitle")}</p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/free-trial" className={buttonVariants({ size: "lg" })}>
               <CalendarCheck className="h-4 w-4" />
-              Book a Free Demo
+              {t("bookDemo")}
             </Link>
             <Link
               href="/courses"
               className={buttonVariants({ size: "lg", variant: "outline" })}
             >
               <PlayCircle className="h-4 w-4" />
-              Explore Courses
+              {t("exploreCourses")}
             </Link>
           </div>
           <div className="mt-8 flex items-center gap-3">
-            
-            <p className="text-sm text-muted-foreground">
-              10,000+ students are already learning with us
-            </p>
+            <p className="text-sm text-muted-foreground">{t("socialProof")}</p>
           </div>
         </div>
 
@@ -53,11 +49,11 @@ export function Hero() {
             <CardContent className="flex flex-col gap-4 p-6">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-foreground">
-                  Live Class in Progress
+                  {t("liveClassInProgress")}
                 </span>
                 <span className="flex items-center gap-1.5 text-xs font-medium text-red-500">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
-                  LIVE
+                  {t("live")}
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-3">

@@ -233,6 +233,74 @@ function getSiteUrl() {
   return process.env.SITE_URL ?? "http://localhost:3000";
 }
 
+export async function sendPasswordResetEmail({
+  to,
+  name,
+  resetUrl,
+}: {
+  to: string;
+  name: string;
+  resetUrl: string;
+}) {
+  const transporter = getTransporter();
+  const subject = "Reset your password — Global Teaching Hub";
+
+  const text = [
+    `Hi ${name.split(" ")[0]},`,
+    "",
+    "We received a request to reset your Global Teaching Hub password. This link expires in 1 hour:",
+    resetUrl,
+    "",
+    "If you didn't request this, you can safely ignore this email.",
+  ].join("\n");
+
+  const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${escapeHtml(subject)}</title>
+</head>
+<body style="margin:0; padding:0; background:#f4f7fb; font-family:Arial,Helvetica,sans-serif; color:#172033;">
+  <div style="width:100%; padding:40px 15px; box-sizing:border-box;">
+    <div style="max-width:620px; margin:0 auto; background:#ffffff; border-radius:16px; overflow:hidden; border:1px solid #e5eaf1; box-shadow:0 4px 18px rgba(20,40,80,0.08);">
+      <div style="background:linear-gradient(135deg,#0f766e,#115e59); padding:36px 32px; color:#ffffff; text-align:center;">
+        <div style="font-size:14px; font-weight:bold; letter-spacing:1px; opacity:0.85; margin-bottom:14px;">GLOBAL TEACHING HUB</div>
+        <div style="font-size:26px; line-height:1.3; font-weight:700;">Reset Your Password 🔒</div>
+      </div>
+      <div style="padding:32px;">
+        <p style="margin:0 0 22px; font-size:15px; color:#344054; line-height:1.6;">
+          Hi ${escapeHtml(name.split(" ")[0])}, we received a request to reset your password. This link expires in 1 hour.
+        </p>
+        <div style="text-align:center; margin:28px 0;">
+          <a href="${resetUrl}" style="display:inline-block; background:#0f766e; color:#ffffff; text-decoration:none; font-size:15px; font-weight:700; padding:14px 32px; border-radius:999px;">
+            Reset Password →
+          </a>
+        </div>
+        <p style="margin:0; font-size:13px; color:#667085; line-height:1.6;">
+          If you didn't request this, you can safely ignore this email — your password won't change.
+        </p>
+      </div>
+      <div style="border-top:1px solid #edf0f4; padding:20px 32px; background:#fafbfc; color:#98a2b3; font-size:12px; line-height:1.6; text-align:center;">
+        This email was sent because a password reset was requested for your
+        <strong style="color:#667085;">Global Teaching Hub</strong> account.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+`;
+
+  await transporter.sendMail({
+    from: `"Global Teaching Hub" <${GMAIL_SMTP_USER}>`,
+    to,
+    subject,
+    text,
+    html,
+  });
+}
+
 const ROLE_COPY = {
   ADMIN: {
     title: "Your Admin Account is Ready 🎉",
@@ -251,6 +319,12 @@ const ROLE_COPY = {
     description: "Your student account has been created.",
     loginPath: "/login",
     loginLabel: "Go to Student Login",
+  },
+  PARENT: {
+    title: "Welcome to Global Teaching Hub 👨‍👩‍👧",
+    description: "Your parent account has been created.",
+    loginPath: "/login",
+    loginLabel: "Go to Parent Login",
   },
 } as const;
 
