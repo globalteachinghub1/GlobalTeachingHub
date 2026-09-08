@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { LayoutDashboard, Users, FileText } from "lucide-react";
+import { LayoutDashboard, Users, FileText, Settings } from "lucide-react";
 import { PortalShell, type PortalNavItem } from "@/components/dashboard/portal-shell";
 import { useSession } from "@/lib/use-session";
 
@@ -15,6 +15,7 @@ function navFor(role: "TEACHER" | "STAFF"): PortalNavItem[] {
     items.push({ label: "My Students", href: "/teacher/students", icon: Users });
   }
   items.push({ label: "SOPs", href: "/teacher/sops", icon: FileText });
+  items.push({ label: "Settings", href: "/teacher/settings", icon: Settings });
   return items;
 }
 

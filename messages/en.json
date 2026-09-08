@@ -377,6 +377,19 @@
     "title": "Teacher Notes",
     "noNotesYet": "No notes yet."
   },
+  "ChangePasswordForm": {
+    "title": "Change Password",
+    "subtitle": "Update the password you use to log in.",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "save": "Update Password",
+    "saving": "Updating...",
+    "saved": "Password updated.",
+    "mismatchError": "New password and confirmation don't match.",
+    "genericError": "Something went wrong. Please try again.",
+    "connectionError": "Couldn't reach the server. Check your connection and try again."
+  },
   "DashboardOverview": {
     "loading": "Loading...",
     "keepItUp": "Keep it up!",

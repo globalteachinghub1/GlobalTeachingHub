@@ -347,6 +347,19 @@
     "title": "Lehrernotizen",
     "noNotesYet": "Noch keine Notizen."
   },
+  "ChangePasswordForm": {
+    "title": "Passwort Ändern",
+    "subtitle": "Aktualisieren Sie das Passwort, mit dem Sie sich anmelden.",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Neues Passwort Bestätigen",
+    "save": "Passwort Aktualisieren",
+    "saving": "Wird aktualisiert...",
+    "saved": "Passwort aktualisiert.",
+    "mismatchError": "Neues Passwort und Bestätigung stimmen nicht überein.",
+    "genericError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "connectionError": "Server konnte nicht erreicht werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut."
+  },
   "DashboardOverview": {
     "loading": "Wird geladen...",
     "keepItUp": "Weiter so!",

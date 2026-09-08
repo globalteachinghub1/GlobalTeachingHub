@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { getIconComponent } from "@/lib/course-icons";
 import { ChildMessages } from "@/components/dashboard/child-messages";
+import { ChangePasswordForm } from "@/components/dashboard/change-password-form";
 
 type Invoice = { id: string; description: string; amount: string; date: string; status: string };
 type Notification = { id: string; message: string; date: string };
@@ -83,6 +84,7 @@ export default function ParentOverviewPage() {
   const t = useTranslations("ParentPortal");
   const tCommon = useTranslations("Common");
   const tNotes = useTranslations("ProgressNotes");
+  const tPassword = useTranslations("ChangePasswordForm");
   const locale = useLocale();
   const [parent, setParent] = useState<ParentMe | undefined>(undefined);
 
@@ -293,6 +295,22 @@ export default function ParentOverviewPage() {
           <ChildMessages studentId={child.id} />
         </div>
       ))}
+
+      <ChangePasswordForm
+        strings={{
+          title: tPassword("title"),
+          subtitle: tPassword("subtitle"),
+          currentPassword: tPassword("currentPassword"),
+          newPassword: tPassword("newPassword"),
+          confirmPassword: tPassword("confirmPassword"),
+          save: tPassword("save"),
+          saving: tPassword("saving"),
+          saved: tPassword("saved"),
+          mismatchError: tPassword("mismatchError"),
+          genericError: tPassword("genericError"),
+          connectionError: tPassword("connectionError"),
+        }}
+      />
     </div>
   );
 }

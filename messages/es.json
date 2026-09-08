@@ -347,6 +347,19 @@
     "title": "Notas del Profesor",
     "noNotesYet": "Aún no hay notas."
   },
+  "ChangePasswordForm": {
+    "title": "Cambiar Contraseña",
+    "subtitle": "Actualiza la contraseña que usas para iniciar sesión.",
+    "currentPassword": "Contraseña Actual",
+    "newPassword": "Nueva Contraseña",
+    "confirmPassword": "Confirmar Nueva Contraseña",
+    "save": "Actualizar Contraseña",
+    "saving": "Actualizando...",
+    "saved": "Contraseña actualizada.",
+    "mismatchError": "La nueva contraseña y la confirmación no coinciden.",
+    "genericError": "Algo salió mal. Inténtalo de nuevo.",
+    "connectionError": "No se pudo conectar con el servidor. Verifica tu conexión e inténtalo de nuevo."
+  },
   "DashboardOverview": {
     "loading": "Cargando...",
     "keepItUp": "¡Sigue así!",

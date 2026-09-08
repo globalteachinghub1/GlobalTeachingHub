@@ -347,6 +347,19 @@
     "title": "Notes de l'Enseignant",
     "noNotesYet": "Aucune note pour le moment."
   },
+  "ChangePasswordForm": {
+    "title": "Changer le Mot de Passe",
+    "subtitle": "Mettez à jour le mot de passe que vous utilisez pour vous connecter.",
+    "currentPassword": "Mot de Passe Actuel",
+    "newPassword": "Nouveau Mot de Passe",
+    "confirmPassword": "Confirmer le Nouveau Mot de Passe",
+    "save": "Mettre à Jour le Mot de Passe",
+    "saving": "Mise à jour...",
+    "saved": "Mot de passe mis à jour.",
+    "mismatchError": "Le nouveau mot de passe et sa confirmation ne correspondent pas.",
+    "genericError": "Une erreur s'est produite. Veuillez réessayer.",
+    "connectionError": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez."
+  },
   "DashboardOverview": {
     "loading": "Chargement...",
     "keepItUp": "Continuez ainsi !",

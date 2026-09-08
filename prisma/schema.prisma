@@ -238,7 +238,7 @@ model Enrollment {
   course         Course     @relation(fields: [courseId], references: [id], onDelete: Cascade)
   classStartTime String?
   classEndTime   String?
-  classDays      ClassDay[]
+  classDays      ClassDay[] @default([])
   createdAt      DateTime   @default(now())
 
   attendance     Attendance[]

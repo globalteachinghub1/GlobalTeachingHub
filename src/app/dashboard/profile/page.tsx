@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { ChangePasswordForm } from "@/components/dashboard/change-password-form";
 
 type StudentMe = {
   name: string;
@@ -54,6 +55,7 @@ function initials(name: string) {
 
 function ProfileForm({ student }: { student: NonNullable<StudentMe> }) {
   const t = useTranslations("ProfilePage");
+  const tPassword = useTranslations("ChangePasswordForm");
   const locale = useLocale();
   const [name, setName] = useState(student.name);
   const [phone, setPhone] = useState(student.phone ?? "");
@@ -149,6 +151,22 @@ function ProfileForm({ student }: { student: NonNullable<StudentMe> }) {
           </form>
         </CardContent>
       </Card>
+
+      <ChangePasswordForm
+        strings={{
+          title: tPassword("title"),
+          subtitle: tPassword("subtitle"),
+          currentPassword: tPassword("currentPassword"),
+          newPassword: tPassword("newPassword"),
+          confirmPassword: tPassword("confirmPassword"),
+          save: tPassword("save"),
+          saving: tPassword("saving"),
+          saved: tPassword("saved"),
+          mismatchError: tPassword("mismatchError"),
+          genericError: tPassword("genericError"),
+          connectionError: tPassword("connectionError"),
+        }}
+      />
     </div>
   );
 }
