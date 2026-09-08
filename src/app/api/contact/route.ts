@@ -7,8 +7,15 @@ import {
   requireString,
   type FieldErrors,
 } from "@/lib/validation";
+import { getClientIp, rateLimit, rateLimitResponse } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const limited = rateLimit(`contact:${getClientIp(request)}`, {
+    limit: 5,
+    windowMs: 60 * 60 * 1000,
+  });
+  if (!limited.ok) return rateLimitResponse(limited.retryAfterSeconds);
+
   let body: unknown;
 
   try {

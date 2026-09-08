@@ -21,6 +21,7 @@ export async function GET() {
         include: {
           course: { include: { translations: { where: { locale } } } },
           attendance: { orderBy: { date: "desc" }, take: 7 },
+          assignments: { orderBy: { dueDate: "asc" } },
         },
       },
       invoices: { orderBy: { date: "desc" } },
@@ -37,6 +38,23 @@ export async function GET() {
     localizeNotifications(student.notifications, locale),
     localizeProgressNotes(student.notes, locale),
   ]);
+
+  const assignments = student.enrollments
+    .flatMap((e) =>
+      e.assignments.map((a) => ({
+        id: a.id,
+        courseName: localizeCourse(e.course).name,
+        title: a.title,
+        description: a.description,
+        dueDate: a.dueDate,
+      }))
+    )
+    .sort((a, b) => {
+      if (!a.dueDate && !b.dueDate) return 0;
+      if (!a.dueDate) return 1;
+      if (!b.dueDate) return -1;
+      return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime();
+    });
 
   return NextResponse.json({
     student: {
@@ -69,6 +87,7 @@ export async function GET() {
       invoices: student.invoices,
       notifications,
       notes,
+      assignments,
     },
   });
 }

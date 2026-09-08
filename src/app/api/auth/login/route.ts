@@ -3,8 +3,15 @@ import { prisma } from "@/lib/prisma";
 import { verifyPassword } from "@/lib/password";
 import { createSessionToken, setSessionCookie } from "@/lib/auth";
 import { requireEmail, requireString, type FieldErrors } from "@/lib/validation";
+import { getClientIp, rateLimit, rateLimitResponse } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const limited = rateLimit(`login:${getClientIp(request)}`, {
+    limit: 10,
+    windowMs: 10 * 60 * 1000,
+  });
+  if (!limited.ok) return rateLimitResponse(limited.retryAfterSeconds);
+
   let body: unknown;
   try {
     body = await request.json();

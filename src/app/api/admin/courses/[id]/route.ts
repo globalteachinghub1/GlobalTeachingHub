@@ -26,6 +26,8 @@ export async function GET(_request: Request, { params }: Params) {
       description: course.description,
       summary: course.summary,
       topics: course.topics,
+      outcomes: course.outcomes,
+      priceNote: course.priceNote,
       color: course.color,
       icon: course.icon,
       studentCount: course._count.enrollments,
@@ -67,6 +69,11 @@ export async function PATCH(request: Request, { params }: Params) {
   const topics = Array.isArray(data.topics)
     ? data.topics.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map((t) => t.trim())
     : existing.topics;
+  const outcomes = Array.isArray(data.outcomes)
+    ? data.outcomes.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map((t) => t.trim())
+    : existing.outcomes;
+  const priceNote =
+    typeof data.priceNote === "string" ? data.priceNote.trim() || null : existing.priceNote;
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ errors }, { status: 422 });
@@ -74,7 +81,7 @@ export async function PATCH(request: Request, { params }: Params) {
 
   const course = await prisma.course.update({
     where: { id },
-    data: { name, summary, description, color, icon, topics },
+    data: { name, summary, description, color, icon, topics, outcomes, priceNote },
     include: { _count: { select: { enrollments: true, teachers: true } } },
   });
 
@@ -86,6 +93,8 @@ export async function PATCH(request: Request, { params }: Params) {
       description: course.description,
       summary: course.summary,
       topics: course.topics,
+      outcomes: course.outcomes,
+      priceNote: course.priceNote,
       color: course.color,
       icon: course.icon,
       studentCount: course._count.enrollments,

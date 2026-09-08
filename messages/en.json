@@ -75,10 +75,20 @@
     "emailPlaceholder": "you@example.com",
     "course": "Course",
     "selectCourse": "Select a course",
+    "stepAboutYou": "About You",
+    "stepContactCourse": "Contact & Course",
+    "stepGoals": "Anything Else?",
+    "stepIndicator": "Step {step} of {total}",
+    "next": "Next",
+    "back": "Back",
+    "goals": "Goals / Notes (optional)",
+    "goalsPlaceholder": "Tell us what you'd like to achieve...",
+    "duplicateEmailNotice": "Looks like you've already sent a request with this email — our team will be in touch soon. You can still submit for a different course.",
     "submit": "Book My Free Demo",
     "submitting": "Sending...",
     "successTitle": "Thank you! Your request has been received.",
-    "successBody": "Our team will reach out to you shortly to schedule your free demo class."
+    "successBody": "Our team will reach out to you shortly to schedule your free demo class.",
+    "successWhatsappNote": "Keep an eye on WhatsApp — we'll follow up there too."
   },
   "ContactForm": {
     "fullName": "Full Name",
@@ -115,6 +125,8 @@
     "parentContact": "Parent Contact",
     "courses": "Courses",
     "noCoursesOpen": "No courses are open for enrollment right now.",
+    "agreeTerms": "I agree to the <terms>Terms & Conditions</terms> and <privacy>Privacy Policy</privacy>",
+    "termsRequired": "You must accept the Terms & Conditions to continue.",
     "submit": "Sign Up",
     "submitting": "Creating account...",
     "alreadyHaveAccount": "Already have an account?",
@@ -145,6 +157,27 @@
     "visionBody": "To become a trusted online academy where students from Pakistan and around the world can learn, grow, and achieve their goals with confidence.",
     "teachersTitle": "Our Teachers",
     "teachersBody": "Every class is led by a qualified, experienced teacher who is committed to your progress, with flexible scheduling built around your life.",
+    "storyTitle": "Our Story",
+    "storyBody": "Global Teaching Hub started with a simple idea: students shouldn't have to choose between quality and convenience. We began by connecting a handful of students with dedicated Quran and Tajweed teachers over video calls, and quickly saw how much faster people learn with one-to-one attention and a teacher who truly cares about their progress. That idea grew into a full academy — first adding Computer Courses, then building the tools to support students and families anywhere in the world.",
+    "timelineTitle": "Our Journey",
+    "timeline": [
+      {
+        "title": "Getting Started",
+        "description": "Launched with live, one-to-one Quran and Tajweed classes for a small group of students."
+      },
+      {
+        "title": "Growing Our Teaching Team",
+        "description": "Brought on more qualified, experienced teachers to keep class sizes personal as demand grew."
+      },
+      {
+        "title": "Expanding Our Courses",
+        "description": "Added Computer Courses, covering everything from MS Office to programming fundamentals."
+      },
+      {
+        "title": "Reaching Students Worldwide",
+        "description": "Built a multilingual platform with student and parent portals to support families anywhere."
+      }
+    ],
     "ctaTitle": "Ready to start learning?",
     "ctaBody": "Book a free demo class and experience Global Teaching Hub for yourself.",
     "ctaButton": "Book a Free Demo"
@@ -152,26 +185,33 @@
   "Faq": {
     "title": "Frequently Asked Questions",
     "subtitle": "Everything you need to know about learning with Global Teaching Hub.",
+    "searchPlaceholder": "Search questions...",
+    "noResults": "No questions match your search.",
     "items": [
       {
         "question": "How do the online classes work?",
-        "answer": "Classes are conducted live, one-to-one, over video call with a dedicated teacher. Sessions are scheduled at a time that works for you, and recordings are shared afterward so you can revisit any lesson."
+        "answer": "Classes are conducted live, one-to-one, over video call with a dedicated teacher. Sessions are scheduled at a time that works for you, and recordings are shared afterward so you can revisit any lesson.",
+        "category": "Classes & Enrollment"
       },
       {
         "question": "Which courses do you currently offer?",
-        "answer": "We currently offer Quran with Tajweed (including Translation and Tafseer) and Computer Courses (MS Word, PowerPoint, and Programming Languages). More courses will be added soon."
+        "answer": "We currently offer Quran with Tajweed (including Translation and Tafseer) and Computer Courses (MS Word, PowerPoint, and Programming Languages). More courses will be added soon.",
+        "category": "Classes & Enrollment"
       },
       {
         "question": "How do I book a free demo class?",
-        "answer": "Click “Book a Free Demo” on the homepage, fill in your details and preferred course, and our team will contact you to schedule your free trial class."
+        "answer": "Click “Book a Free Demo” on the homepage, fill in your details and preferred course, and our team will contact you to schedule your free trial class.",
+        "category": "Classes & Enrollment"
       },
       {
         "question": "What do I need to attend a class?",
-        "answer": "A stable internet connection and a laptop, tablet, or smartphone with a camera and microphone are all you need to join a class."
+        "answer": "A stable internet connection and a laptop, tablet, or smartphone with a camera and microphone are all you need to join a class.",
+        "category": "Technical"
       },
       {
         "question": "How can I get in touch with support?",
-        "answer": "You can reach us anytime through the Contact page, or via the phone number and email listed in the footer."
+        "answer": "You can reach us anytime through the Contact page, or via the phone number and email listed in the footer.",
+        "category": "Support"
       }
     ]
   },
@@ -278,12 +318,16 @@
   },
   "ContactPage": {
     "title": "Contact Us",
-    "subtitle": "Have a question? Send us a message and our team will get back to you."
+    "subtitle": "Have a question? Send us a message and our team will get back to you.",
+    "whatsappButton": "Chat on WhatsApp",
+    "mapTitle": "Find Us"
   },
   "CoursesPage": {
     "title": "Our Courses",
     "subtitle": "Explore our current course offerings and start your learning journey today.",
     "noCourses": "No courses are available right now — check back soon.",
+    "searchPlaceholder": "Search courses...",
+    "noResults": "No courses match your search.",
     "getInTouch": "Get in Touch"
   },
   "FreeTrialPage": {
@@ -291,7 +335,13 @@
     "subtitle": "Fill in your details and our team will schedule your free demo class."
   },
   "CourseDetailPage": {
+    "curriculumTitle": "Curriculum",
     "whatYoullLearn": "What You'll Learn",
+    "outcomesTitle": "What You'll Achieve",
+    "pricingTitle": "Pricing",
+    "pricingDefault": "Custom pricing based on your schedule and goals — book a free trial to discuss.",
+    "faqTitle": "Frequently Asked Questions",
+    "viewAllFaqs": "View all FAQs",
     "bookDemo": "Book a Free Demo",
     "backToAllCourses": "Back to all courses"
   },
@@ -337,6 +387,10 @@
     "myEnrollments": "My Enrollments",
     "notEnrolledYet": "You're not enrolled in a course yet.",
     "scheduleNotSet": "Schedule not set yet",
+    "upcomingClasses": "Upcoming Classes",
+    "noUpcomingClasses": "No classes scheduled yet.",
+    "assignments": "Assignments",
+    "assignmentDue": "Due {date}",
     "recentInvoices": "Recent Invoices",
     "viewAll": "View all",
     "noInvoicesYet": "No invoices yet.",
@@ -391,7 +445,13 @@
     "invoices": "Invoices",
     "noInvoicesYet": "No invoices yet.",
     "notifications": "Notifications",
-    "noNotificationsYet": "No notifications yet."
+    "noNotificationsYet": "No notifications yet.",
+    "messages": "Messages",
+    "noMessagesYet": "No messages yet — say hello.",
+    "messagePlaceholder": "Write a message...",
+    "messagesLoadError": "Couldn't load messages. Check your connection and try again.",
+    "messageSendError": "Couldn't send that message. Try again.",
+    "retry": "Retry"
   },
   "TestimonialsSection": {
     "title": "What Our Students Say",

@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Bell, MessageSquareText, Receipt, Sparkles } from "lucide-react";
+import {
+  Bell,
+  CalendarClock,
+  ClipboardList,
+  MessageSquareText,
+  Receipt,
+  Sparkles,
+} from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { getIconComponent } from "@/lib/course-icons";
@@ -11,6 +18,13 @@ import { ProgressRing } from "@/components/dashboard/progress-ring";
 type Invoice = { id: string; description: string; amount: string; date: string; status: string };
 type Notification = { id: string; message: string; date: string };
 type Note = { id: string; note: string; date: string };
+type AssignmentEntry = {
+  id: string;
+  courseName: string;
+  title: string;
+  description: string | null;
+  dueDate: string | null;
+};
 type AttendanceEntry = { id: string; date: string; present: boolean };
 type CourseSummary = {
   id: string;
@@ -30,6 +44,7 @@ type StudentMe = {
   invoices: Invoice[];
   notifications: Notification[];
   notes: Note[];
+  assignments: AssignmentEntry[];
 } | null;
 
 const DAY_SHORT: Record<string, string> = {
@@ -41,6 +56,35 @@ const DAY_SHORT: Record<string, string> = {
   SATURDAY: "Sat",
   SUNDAY: "Sun",
 };
+
+const DAY_INDEX: Record<string, number> = {
+  SUNDAY: 0,
+  MONDAY: 1,
+  TUESDAY: 2,
+  WEDNESDAY: 3,
+  THURSDAY: 4,
+  FRIDAY: 5,
+  SATURDAY: 6,
+};
+
+/** Next occurrence of a weekly-recurring class from `now`, or null if the course has no schedule. */
+function nextClassDate(course: CourseSummary, now: Date): Date | null {
+  if (course.classDays.length === 0 || !course.classStartTime) return null;
+  const [hour, minute] = course.classStartTime.split(":").map(Number);
+
+  let soonest: Date | null = null;
+  for (const day of course.classDays) {
+    const targetDow = DAY_INDEX[day];
+    if (targetDow === undefined) continue;
+    const candidate = new Date(now);
+    candidate.setHours(hour, minute, 0, 0);
+    let daysAhead = (targetDow - now.getDay() + 7) % 7;
+    if (daysAhead === 0 && candidate.getTime() <= now.getTime()) daysAhead = 7;
+    candidate.setDate(candidate.getDate() + daysAhead);
+    if (!soonest || candidate.getTime() < soonest.getTime()) soonest = candidate;
+  }
+  return soonest;
+}
 
 function formatTime(time: string) {
   const [hourStr, minute] = time.split(":");
@@ -96,6 +140,12 @@ export default function DashboardPage() {
   }
 
   const firstName = student?.name.split(" ")[0] ?? "";
+  const now = new Date();
+  const upcomingClasses = (student?.courses ?? [])
+    .map((course) => ({ course, date: nextClassDate(course, now) }))
+    .filter((entry): entry is { course: CourseSummary; date: Date } => entry.date !== null)
+    .sort((a, b) => a.date.getTime() - b.date.getTime())
+    .slice(0, 4);
 
   return (
     <div className="flex flex-col gap-8">
@@ -190,6 +240,85 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+
+      {student && student.courses.length > 0 && (
+        <div>
+          <h2 className="text-base font-semibold text-foreground">{t("upcomingClasses")}</h2>
+          {upcomingClasses.length === 0 ? (
+            <Card className="mt-3 border-dashed">
+              <CardContent className="py-8 text-center text-sm text-muted-foreground">
+                {t("noUpcomingClasses")}
+              </CardContent>
+            </Card>
+          ) : (
+            <div className="mt-3 flex flex-col gap-2">
+              {upcomingClasses.map(({ course, date }) => (
+                <Card key={course.id} className="border-none shadow-sm">
+                  <CardContent className="flex items-center gap-3 p-4">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                      <CalendarClock className="h-4 w-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium text-foreground">
+                        {course.name}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {date.toLocaleDateString(locale, { weekday: "long", month: "short", day: "numeric" })}
+                        {" · "}
+                        {date.toLocaleTimeString(locale, { hour: "numeric", minute: "2-digit" })}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {student && student.assignments.length > 0 && (
+        <div>
+          <h2 className="text-base font-semibold text-foreground">{t("assignments")}</h2>
+          <div className="mt-3 flex flex-col gap-2">
+            {student.assignments.map((assignment) => {
+              const due = assignment.dueDate ? new Date(assignment.dueDate) : null;
+              const overdue = due !== null && due.getTime() < now.getTime();
+              return (
+                <Card key={assignment.id} className="border-none shadow-sm">
+                  <CardContent className="flex items-start gap-3 p-4">
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
+                        overdue
+                          ? "bg-rose-100 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300"
+                          : "bg-secondary text-muted-foreground"
+                      }`}
+                    >
+                      <ClipboardList className="h-4 w-4" />
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-medium text-foreground">
+                        {assignment.courseName} — {assignment.title}
+                      </p>
+                      {assignment.description && (
+                        <p className="mt-0.5 text-xs text-muted-foreground">
+                          {assignment.description}
+                        </p>
+                      )}
+                      {due && (
+                        <p
+                          className={`mt-0.5 text-xs ${overdue ? "text-rose-600 dark:text-rose-400" : "text-muted-foreground"}`}
+                        >
+                          {t("assignmentDue", { date: due.toLocaleDateString(locale) })}
+                        </p>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div>

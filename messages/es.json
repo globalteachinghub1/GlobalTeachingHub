@@ -75,10 +75,20 @@
     "emailPlaceholder": "tu@ejemplo.com",
     "course": "Curso",
     "selectCourse": "Selecciona un curso",
+    "stepAboutYou": "Sobre Ti",
+    "stepContactCourse": "Contacto y Curso",
+    "stepGoals": "¿Algo Más?",
+    "stepIndicator": "Paso {step} de {total}",
+    "next": "Siguiente",
+    "back": "Atrás",
+    "goals": "Objetivos / Notas (opcional)",
+    "goalsPlaceholder": "Cuéntanos qué te gustaría lograr...",
+    "duplicateEmailNotice": "Parece que ya enviaste una solicitud con este correo electrónico — nuestro equipo se pondrá en contacto pronto. Aún puedes continuar para un curso diferente.",
     "submit": "Reservar Mi Clase Gratis",
     "submitting": "Enviando...",
     "successTitle": "¡Gracias! Hemos recibido tu solicitud.",
-    "successBody": "Nuestro equipo se pondrá en contacto contigo pronto para programar tu clase de prueba gratuita."
+    "successBody": "Nuestro equipo se pondrá en contacto contigo pronto para programar tu clase de prueba gratuita.",
+    "successWhatsappNote": "Atento a WhatsApp — también te contactaremos por ahí."
   },
   "ContactForm": {
     "fullName": "Nombre Completo",
@@ -115,6 +125,8 @@
     "parentContact": "Contacto del Padre/Madre",
     "courses": "Cursos",
     "noCoursesOpen": "No hay cursos abiertos para inscripción en este momento.",
+    "agreeTerms": "Acepto los <terms>Términos y Condiciones</terms> y la <privacy>Política de Privacidad</privacy>",
+    "termsRequired": "Debes aceptar los Términos y Condiciones para continuar.",
     "submit": "Registrarse",
     "submitting": "Creando cuenta...",
     "alreadyHaveAccount": "¿Ya tienes una cuenta?",
@@ -145,6 +157,15 @@
     "visionBody": "Convertirnos en una academia en línea de confianza donde estudiantes de Pakistán y de todo el mundo puedan aprender, crecer y alcanzar sus metas con confianza.",
     "teachersTitle": "Nuestros Profesores",
     "teachersBody": "Cada clase es impartida por un profesor calificado y experimentado, comprometido con tu progreso, con horarios flexibles adaptados a tu vida.",
+    "storyTitle": "Nuestra Historia",
+    "storyBody": "Global Teaching Hub comenzó con una idea simple: los estudiantes no deberían tener que elegir entre calidad y comodidad. Empezamos conectando a un pequeño grupo de estudiantes con profesores dedicados de Corán y Tajwid por videollamada, y pronto vimos lo mucho más rápido que se aprende con atención uno a uno y un profesor que realmente se preocupa por tu progreso. Esa idea creció hasta convertirse en una academia completa: primero añadimos Cursos de Computación, y luego construimos las herramientas para apoyar a estudiantes y familias en cualquier parte del mundo.",
+    "timelineTitle": "Nuestro Recorrido",
+    "timeline": [
+      { "title": "Los Inicios", "description": "Lanzamos clases en vivo, uno a uno, de Corán y Tajwid para un pequeño grupo de estudiantes." },
+      { "title": "Crecimiento del Equipo Docente", "description": "Incorporamos más profesores calificados y experimentados para mantener las clases personalizadas a medida que crecía la demanda." },
+      { "title": "Ampliación de Nuestros Cursos", "description": "Añadimos Cursos de Computación, desde MS Office hasta fundamentos de programación." },
+      { "title": "Llegando a Estudiantes de Todo el Mundo", "description": "Construimos una plataforma multilingüe con portales para estudiantes y padres, para apoyar a familias en cualquier lugar." }
+    ],
     "ctaTitle": "¿Listo para empezar a aprender?",
     "ctaBody": "Reserva una clase de prueba gratuita y descubre Global Teaching Hub por ti mismo.",
     "ctaButton": "Reserva una Clase Gratis"
@@ -152,26 +173,33 @@
   "Faq": {
     "title": "Preguntas Frecuentes",
     "subtitle": "Todo lo que necesitas saber sobre aprender con Global Teaching Hub.",
+    "searchPlaceholder": "Buscar preguntas...",
+    "noResults": "Ninguna pregunta coincide con tu búsqueda.",
     "items": [
       {
         "question": "¿Cómo funcionan las clases en línea?",
-        "answer": "Las clases se imparten en vivo, uno a uno, por videollamada con un profesor dedicado. Las sesiones se programan a la hora que más te convenga, y las grabaciones se comparten después para que puedas repasar cualquier lección."
+        "answer": "Las clases se imparten en vivo, uno a uno, por videollamada con un profesor dedicado. Las sesiones se programan a la hora que más te convenga, y las grabaciones se comparten después para que puedas repasar cualquier lección.",
+        "category": "Clases e Inscripción"
       },
       {
         "question": "¿Qué cursos ofrecen actualmente?",
-        "answer": "Actualmente ofrecemos Corán con Tajwid (incluyendo Traducción y Tafsir) y Cursos de Computación (MS Word, PowerPoint y lenguajes de programación). Pronto se añadirán más cursos."
+        "answer": "Actualmente ofrecemos Corán con Tajwid (incluyendo Traducción y Tafsir) y Cursos de Computación (MS Word, PowerPoint y lenguajes de programación). Pronto se añadirán más cursos.",
+        "category": "Clases e Inscripción"
       },
       {
         "question": "¿Cómo reservo una clase de prueba gratuita?",
-        "answer": "Haz clic en “Reserva una Clase Gratis” en la página de inicio, completa tus datos y el curso de tu preferencia, y nuestro equipo te contactará para programar tu clase de prueba gratuita."
+        "answer": "Haz clic en “Reserva una Clase Gratis” en la página de inicio, completa tus datos y el curso de tu preferencia, y nuestro equipo te contactará para programar tu clase de prueba gratuita.",
+        "category": "Clases e Inscripción"
       },
       {
         "question": "¿Qué necesito para asistir a una clase?",
-        "answer": "Solo necesitas una conexión a internet estable y una laptop, tablet o smartphone con cámara y micrófono para unirte a una clase."
+        "answer": "Solo necesitas una conexión a internet estable y una laptop, tablet o smartphone con cámara y micrófono para unirte a una clase.",
+        "category": "Técnico"
       },
       {
         "question": "¿Cómo puedo contactar con soporte?",
-        "answer": "Puedes contactarnos en cualquier momento a través de la página de Contacto, o mediante el teléfono y correo electrónico indicados en el pie de página."
+        "answer": "Puedes contactarnos en cualquier momento a través de la página de Contacto, o mediante el teléfono y correo electrónico indicados en el pie de página.",
+        "category": "Soporte"
       }
     ]
   },
@@ -260,12 +288,16 @@
   },
   "ContactPage": {
     "title": "Contáctanos",
-    "subtitle": "¿Tienes alguna pregunta? Envíanos un mensaje y nuestro equipo se pondrá en contacto contigo."
+    "subtitle": "¿Tienes alguna pregunta? Envíanos un mensaje y nuestro equipo se pondrá en contacto contigo.",
+    "whatsappButton": "Chatear por WhatsApp",
+    "mapTitle": "Encuéntranos"
   },
   "CoursesPage": {
     "title": "Nuestros Cursos",
     "subtitle": "Explora nuestra oferta actual de cursos y comienza hoy tu viaje de aprendizaje.",
     "noCourses": "No hay cursos disponibles por el momento — vuelve pronto.",
+    "searchPlaceholder": "Buscar cursos...",
+    "noResults": "Ningún curso coincide con tu búsqueda.",
     "getInTouch": "Ponte en Contacto"
   },
   "FreeTrialPage": {
@@ -273,7 +305,13 @@
     "subtitle": "Completa tus datos y nuestro equipo programará tu clase de prueba gratuita."
   },
   "CourseDetailPage": {
+    "curriculumTitle": "Plan de Estudios",
     "whatYoullLearn": "Lo Que Aprenderás",
+    "outcomesTitle": "Lo Que Lograrás",
+    "pricingTitle": "Precios",
+    "pricingDefault": "Precios personalizados según tu horario y objetivos — reserva una clase de prueba gratuita para conversarlo.",
+    "faqTitle": "Preguntas Frecuentes",
+    "viewAllFaqs": "Ver todas las preguntas",
     "bookDemo": "Reserva una Clase Gratis",
     "backToAllCourses": "Volver a todos los cursos"
   },
@@ -319,6 +357,10 @@
     "myEnrollments": "Mis Inscripciones",
     "notEnrolledYet": "Aún no estás inscrito en ningún curso.",
     "scheduleNotSet": "Horario aún no definido",
+    "upcomingClasses": "Próximas Clases",
+    "noUpcomingClasses": "Aún no hay clases programadas.",
+    "assignments": "Tareas",
+    "assignmentDue": "Vence el {date}",
     "recentInvoices": "Facturas Recientes",
     "viewAll": "Ver todas",
     "noInvoicesYet": "Aún no hay facturas.",
@@ -373,7 +415,13 @@
     "invoices": "Facturas",
     "noInvoicesYet": "Aún no hay facturas.",
     "notifications": "Notificaciones",
-    "noNotificationsYet": "Aún no hay notificaciones."
+    "noNotificationsYet": "Aún no hay notificaciones.",
+    "messages": "Mensajes",
+    "noMessagesYet": "Aún no hay mensajes — saluda.",
+    "messagePlaceholder": "Escribe un mensaje...",
+    "messagesLoadError": "No se pudieron cargar los mensajes. Verifica tu conexión e inténtalo de nuevo.",
+    "messageSendError": "No se pudo enviar el mensaje. Inténtalo de nuevo.",
+    "retry": "Reintentar"
   },
   "TestimonialsSection": {
     "title": "Lo Que Dicen Nuestros Estudiantes",

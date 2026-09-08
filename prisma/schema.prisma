@@ -91,6 +91,7 @@ model User {
   sopDocuments        SopDocument[]
   leadNotes           LeadNote[]
   passwordResetTokens PasswordResetToken[]
+  sentMessages        Message[]
 }
 
 model PasswordResetToken {
@@ -112,6 +113,8 @@ model Parent {
   userId   String    @unique
   user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   students Student[] @relation("ParentStudents")
+
+  messageThreads MessageThread[]
 }
 
 model Course {
@@ -121,6 +124,10 @@ model Course {
   description String?
   summary     String
   topics      String[]
+  /// Learning outcomes shown in the "What You'll Achieve" section on the course details page.
+  outcomes    String[] @default([])
+  /// Short pricing blurb shown in the course details page's Pricing section (e.g. "Custom pricing based on your schedule — book a free trial to discuss.").
+  priceNote   String?
   color       String   @default("text-teal-600 bg-teal-100")
   icon        String   @default("BookOpen")
   createdAt   DateTime @default(now())
@@ -146,6 +153,8 @@ model CourseTranslation {
   summary     String
   description String?
   topics      String[]
+  outcomes    String[] @default([])
+  priceNote   String?
   updatedAt   DateTime @updatedAt
 
   @@unique([courseId, locale])
@@ -184,6 +193,38 @@ model Student {
   notifications Notification[]
   documents     Document[]
   parents       Parent[]       @relation("ParentStudents")
+
+  messageThreads MessageThread[]
+}
+
+/**
+ * A conversation between one parent and their child's teaching team (that
+ * student's teacher, plus any admin/staff) — one thread per (student, parent)
+ * pair, not per staff member, so any authorized staff member can view and
+ * reply.
+ */
+model MessageThread {
+  id        String   @id @default(cuid())
+  studentId String
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  parentId  String
+  parent    Parent   @relation(fields: [parentId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  messages Message[]
+
+  @@unique([studentId, parentId])
+}
+
+model Message {
+  id        String        @id @default(cuid())
+  threadId  String
+  thread    MessageThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+  senderId  String
+  sender    User          @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  body      String
+  createdAt DateTime      @default(now())
 }
 
 /**
@@ -203,8 +244,20 @@ model Enrollment {
   attendance     Attendance[]
   weeklyReports  WeeklyReport[]
   monthlyReports MonthlyReport[]
+  assignments    Assignment[]
 
   @@unique([studentId, courseId])
+}
+
+model Assignment {
+  id           String    @id @default(cuid())
+  enrollmentId String
+  enrollment   Enrollment @relation(fields: [enrollmentId], references: [id], onDelete: Cascade)
+  title        String
+  description  String?
+  dueDate      DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 }
 
 model ProgressNote {

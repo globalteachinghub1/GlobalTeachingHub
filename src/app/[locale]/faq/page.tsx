@@ -3,12 +3,7 @@ import { headers } from "next/headers";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { FaqList } from "@/components/sections/faq-list";
 import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
@@ -65,18 +60,7 @@ export default async function FaqPage({ params }: PageProps) {
             <p className="mt-3 text-muted-foreground">{t("subtitle")}</p>
           </div>
 
-          <Accordion className="mt-10">
-            {faqs.map((faq) => (
-              <AccordionItem key={faq.question} value={faq.question}>
-                <AccordionTrigger className="text-base">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent>
-                  <p className="text-muted-foreground">{faq.answer}</p>
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <FaqList />
         </section>
       </main>
       <Footer />

@@ -3,12 +3,19 @@ import { prisma } from "@/lib/prisma";
 import { generateResetToken } from "@/lib/reset-token";
 import { sendPasswordResetEmail } from "@/lib/mailer";
 import { requireEmail, type FieldErrors } from "@/lib/validation";
+import { getClientIp, rateLimit, rateLimitResponse } from "@/lib/rate-limit";
 
 function getSiteUrl() {
   return process.env.SITE_URL ?? "http://localhost:3000";
 }
 
 export async function POST(request: Request) {
+  const limited = rateLimit(`forgot-password:${getClientIp(request)}`, {
+    limit: 5,
+    windowMs: 60 * 60 * 1000,
+  });
+  if (!limited.ok) return rateLimitResponse(limited.retryAfterSeconds);
+
   let body: unknown;
   try {
     body = await request.json();

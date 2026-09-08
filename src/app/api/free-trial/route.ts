@@ -8,8 +8,15 @@ import {
   requireString,
   type FieldErrors,
 } from "@/lib/validation";
+import { getClientIp, rateLimit, rateLimitResponse } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const limited = rateLimit(`free-trial:${getClientIp(request)}`, {
+    limit: 5,
+    windowMs: 60 * 60 * 1000,
+  });
+  if (!limited.ok) return rateLimitResponse(limited.retryAfterSeconds);
+
   let body: unknown;
   try {
     body = await request.json();
@@ -30,6 +37,7 @@ export async function POST(request: Request) {
     min: 1,
     max: 100,
   });
+  const message = typeof data.message === "string" ? data.message.trim() || null : null;
 
   let matchedCourse: { id: string; name: string } | null = null;
   if (courseId) {
@@ -50,6 +58,7 @@ export async function POST(request: Request) {
       email,
       phone,
       courseId: matchedCourse?.id ?? null,
+      message,
       source: "FREE_TRIAL",
     },
   });
@@ -72,6 +81,7 @@ export async function POST(request: Request) {
         { label: "Phone / WhatsApp", value: phone },
         { label: "Email", value: email },
         { label: "Course", value: courseName },
+        ...(message ? [{ label: "Goals / Notes", value: message }] : []),
       ],
     });
   } catch (error) {

@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContactForm } from "@/components/sections/contact-form";
+import { buttonVariants } from "@/components/ui/button";
 import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
+
+const WHATSAPP_NUMBER = "923195459398";
+const MAP_QUERY = "Lahore, Pakistan";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -59,8 +63,35 @@ export default async function ContactPage({ params }: PageProps) {
             ))}
           </div>
 
+          <div className="mx-auto mt-8 flex justify-center">
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ variant: "outline", size: "lg", className: "gap-2" })}
+            >
+              <MessageCircle className="h-4 w-4" />
+              {t("whatsappButton")}
+            </a>
+          </div>
+
           <div className="mx-auto mt-8 max-w-lg">
             <ContactForm />
+          </div>
+
+          <div className="mx-auto mt-12 max-w-4xl">
+            <h2 className="text-center text-lg font-semibold text-foreground">
+              {t("mapTitle")}
+            </h2>
+            <div className="mt-4 overflow-hidden rounded-2xl border border-border">
+              <iframe
+                title={t("mapTitle")}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&output=embed`}
+                className="h-80 w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </section>
       </main>

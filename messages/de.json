@@ -75,10 +75,20 @@
     "emailPlaceholder": "sie@beispiel.com",
     "course": "Kurs",
     "selectCourse": "Kurs auswählen",
+    "stepAboutYou": "Über Sie",
+    "stepContactCourse": "Kontakt & Kurs",
+    "stepGoals": "Noch etwas?",
+    "stepIndicator": "Schritt {step} von {total}",
+    "next": "Weiter",
+    "back": "Zurück",
+    "goals": "Ziele / Anmerkungen (optional)",
+    "goalsPlaceholder": "Erzählen Sie uns, was Sie erreichen möchten...",
+    "duplicateEmailNotice": "Es sieht so aus, als hätten Sie mit dieser E-Mail bereits eine Anfrage gesendet — unser Team meldet sich bald bei Ihnen. Sie können trotzdem für einen anderen Kurs fortfahren.",
     "submit": "Meine Kostenlose Probestunde Buchen",
     "submitting": "Wird gesendet...",
     "successTitle": "Vielen Dank! Ihre Anfrage ist eingegangen.",
-    "successBody": "Unser Team wird sich in Kürze bei Ihnen melden, um Ihre kostenlose Probestunde zu vereinbaren."
+    "successBody": "Unser Team wird sich in Kürze bei Ihnen melden, um Ihre kostenlose Probestunde zu vereinbaren.",
+    "successWhatsappNote": "Behalten Sie WhatsApp im Auge — wir melden uns auch dort."
   },
   "ContactForm": {
     "fullName": "Vollständiger Name",
@@ -115,6 +125,8 @@
     "parentContact": "Kontakt der Eltern",
     "courses": "Kurse",
     "noCoursesOpen": "Derzeit sind keine Kurse für die Anmeldung geöffnet.",
+    "agreeTerms": "Ich stimme den <terms>Allgemeinen Geschäftsbedingungen</terms> und der <privacy>Datenschutzrichtlinie</privacy> zu",
+    "termsRequired": "Sie müssen den Allgemeinen Geschäftsbedingungen zustimmen, um fortzufahren.",
     "submit": "Registrieren",
     "submitting": "Konto wird erstellt...",
     "alreadyHaveAccount": "Bereits ein Konto?",
@@ -145,6 +157,15 @@
     "visionBody": "Eine vertrauenswürdige Online-Akademie zu werden, in der Schüler aus Pakistan und der ganzen Welt selbstbewusst lernen, wachsen und ihre Ziele erreichen können.",
     "teachersTitle": "Unsere Lehrer",
     "teachersBody": "Jeder Unterricht wird von einem qualifizierten, erfahrenen Lehrer geleitet, der sich für Ihren Fortschritt einsetzt, mit flexibler Zeitplanung passend zu Ihrem Leben.",
+    "storyTitle": "Unsere Geschichte",
+    "storyBody": "Global Teaching Hub begann mit einer einfachen Idee: Schüler sollten nicht zwischen Qualität und Bequemlichkeit wählen müssen. Wir haben zunächst einige Schüler mit engagierten Koran- und Tajweed-Lehrern per Videoanruf verbunden und schnell gesehen, wie viel schneller Menschen mit Einzelbetreuung und einem Lehrer lernen, dem ihr Fortschritt wirklich am Herzen liegt. Aus dieser Idee wurde eine vollständige Akademie — zunächst kamen Computerkurse hinzu, dann bauten wir die Werkzeuge, um Schüler und Familien überall auf der Welt zu unterstützen.",
+    "timelineTitle": "Unser Werdegang",
+    "timeline": [
+      { "title": "Der Anfang", "description": "Start mit Live-Einzelunterricht in Koran und Tajweed für eine kleine Gruppe von Schülern." },
+      { "title": "Wachsendes Lehrerteam", "description": "Wir haben mehr qualifizierte, erfahrene Lehrer eingestellt, um den Unterricht trotz wachsender Nachfrage persönlich zu halten." },
+      { "title": "Erweiterung unserer Kurse", "description": "Computerkurse kamen hinzu, von MS Office bis zu den Grundlagen der Programmierung." },
+      { "title": "Schüler weltweit erreichen", "description": "Wir haben eine mehrsprachige Plattform mit Schüler- und Elternportalen aufgebaut, um Familien überall zu unterstützen." }
+    ],
     "ctaTitle": "Bereit, mit dem Lernen zu beginnen?",
     "ctaBody": "Buchen Sie eine kostenlose Probestunde und erleben Sie Global Teaching Hub selbst.",
     "ctaButton": "Kostenlose Probestunde Buchen"
@@ -152,26 +173,33 @@
   "Faq": {
     "title": "Häufig Gestellte Fragen",
     "subtitle": "Alles, was Sie über das Lernen mit Global Teaching Hub wissen müssen.",
+    "searchPlaceholder": "Fragen durchsuchen...",
+    "noResults": "Keine Fragen entsprechen Ihrer Suche.",
     "items": [
       {
         "question": "Wie funktioniert der Online-Unterricht?",
-        "answer": "Der Unterricht findet live, im Einzelunterricht, per Videoanruf mit einem festen Lehrer statt. Die Sitzungen werden zu einer für Sie passenden Zeit geplant, und Aufzeichnungen werden anschließend geteilt, damit Sie jede Lektion wiederholen können."
+        "answer": "Der Unterricht findet live, im Einzelunterricht, per Videoanruf mit einem festen Lehrer statt. Die Sitzungen werden zu einer für Sie passenden Zeit geplant, und Aufzeichnungen werden anschließend geteilt, damit Sie jede Lektion wiederholen können.",
+        "category": "Unterricht & Anmeldung"
       },
       {
         "question": "Welche Kurse bieten Sie derzeit an?",
-        "answer": "Wir bieten derzeit Koran mit Tajweed (einschließlich Übersetzung und Tafsir) sowie Computerkurse (MS Word, PowerPoint und Programmiersprachen) an. Weitere Kurse folgen in Kürze."
+        "answer": "Wir bieten derzeit Koran mit Tajweed (einschließlich Übersetzung und Tafsir) sowie Computerkurse (MS Word, PowerPoint und Programmiersprachen) an. Weitere Kurse folgen in Kürze.",
+        "category": "Unterricht & Anmeldung"
       },
       {
         "question": "Wie buche ich eine kostenlose Probestunde?",
-        "answer": "Klicken Sie auf der Startseite auf „Kostenlose Probestunde Buchen“, geben Sie Ihre Daten und den gewünschten Kurs ein, und unser Team kontaktiert Sie, um Ihre kostenlose Probestunde zu vereinbaren."
+        "answer": "Klicken Sie auf der Startseite auf „Kostenlose Probestunde Buchen“, geben Sie Ihre Daten und den gewünschten Kurs ein, und unser Team kontaktiert Sie, um Ihre kostenlose Probestunde zu vereinbaren.",
+        "category": "Unterricht & Anmeldung"
       },
       {
         "question": "Was benötige ich, um am Unterricht teilzunehmen?",
-        "answer": "Sie benötigen lediglich eine stabile Internetverbindung und einen Laptop, ein Tablet oder ein Smartphone mit Kamera und Mikrofon, um am Unterricht teilzunehmen."
+        "answer": "Sie benötigen lediglich eine stabile Internetverbindung und einen Laptop, ein Tablet oder ein Smartphone mit Kamera und Mikrofon, um am Unterricht teilzunehmen.",
+        "category": "Technisches"
       },
       {
         "question": "Wie kann ich den Support kontaktieren?",
-        "answer": "Sie erreichen uns jederzeit über die Kontaktseite oder über die im Footer angegebene Telefonnummer und E-Mail-Adresse."
+        "answer": "Sie erreichen uns jederzeit über die Kontaktseite oder über die im Footer angegebene Telefonnummer und E-Mail-Adresse.",
+        "category": "Support"
       }
     ]
   },
@@ -260,12 +288,16 @@
   },
   "ContactPage": {
     "title": "Kontaktieren Sie Uns",
-    "subtitle": "Haben Sie eine Frage? Senden Sie uns eine Nachricht, und unser Team meldet sich bei Ihnen."
+    "subtitle": "Haben Sie eine Frage? Senden Sie uns eine Nachricht, und unser Team meldet sich bei Ihnen.",
+    "whatsappButton": "Per WhatsApp chatten",
+    "mapTitle": "So Finden Sie Uns"
   },
   "CoursesPage": {
     "title": "Unsere Kurse",
     "subtitle": "Entdecken Sie unser aktuelles Kursangebot und beginnen Sie noch heute Ihre Lernreise.",
     "noCourses": "Derzeit sind keine Kurse verfügbar — schauen Sie bald wieder vorbei.",
+    "searchPlaceholder": "Kurse durchsuchen...",
+    "noResults": "Keine Kurse entsprechen Ihrer Suche.",
     "getInTouch": "Kontakt Aufnehmen"
   },
   "FreeTrialPage": {
@@ -273,7 +305,13 @@
     "subtitle": "Geben Sie Ihre Daten ein, und unser Team plant Ihre kostenlose Probestunde."
   },
   "CourseDetailPage": {
+    "curriculumTitle": "Lehrplan",
     "whatYoullLearn": "Was Sie Lernen Werden",
+    "outcomesTitle": "Was Sie Erreichen Werden",
+    "pricingTitle": "Preise",
+    "pricingDefault": "Individuelle Preise je nach Zeitplan und Zielen — buchen Sie eine kostenlose Probestunde, um Details zu besprechen.",
+    "faqTitle": "Häufig Gestellte Fragen",
+    "viewAllFaqs": "Alle Fragen ansehen",
     "bookDemo": "Kostenlose Probestunde Buchen",
     "backToAllCourses": "Zurück zu allen Kursen"
   },
@@ -319,6 +357,10 @@
     "myEnrollments": "Meine Anmeldungen",
     "notEnrolledYet": "Sie sind noch für keinen Kurs angemeldet.",
     "scheduleNotSet": "Zeitplan noch nicht festgelegt",
+    "upcomingClasses": "Bevorstehender Unterricht",
+    "noUpcomingClasses": "Noch kein Unterricht geplant.",
+    "assignments": "Aufgaben",
+    "assignmentDue": "Fällig am {date}",
     "recentInvoices": "Neueste Rechnungen",
     "viewAll": "Alle anzeigen",
     "noInvoicesYet": "Noch keine Rechnungen.",
@@ -373,7 +415,13 @@
     "invoices": "Rechnungen",
     "noInvoicesYet": "Noch keine Rechnungen.",
     "notifications": "Benachrichtigungen",
-    "noNotificationsYet": "Noch keine Benachrichtigungen."
+    "noNotificationsYet": "Noch keine Benachrichtigungen.",
+    "messages": "Nachrichten",
+    "noMessagesYet": "Noch keine Nachrichten — sagen Sie Hallo.",
+    "messagePlaceholder": "Nachricht schreiben...",
+    "messagesLoadError": "Nachrichten konnten nicht geladen werden. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+    "messageSendError": "Nachricht konnte nicht gesendet werden. Versuchen Sie es erneut.",
+    "retry": "Erneut versuchen"
   },
   "TestimonialsSection": {
     "title": "Das Sagen Unsere Schüler",

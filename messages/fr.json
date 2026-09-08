@@ -75,10 +75,20 @@
     "emailPlaceholder": "vous@exemple.com",
     "course": "Cours",
     "selectCourse": "Sélectionnez un cours",
+    "stepAboutYou": "À Propos de Vous",
+    "stepContactCourse": "Contact et Cours",
+    "stepGoals": "Autre Chose ?",
+    "stepIndicator": "Étape {step} sur {total}",
+    "next": "Suivant",
+    "back": "Retour",
+    "goals": "Objectifs / Notes (facultatif)",
+    "goalsPlaceholder": "Dites-nous ce que vous aimeriez accomplir...",
+    "duplicateEmailNotice": "Il semble que vous ayez déjà envoyé une demande avec cet e-mail — notre équipe vous contactera bientôt. Vous pouvez tout de même continuer pour un autre cours.",
     "submit": "Réserver Mon Cours d'Essai Gratuit",
     "submitting": "Envoi en cours...",
     "successTitle": "Merci ! Votre demande a bien été reçue.",
-    "successBody": "Notre équipe vous contactera prochainement pour planifier votre cours d'essai gratuit."
+    "successBody": "Notre équipe vous contactera prochainement pour planifier votre cours d'essai gratuit.",
+    "successWhatsappNote": "Gardez un œil sur WhatsApp — nous vous contacterons aussi là-bas."
   },
   "ContactForm": {
     "fullName": "Nom Complet",
@@ -115,6 +125,8 @@
     "parentContact": "Contact du Parent",
     "courses": "Cours",
     "noCoursesOpen": "Aucun cours n'est actuellement ouvert aux inscriptions.",
+    "agreeTerms": "J'accepte les <terms>Conditions Générales</terms> et la <privacy>Politique de Confidentialité</privacy>",
+    "termsRequired": "Vous devez accepter les Conditions Générales pour continuer.",
     "submit": "S'inscrire",
     "submitting": "Création du compte...",
     "alreadyHaveAccount": "Vous avez déjà un compte ?",
@@ -145,6 +157,15 @@
     "visionBody": "Devenir une académie en ligne de confiance où les élèves du Pakistan et du monde entier peuvent apprendre, progresser et atteindre leurs objectifs en toute confiance.",
     "teachersTitle": "Nos Enseignants",
     "teachersBody": "Chaque cours est dispensé par un enseignant qualifié et expérimenté, engagé envers vos progrès, avec des horaires flexibles adaptés à votre vie.",
+    "storyTitle": "Notre Histoire",
+    "storyBody": "Global Teaching Hub est né d'une idée simple : les élèves ne devraient pas avoir à choisir entre qualité et confort. Nous avons commencé en mettant en relation quelques élèves avec des enseignants dévoués de Coran et de Tajwid par appel vidéo, et nous avons rapidement constaté à quel point on apprend plus vite avec une attention individuelle et un enseignant réellement investi dans nos progrès. Cette idée est devenue une académie complète — en ajoutant d'abord des Cours d'Informatique, puis en développant les outils nécessaires pour accompagner élèves et familles partout dans le monde.",
+    "timelineTitle": "Notre Parcours",
+    "timeline": [
+      { "title": "Les Débuts", "description": "Lancement de cours en direct, individuels, de Coran et Tajwid pour un petit groupe d'élèves." },
+      { "title": "Une Équipe Pédagogique Grandissante", "description": "Nous avons recruté davantage d'enseignants qualifiés et expérimentés pour garder des cours personnalisés malgré une demande croissante." },
+      { "title": "Élargissement de Nos Cours", "description": "Ajout des Cours d'Informatique, de MS Office aux bases de la programmation." },
+      { "title": "Des Élèves Partout dans le Monde", "description": "Construction d'une plateforme multilingue avec des portails élèves et parents pour accompagner les familles où qu'elles soient." }
+    ],
     "ctaTitle": "Prêt à commencer à apprendre ?",
     "ctaBody": "Réservez un cours d'essai gratuit et découvrez Global Teaching Hub par vous-même.",
     "ctaButton": "Réserver un Cours d'Essai Gratuit"
@@ -152,26 +173,33 @@
   "Faq": {
     "title": "Foire Aux Questions",
     "subtitle": "Tout ce que vous devez savoir sur l'apprentissage avec Global Teaching Hub.",
+    "searchPlaceholder": "Rechercher des questions...",
+    "noResults": "Aucune question ne correspond à votre recherche.",
     "items": [
       {
         "question": "Comment se déroulent les cours en ligne ?",
-        "answer": "Les cours se déroulent en direct, en tête-à-tête, par appel vidéo avec un enseignant dédié. Les séances sont programmées à l'heure qui vous convient, et les enregistrements sont partagés ensuite afin que vous puissiez revoir chaque leçon."
+        "answer": "Les cours se déroulent en direct, en tête-à-tête, par appel vidéo avec un enseignant dédié. Les séances sont programmées à l'heure qui vous convient, et les enregistrements sont partagés ensuite afin que vous puissiez revoir chaque leçon.",
+        "category": "Cours et Inscription"
       },
       {
         "question": "Quels cours proposez-vous actuellement ?",
-        "answer": "Nous proposons actuellement le Coran avec Tajwid (y compris la Traduction et le Tafsir) et des Cours d'Informatique (MS Word, PowerPoint et langages de programmation). D'autres cours seront bientôt ajoutés."
+        "answer": "Nous proposons actuellement le Coran avec Tajwid (y compris la Traduction et le Tafsir) et des Cours d'Informatique (MS Word, PowerPoint et langages de programmation). D'autres cours seront bientôt ajoutés.",
+        "category": "Cours et Inscription"
       },
       {
         "question": "Comment réserver un cours d'essai gratuit ?",
-        "answer": "Cliquez sur « Réserver un Cours d'Essai Gratuit » sur la page d'accueil, indiquez vos coordonnées et le cours souhaité, et notre équipe vous contactera pour planifier votre cours d'essai gratuit."
+        "answer": "Cliquez sur « Réserver un Cours d'Essai Gratuit » sur la page d'accueil, indiquez vos coordonnées et le cours souhaité, et notre équipe vous contactera pour planifier votre cours d'essai gratuit.",
+        "category": "Cours et Inscription"
       },
       {
         "question": "De quoi ai-je besoin pour assister à un cours ?",
-        "answer": "Une connexion internet stable et un ordinateur portable, une tablette ou un smartphone avec caméra et microphone suffisent pour rejoindre un cours."
+        "answer": "Une connexion internet stable et un ordinateur portable, une tablette ou un smartphone avec caméra et microphone suffisent pour rejoindre un cours.",
+        "category": "Technique"
       },
       {
         "question": "Comment puis-je contacter le support ?",
-        "answer": "Vous pouvez nous joindre à tout moment via la page Contact, ou par téléphone et e-mail indiqués dans le pied de page."
+        "answer": "Vous pouvez nous joindre à tout moment via la page Contact, ou par téléphone et e-mail indiqués dans le pied de page.",
+        "category": "Support"
       }
     ]
   },
@@ -260,12 +288,16 @@
   },
   "ContactPage": {
     "title": "Contactez-Nous",
-    "subtitle": "Vous avez une question ? Envoyez-nous un message et notre équipe vous répondra."
+    "subtitle": "Vous avez une question ? Envoyez-nous un message et notre équipe vous répondra.",
+    "whatsappButton": "Discuter sur WhatsApp",
+    "mapTitle": "Nous Trouver"
   },
   "CoursesPage": {
     "title": "Nos Cours",
     "subtitle": "Découvrez notre offre de cours actuelle et commencez dès aujourd'hui votre parcours d'apprentissage.",
     "noCourses": "Aucun cours n'est disponible pour le moment — revenez bientôt.",
+    "searchPlaceholder": "Rechercher des cours...",
+    "noResults": "Aucun cours ne correspond à votre recherche.",
     "getInTouch": "Contactez-Nous"
   },
   "FreeTrialPage": {
@@ -273,7 +305,13 @@
     "subtitle": "Indiquez vos coordonnées et notre équipe planifiera votre cours d'essai gratuit."
   },
   "CourseDetailPage": {
+    "curriculumTitle": "Programme",
     "whatYoullLearn": "Ce Que Vous Allez Apprendre",
+    "outcomesTitle": "Ce Que Vous Allez Accomplir",
+    "pricingTitle": "Tarifs",
+    "pricingDefault": "Tarifs personnalisés selon votre emploi du temps et vos objectifs — réservez un cours d'essai gratuit pour en discuter.",
+    "faqTitle": "Foire Aux Questions",
+    "viewAllFaqs": "Voir toutes les questions",
     "bookDemo": "Réserver un Cours d'Essai Gratuit",
     "backToAllCourses": "Retour à tous les cours"
   },
@@ -319,6 +357,10 @@
     "myEnrollments": "Mes Inscriptions",
     "notEnrolledYet": "Vous n'êtes inscrit à aucun cours pour le moment.",
     "scheduleNotSet": "Horaire pas encore défini",
+    "upcomingClasses": "Prochains Cours",
+    "noUpcomingClasses": "Aucun cours programmé pour le moment.",
+    "assignments": "Devoirs",
+    "assignmentDue": "À rendre le {date}",
     "recentInvoices": "Factures Récentes",
     "viewAll": "Tout voir",
     "noInvoicesYet": "Aucune facture pour le moment.",
@@ -373,7 +415,13 @@
     "invoices": "Factures",
     "noInvoicesYet": "Aucune facture pour le moment.",
     "notifications": "Notifications",
-    "noNotificationsYet": "Aucune notification pour le moment."
+    "noNotificationsYet": "Aucune notification pour le moment.",
+    "messages": "Messages",
+    "noMessagesYet": "Aucun message pour le moment — dites bonjour.",
+    "messagePlaceholder": "Écrire un message...",
+    "messagesLoadError": "Impossible de charger les messages. Vérifiez votre connexion et réessayez.",
+    "messageSendError": "Impossible d'envoyer ce message. Réessayez.",
+    "retry": "Réessayer"
   },
   "TestimonialsSection": {
     "title": "Ce Que Disent Nos Élèves",

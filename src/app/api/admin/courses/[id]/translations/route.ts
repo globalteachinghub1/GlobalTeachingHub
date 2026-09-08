@@ -26,6 +26,8 @@ export async function GET(_request: Request, { params }: Params) {
       summary: t.summary,
       description: t.description,
       topics: t.topics,
+      outcomes: t.outcomes,
+      priceNote: t.priceNote,
     })),
   });
 }
@@ -64,6 +66,12 @@ export async function PUT(request: Request, { params }: Params) {
         .filter((t): t is string => typeof t === "string" && t.trim().length > 0)
         .map((t) => t.trim())
     : [];
+  const outcomes = Array.isArray(data.outcomes)
+    ? data.outcomes
+        .filter((t): t is string => typeof t === "string" && t.trim().length > 0)
+        .map((t) => t.trim())
+    : [];
+  const priceNote = typeof data.priceNote === "string" ? data.priceNote.trim() || null : null;
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ errors }, { status: 422 });
@@ -71,8 +79,8 @@ export async function PUT(request: Request, { params }: Params) {
 
   const translation = await prisma.courseTranslation.upsert({
     where: { courseId_locale: { courseId: id, locale } },
-    update: { name, summary, description, topics },
-    create: { courseId: id, locale, name, summary, description, topics },
+    update: { name, summary, description, topics, outcomes, priceNote },
+    create: { courseId: id, locale, name, summary, description, topics, outcomes, priceNote },
   });
 
   return NextResponse.json({
@@ -82,6 +90,8 @@ export async function PUT(request: Request, { params }: Params) {
       summary: translation.summary,
       description: translation.description,
       topics: translation.topics,
+      outcomes: translation.outcomes,
+      priceNote: translation.priceNote,
     },
   });
 }

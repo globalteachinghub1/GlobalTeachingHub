@@ -10,11 +10,15 @@ type LocalizableCourse = {
   summary: string;
   description: string | null;
   topics: string[];
+  outcomes: string[];
+  priceNote: string | null;
   translations?: {
     name: string;
     summary: string;
     description: string | null;
     topics: string[];
+    outcomes: string[];
+    priceNote: string | null;
   }[];
 };
 
@@ -28,5 +32,7 @@ export function localizeCourse<T extends LocalizableCourse>(course: T) {
     summary: translation.summary,
     description: translation.description,
     topics: translation.topics,
+    outcomes: translation.outcomes,
+    priceNote: translation.priceNote,
   };
 }

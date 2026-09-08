@@ -26,6 +26,7 @@ export default async function AboutPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("About");
+  const timeline = t.raw("timeline") as { title: string; description: string }[];
 
   const VALUES = [
     { icon: Target, title: t("missionTitle"), body: t("missionBody") },
@@ -57,6 +58,32 @@ export default async function AboutPage({ params }: PageProps) {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-3xl px-4 pb-20 sm:px-6 lg:px-8">
+          <h2 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
+            {t("storyTitle")}
+          </h2>
+          <p className="mt-4 text-muted-foreground">{t("storyBody")}</p>
+        </section>
+
+        <section className="bg-secondary/30 py-20">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
+              {t("timelineTitle")}
+            </h2>
+            <ol className="relative mt-12 flex flex-col gap-10 border-s-2 border-primary/20 ps-8">
+              {timeline.map((item, i) => (
+                <li key={item.title} className="relative">
+                  <span className="absolute -start-[2.55rem] flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                    {i + 1}
+                  </span>
+                  <p className="font-semibold text-foreground">{item.title}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </section>
 

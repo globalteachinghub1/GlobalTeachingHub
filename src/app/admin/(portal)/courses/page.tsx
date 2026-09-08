@@ -28,6 +28,8 @@ type Course = {
   description: string | null;
   summary: string;
   topics: string[];
+  outcomes: string[];
+  priceNote: string | null;
   color: string;
   icon: string;
   studentCount: number;
@@ -39,6 +41,8 @@ const EMPTY_FORM = {
   description: "",
   summary: "",
   topics: "",
+  outcomes: "",
+  priceNote: "",
   color: COLOR_OPTIONS[0].value,
   icon: ICON_OPTIONS[0].value,
 };
@@ -78,6 +82,8 @@ export default function AdminCoursesPage() {
       description: course.description ?? "",
       summary: course.summary,
       topics: course.topics.join(", "),
+      outcomes: course.outcomes.join(", "),
+      priceNote: course.priceNote ?? "",
       color: course.color,
       icon: course.icon,
     });
@@ -98,6 +104,11 @@ export default function AdminCoursesPage() {
         .split(",")
         .map((t) => t.trim())
         .filter(Boolean),
+      outcomes: form.outcomes
+        .split(",")
+        .map((t) => t.trim())
+        .filter(Boolean),
+      priceNote: form.priceNote,
       color: form.color,
       icon: form.icon,
     };
@@ -216,13 +227,37 @@ export default function AdminCoursesPage() {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <Label htmlFor="topics">Topics</Label>
+                <Label htmlFor="topics">Topics (Curriculum)</Label>
                 <Input
                   id="topics"
                   placeholder="Comma-separated, e.g. Tajweed, Translation, Tafseer"
                   value={form.topics}
                   onChange={(e) =>
                     setForm((f) => ({ ...f, topics: e.target.value }))
+                  }
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <Label htmlFor="outcomes">Learning Outcomes</Label>
+                <Input
+                  id="outcomes"
+                  placeholder="Comma-separated, e.g. Recite with correct Tajweed rules"
+                  value={form.outcomes}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, outcomes: e.target.value }))
+                  }
+                />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <Label htmlFor="priceNote">Pricing Note</Label>
+                <Input
+                  id="priceNote"
+                  placeholder="e.g. Custom pricing based on schedule — book a free trial to discuss."
+                  value={form.priceNote}
+                  onChange={(e) =>
+                    setForm((f) => ({ ...f, priceNote: e.target.value }))
                   }
                 />
               </div>
@@ -359,9 +394,23 @@ export default function AdminCoursesPage() {
   );
 }
 
-type TranslationForm = { name: string; summary: string; description: string; topics: string };
+type TranslationForm = {
+  name: string;
+  summary: string;
+  description: string;
+  topics: string;
+  outcomes: string;
+  priceNote: string;
+};
 
-const EMPTY_TRANSLATION: TranslationForm = { name: "", summary: "", description: "", topics: "" };
+const EMPTY_TRANSLATION: TranslationForm = {
+  name: "",
+  summary: "",
+  description: "",
+  topics: "",
+  outcomes: "",
+  priceNote: "",
+};
 
 function CourseTranslationsEditor({ courseId }: { courseId: string }) {
   const [translations, setTranslations] = useState<Record<string, TranslationForm> | null>(null);
@@ -383,6 +432,8 @@ function CourseTranslationsEditor({ courseId }: { courseId: string }) {
             summary: t.summary,
             description: t.description ?? "",
             topics: (t.topics ?? []).join(", "),
+            outcomes: (t.outcomes ?? []).join(", "),
+            priceNote: t.priceNote ?? "",
           };
         }
         setTranslations(map);
@@ -420,6 +471,11 @@ function CourseTranslationsEditor({ courseId }: { courseId: string }) {
             .split(",")
             .map((t) => t.trim())
             .filter(Boolean),
+          outcomes: current.outcomes
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean),
+          priceNote: current.priceNote,
         }),
       });
       const data = await res.json();
@@ -463,8 +519,8 @@ function CourseTranslationsEditor({ courseId }: { courseId: string }) {
       <div>
         <p className="text-sm font-semibold text-foreground">Translations</p>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          Optional per-language name, summary, description, and topics. Languages without a
-          translation fall back to the fields above.
+          Optional per-language name, summary, description, topics, outcomes, and pricing note.
+          Languages without a translation fall back to the fields above.
         </p>
       </div>
 
@@ -523,12 +579,29 @@ function CourseTranslationsEditor({ courseId }: { courseId: string }) {
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="t-topics">Topics</Label>
+            <Label htmlFor="t-topics">Topics (Curriculum)</Label>
             <Input
               id="t-topics"
               placeholder="Comma-separated"
               value={current.topics}
               onChange={(e) => updateField("topics", e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="t-outcomes">Learning Outcomes</Label>
+            <Input
+              id="t-outcomes"
+              placeholder="Comma-separated"
+              value={current.outcomes}
+              onChange={(e) => updateField("outcomes", e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="t-priceNote">Pricing Note</Label>
+            <Input
+              id="t-priceNote"
+              value={current.priceNote}
+              onChange={(e) => updateField("priceNote", e.target.value)}
             />
           </div>
 

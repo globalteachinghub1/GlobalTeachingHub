@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { AttendancePanel, type AttendanceRecord } from "@/components/dashboard/attendance-panel";
+import { AssignmentsPanel, type Assignment } from "@/components/dashboard/assignments-panel";
+import { MessagesPanel } from "@/components/dashboard/messages-panel";
 import {
   ReportsPanel,
   type WeeklyReport,
@@ -83,6 +85,7 @@ export default function AdminStudentDetailsPage() {
   const [courses, setCourses] = useState<Course[]>([]);
   const [weeklyReports, setWeeklyReports] = useState<WeeklyReport[]>([]);
   const [monthlyReports, setMonthlyReports] = useState<MonthlyReport[]>([]);
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
 
   useEffect(() => {
     let active = true;
@@ -91,13 +94,15 @@ export default function AdminStudentDetailsPage() {
       fetch("/api/admin/teachers").then((r) => r.json()),
       fetch("/api/admin/courses").then((r) => r.json()),
       fetch(`/api/admin/students/${id}/reports`).then((r) => (r.ok ? r.json() : null)),
-    ]).then(([studentData, teachersData, coursesData, reportsData]) => {
+      fetch(`/api/admin/students/${id}/assignments`).then((r) => (r.ok ? r.json() : null)),
+    ]).then(([studentData, teachersData, coursesData, reportsData, assignmentsData]) => {
       if (!active) return;
       setStudent(studentData?.student ?? null);
       setTeachers(teachersData.teachers ?? []);
       setCourses(coursesData.courses ?? []);
       setWeeklyReports(reportsData?.weeklyReports ?? []);
       setMonthlyReports(reportsData?.monthlyReports ?? []);
+      setAssignments(assignmentsData?.assignments ?? []);
     });
     return () => {
       active = false;
@@ -126,6 +131,7 @@ export default function AdminStudentDetailsPage() {
       courses={courses}
       weeklyReports={weeklyReports}
       monthlyReports={monthlyReports}
+      assignments={assignments}
     />
   );
 }
@@ -134,6 +140,7 @@ function StudentEditor({
   student,
   weeklyReports,
   monthlyReports,
+  assignments,
   teachers,
   courses,
 }: {
@@ -142,6 +149,7 @@ function StudentEditor({
   courses: Course[];
   weeklyReports: WeeklyReport[];
   monthlyReports: MonthlyReport[];
+  assignments: Assignment[];
 }) {
   const router = useRouter();
   const [deleting, setDeleting] = useState(false);
@@ -668,6 +676,14 @@ function StudentEditor({
         initialWeekly={weeklyReports}
         initialMonthly={monthlyReports}
       />
+
+      <AssignmentsPanel
+        apiBase={`/api/admin/students/${student.id}`}
+        enrollments={enrollments.map((e) => ({ id: e.id, courseName: e.courseName }))}
+        initialAssignments={assignments}
+      />
+
+      <MessagesPanel apiBase={`/api/admin/students/${student.id}`} />
     </div>
   );
 }

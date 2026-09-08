@@ -21,6 +21,7 @@ const EMPTY_FORM = {
   parentName: "",
   parentContact: "",
   courseIds: [] as string[],
+  acceptedTerms: false,
 };
 
 export function RegisterForm({ courses }: { courses: Course[] }) {
@@ -45,6 +46,12 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
     e.preventDefault();
     setSubmitError(null);
     setErrors({});
+
+    if (!form.acceptedTerms) {
+      setErrors({ acceptedTerms: t("termsRequired") });
+      return;
+    }
+
     setSubmitting(true);
 
     try {
@@ -208,6 +215,46 @@ export function RegisterForm({ courses }: { courses: Course[] }) {
         </div>
         {errors.courseIds && (
           <p className="text-xs text-destructive">{errors.courseIds}</p>
+        )}
+      </div>
+
+      <div className="flex flex-col gap-1.5">
+        <label className="flex items-start gap-2 text-sm text-muted-foreground">
+          <input
+            type="checkbox"
+            checked={form.acceptedTerms}
+            onChange={(e) => {
+              setForm((f) => ({ ...f, acceptedTerms: e.target.checked }));
+              if (e.target.checked) setErrors((err) => ({ ...err, acceptedTerms: "" }));
+            }}
+            aria-invalid={!!errors.acceptedTerms}
+            className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-primary"
+          />
+          <span>
+            {t.rich("agreeTerms", {
+              terms: (chunks) => (
+                <Link
+                  href="/terms"
+                  target="_blank"
+                  className="font-medium text-primary hover:underline"
+                >
+                  {chunks}
+                </Link>
+              ),
+              privacy: (chunks) => (
+                <Link
+                  href="/privacy"
+                  target="_blank"
+                  className="font-medium text-primary hover:underline"
+                >
+                  {chunks}
+                </Link>
+              ),
+            })}
+          </span>
+        </label>
+        {errors.acceptedTerms && (
+          <p className="text-xs text-destructive">{errors.acceptedTerms}</p>
         )}
       </div>
 

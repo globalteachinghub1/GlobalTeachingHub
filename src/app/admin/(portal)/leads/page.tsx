@@ -54,25 +54,33 @@ const SOURCE_LABEL: Record<string, string> = {
 
 export default function AdminLeadsPage() {
   const [leads, setLeads] = useState<Lead[] | null>(null);
+  const [loadError, setLoadError] = useState(false);
   const [sourceFilter, setSourceFilter] = useState("ALL");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [notes, setNotes] = useState<Note[] | null>(null);
+  const [notesError, setNotesError] = useState(false);
   const [newNote, setNewNote] = useState("");
   const [addingNote, setAddingNote] = useState(false);
   const [converting, setConverting] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [reloadToken, setReloadToken] = useState(0);
 
   useEffect(() => {
     let active = true;
     fetch("/api/admin/leads")
-      .then((r) => r.json())
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((data) => {
-        if (active) setLeads(data.leads ?? []);
+        if (!active) return;
+        setLoadError(false);
+        setLeads(data.leads ?? []);
+      })
+      .catch(() => {
+        if (active) setLoadError(true);
       });
     return () => {
       active = false;
     };
-  }, []);
+  }, [reloadToken]);
 
   const filtered = useMemo(() => {
     if (!leads) return null;
@@ -91,9 +99,11 @@ export default function AdminLeadsPage() {
   function openLead(lead: Lead) {
     setSelectedId(lead.id);
     setNotes(null);
+    setNotesError(false);
     fetch(`/api/admin/leads/${lead.id}/notes`)
-      .then((r) => r.json())
-      .then((data) => setNotes(data.notes ?? []));
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((data) => setNotes(data.notes ?? []))
+      .catch(() => setNotesError(true));
   }
 
   async function handleStageChange(lead: Lead, stage: string) {
@@ -191,7 +201,27 @@ export default function AdminLeadsPage() {
         ))}
       </div>
 
-      {filtered === null && (
+      {loadError && (
+        <div className="rounded-lg border border-dashed border-destructive/40 py-16 text-center">
+          <p className="text-sm text-destructive">
+            Couldn&apos;t load leads. Check your connection and try again.
+          </p>
+          <Button
+            size="sm"
+            variant="outline"
+            className="mt-3"
+            onClick={() => {
+              setLeads(null);
+              setLoadError(false);
+              setReloadToken((n) => n + 1);
+            }}
+          >
+            Retry
+          </Button>
+        </div>
+      )}
+
+      {!loadError && filtered === null && (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {Array.from({ length: 5 }).map((_, i) => (
             <Card key={i} className="border-none bg-background shadow-none">
@@ -340,7 +370,10 @@ export default function AdminLeadsPage() {
                   </Button>
                 </div>
                 <div className="flex flex-col gap-2">
-                  {notes === null && (
+                  {notesError && (
+                    <p className="text-xs text-destructive">Couldn&apos;t load notes.</p>
+                  )}
+                  {!notesError && notes === null && (
                     <div className="h-4 w-full animate-pulse rounded bg-secondary/70" />
                   )}
                   {notes?.length === 0 && (

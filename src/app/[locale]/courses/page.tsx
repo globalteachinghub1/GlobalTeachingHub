@@ -3,10 +3,9 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { Card, CardContent } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
+import { CourseSearch } from "@/components/sections/course-search";
 import { prisma } from "@/lib/prisma";
-import { getIconComponent } from "@/lib/course-icons";
 import { localizeCourse } from "@/lib/course-translations";
 import { buildMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
@@ -49,38 +48,13 @@ export default async function CoursesPage({ params }: PageProps) {
             <p className="mt-3 text-muted-foreground">{t("subtitle")}</p>
           </div>
 
-          {courses.length === 0 && (
+          {courses.length === 0 ? (
             <p className="mt-12 text-center text-muted-foreground">
               {t("noCourses")}
             </p>
+          ) : (
+            <CourseSearch courses={courses} />
           )}
-
-          <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
-            {courses.map(({ slug, icon, name, color, description }) => {
-              const Icon = getIconComponent(icon);
-              return (
-                <Link key={slug} href={`/courses/${slug}`} className="block">
-                  <Card className="h-full border-none bg-secondary/40 shadow-none transition hover:-translate-y-1 hover:shadow-md">
-                    <CardContent className="flex flex-col items-center gap-4 p-8 text-center">
-                      <span
-                        className={`flex h-14 w-14 items-center justify-center rounded-xl ${color}`}
-                      >
-                        <Icon className="h-7 w-7" />
-                      </span>
-                      <p className="text-lg font-semibold text-foreground">
-                        {name}
-                      </p>
-                      {description && (
-                        <p className="text-sm text-muted-foreground">
-                          {description}
-                        </p>
-                      )}
-                    </CardContent>
-                  </Card>
-                </Link>
-              );
-            })}
-          </div>
 
           <div className="mt-12 flex justify-center">
             <Link href="/contact" className={buttonVariants({ size: "lg" })}>

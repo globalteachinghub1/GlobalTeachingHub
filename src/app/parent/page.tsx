@@ -5,6 +5,7 @@ import { Bell, MessageSquareText, Receipt, Users } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { getIconComponent } from "@/lib/course-icons";
+import { ChildMessages } from "@/components/dashboard/child-messages";
 
 type Invoice = { id: string; description: string; amount: string; date: string; status: string };
 type Notification = { id: string; message: string; date: string };
@@ -288,6 +289,8 @@ export default function ParentOverviewPage() {
               </div>
             </div>
           </div>
+
+          <ChildMessages studentId={child.id} />
         </div>
       ))}
     </div>

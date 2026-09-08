@@ -13,6 +13,8 @@ import {
   type WeeklyReport,
   type MonthlyReport,
 } from "@/components/dashboard/reports-panel";
+import { AssignmentsPanel, type Assignment } from "@/components/dashboard/assignments-panel";
+import { MessagesPanel } from "@/components/dashboard/messages-panel";
 
 type Note = { id: string; note: string; date: string };
 type EnrollmentDetail = {
@@ -36,17 +38,20 @@ export default function TeacherStudentProgressPage() {
   const [student, setStudent] = useState<StudentDetail | null | undefined>(undefined);
   const [weeklyReports, setWeeklyReports] = useState<WeeklyReport[]>([]);
   const [monthlyReports, setMonthlyReports] = useState<MonthlyReport[]>([]);
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
 
   useEffect(() => {
     let active = true;
     Promise.all([
       fetch(`/api/teacher/students/${id}`).then((r) => (r.ok ? r.json() : null)),
       fetch(`/api/teacher/students/${id}/reports`).then((r) => (r.ok ? r.json() : null)),
-    ]).then(([studentData, reportsData]) => {
+      fetch(`/api/teacher/students/${id}/assignments`).then((r) => (r.ok ? r.json() : null)),
+    ]).then(([studentData, reportsData, assignmentsData]) => {
       if (!active) return;
       setStudent(studentData?.student ?? null);
       setWeeklyReports(reportsData?.weeklyReports ?? []);
       setMonthlyReports(reportsData?.monthlyReports ?? []);
+      setAssignments(assignmentsData?.assignments ?? []);
     });
     return () => {
       active = false;
@@ -78,6 +83,7 @@ export default function TeacherStudentProgressPage() {
       student={student}
       weeklyReports={weeklyReports}
       monthlyReports={monthlyReports}
+      assignments={assignments}
     />
   );
 }
@@ -86,10 +92,12 @@ function ProgressEditor({
   student,
   weeklyReports,
   monthlyReports,
+  assignments,
 }: {
   student: StudentDetail;
   weeklyReports: WeeklyReport[];
   monthlyReports: MonthlyReport[];
+  assignments: Assignment[];
 }) {
   const [level, setLevel] = useState(student.level);
   const [progress, setProgress] = useState(student.progress);
@@ -232,6 +240,14 @@ function ProgressEditor({
         initialWeekly={weeklyReports}
         initialMonthly={monthlyReports}
       />
+
+      <AssignmentsPanel
+        apiBase={`/api/teacher/students/${student.id}`}
+        enrollments={student.enrollments.map((e) => ({ id: e.id, courseName: e.courseName }))}
+        initialAssignments={assignments}
+      />
+
+      <MessagesPanel apiBase={`/api/teacher/students/${student.id}`} />
     </div>
   );
 }

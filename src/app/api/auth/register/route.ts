@@ -9,8 +9,15 @@ import {
   requireString,
   type FieldErrors,
 } from "@/lib/validation";
+import { getClientIp, rateLimit, rateLimitResponse } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const limited = rateLimit(`register:${getClientIp(request)}`, {
+    limit: 5,
+    windowMs: 60 * 60 * 1000,
+  });
+  if (!limited.ok) return rateLimitResponse(limited.retryAfterSeconds);
+
   let body: unknown;
   try {
     body = await request.json();
@@ -39,6 +46,10 @@ export async function POST(request: Request) {
     : [];
   if (courseIds.length === 0) {
     errors.courseIds = "Select at least one course to enroll in.";
+  }
+
+  if (data.acceptedTerms !== true) {
+    errors.acceptedTerms = "You must accept the Terms & Conditions to continue.";
   }
 
   if (Object.keys(errors).length > 0) {

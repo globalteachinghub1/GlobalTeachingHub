@@ -28,6 +28,8 @@ export async function GET() {
       description: c.description,
       summary: c.summary,
       topics: c.topics,
+      outcomes: c.outcomes,
+      priceNote: c.priceNote,
       color: c.color,
       icon: c.icon,
       studentCount: c._count.enrollments,
@@ -65,6 +67,10 @@ export async function POST(request: Request) {
   const topics = Array.isArray(data.topics)
     ? data.topics.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map((t) => t.trim())
     : [];
+  const outcomes = Array.isArray(data.outcomes)
+    ? data.outcomes.filter((t): t is string => typeof t === "string" && t.trim().length > 0).map((t) => t.trim())
+    : [];
+  const priceNote = typeof data.priceNote === "string" ? data.priceNote.trim() || null : null;
 
   if (Object.keys(errors).length > 0) {
     return NextResponse.json({ errors }, { status: 422 });
@@ -79,7 +85,7 @@ export async function POST(request: Request) {
   }
 
   const course = await prisma.course.create({
-    data: { slug, name, description, summary, topics, color, icon },
+    data: { slug, name, description, summary, topics, outcomes, priceNote, color, icon },
   });
 
   return NextResponse.json({
@@ -90,6 +96,8 @@ export async function POST(request: Request) {
       description: course.description,
       summary: course.summary,
       topics: course.topics,
+      outcomes: course.outcomes,
+      priceNote: course.priceNote,
       color: course.color,
       icon: course.icon,
       studentCount: 0,
