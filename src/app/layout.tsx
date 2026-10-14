@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION } from "@/lib/seo";
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, SITE_KEYWORDS, OG_IMAGE } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,32 +17,65 @@ const geistMono = Geist_Mono({
 
 const TITLE = `${SITE_NAME} — Learn from Expert Teachers, Anytime, Anywhere`;
 
+// GA4 measurement ID (e.g. "G-XXXXXXXXXX"). Unset → no analytics at all.
+const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: SITE_KEYWORDS,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "education",
   alternates: { canonical: SITE_URL },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: TITLE,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_NAME,
     type: "website",
-    images: [{ url: `${SITE_URL}/logo-full.png` }],
+    images: [OG_IMAGE],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: TITLE,
     description: SITE_DESCRIPTION,
-    images: [`${SITE_URL}/logo-full.png`],
+    images: [OG_IMAGE.url],
+  },
+  // Ownership-verification meta tags for Google Search Console and Bing
+  // Webmaster Tools. Set the codes as env vars in the hosting dashboard;
+  // unset vars render nothing.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : undefined,
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The gtag scripts need the per-request CSP nonce. Only read headers when
+  // analytics is enabled, so pages stay statically renderable otherwise.
+  const nonce = GA_MEASUREMENT_ID ? (await headers()).get("x-nonce") ?? undefined : undefined;
+
   return (
     <html
       lang="en"
@@ -50,6 +85,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         {children}
       </body>
+      {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} nonce={nonce} />}
     </html>
   );
 }

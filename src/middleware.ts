@@ -17,14 +17,19 @@ export function middleware(request: NextRequest) {
   // Refresh) call eval(). It never does in production, so only relax the
   // policy for local development — the deployed site stays fully strict.
   const isDev = process.env.NODE_ENV === "development";
+  // Google Analytics 4 beacons go to these hosts; only allow them when GA is
+  // actually configured (see GA_MEASUREMENT_ID in the root layout).
+  const gaHosts = process.env.GA_MEASUREMENT_ID
+    ? " https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com"
+    : "";
 
   const csp = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ""};
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data:;
+    img-src 'self' data:${gaHosts};
     font-src 'self';
-    connect-src 'self';
+    connect-src 'self'${gaHosts};
     frame-src https://www.google.com;
     object-src 'none';
     base-uri 'self';

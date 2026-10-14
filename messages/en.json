@@ -6,6 +6,7 @@
     "howItWorks": "How It Works",
     "reviews": "Reviews",
     "contact": "Contact",
+    "blog": "Blog",
     "login": "Login",
     "getStarted": "Get Started"
   },
@@ -486,5 +487,15 @@
         "role": "Student"
       }
     ]
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Tips, guides, and insights to help students learn better.",
+    "readMore": "Read more",
+    "backToBlog": "Back to blog",
+    "englishOnly": "This article is currently available in English only.",
+    "ctaTitle": "Ready to start learning?",
+    "ctaButton": "Book a Free Trial",
+    "ctaCourses": "Browse Courses"
   }
 }

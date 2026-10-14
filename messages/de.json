@@ -6,6 +6,7 @@
     "howItWorks": "So funktioniert's",
     "reviews": "Bewertungen",
     "contact": "Kontakt",
+    "blog": "Blog",
     "login": "Anmelden",
     "getStarted": "Loslegen"
   },
@@ -456,5 +457,15 @@
         "role": "Schülerin"
       }
     ]
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Tipps, Leitfäden und Einblicke, die Schülern beim besseren Lernen helfen.",
+    "readMore": "Weiterlesen",
+    "backToBlog": "Zurück zum Blog",
+    "englishOnly": "Dieser Artikel ist derzeit nur auf Englisch verfügbar.",
+    "ctaTitle": "Bereit, mit dem Lernen zu beginnen?",
+    "ctaButton": "Kostenlose Probestunde buchen",
+    "ctaCourses": "Kurse ansehen"
   }
 }

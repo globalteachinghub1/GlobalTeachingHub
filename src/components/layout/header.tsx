@@ -21,6 +21,7 @@ export async function Header() {
     { label: t("courses"), href: "/courses" },
     { label: t("howItWorks"), href: "/#how-it-works" },
     { label: t("reviews"), href: "/#testimonials" },
+    { label: t("blog"), href: "/blog" },
     { label: t("contact"), href: "/contact" },
   ];
 

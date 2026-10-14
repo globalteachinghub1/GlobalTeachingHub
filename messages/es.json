@@ -6,6 +6,7 @@
     "howItWorks": "Cómo Funciona",
     "reviews": "Opiniones",
     "contact": "Contacto",
+    "blog": "Blog",
     "login": "Iniciar Sesión",
     "getStarted": "Comenzar"
   },
@@ -456,5 +457,15 @@
         "role": "Estudiante"
       }
     ]
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Consejos, guías e ideas para ayudar a los estudiantes a aprender mejor.",
+    "readMore": "Leer más",
+    "backToBlog": "Volver al blog",
+    "englishOnly": "Este artículo está disponible actualmente solo en inglés.",
+    "ctaTitle": "¿Listo para empezar a aprender?",
+    "ctaButton": "Reserva una clase de prueba gratis",
+    "ctaCourses": "Ver cursos"
   }
 }

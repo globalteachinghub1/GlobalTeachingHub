@@ -6,6 +6,26 @@ export const SITE_URL = (process.env.SITE_URL ?? "http://localhost:3000").replac
 export const SITE_DESCRIPTION =
   "Live one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.";
 
+/** Default social-share card, served by src/app/og-image.png/route.tsx. */
+export const OG_IMAGE = {
+  url: `${SITE_URL}/og-image.png`,
+  width: 1200,
+  height: 630,
+  alt: `${SITE_NAME} — live one-to-one online classes`,
+};
+
+export const SITE_KEYWORDS = [
+  "online tutoring",
+  "online tutor",
+  "live online classes",
+  "one-to-one online classes",
+  "online courses",
+  "online tuition",
+  "online tuition in Pakistan",
+  "education platform",
+  SITE_NAME,
+];
+
 /**
  * English (the default locale) has no URL prefix; other locales do.
  * Never returns a trailing slash (e.g. the Urdu home page is "/ur", not
@@ -61,13 +81,13 @@ export function buildMetadata({
       type: "website",
       locale: OG_LOCALE[locale],
       alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => OG_LOCALE[l]),
-      images: [{ url: `${SITE_URL}/logo-full.png` }],
+      images: [OG_IMAGE],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title,
       description,
-      images: [`${SITE_URL}/logo-full.png`],
+      images: [OG_IMAGE.url],
     },
   };
 }

@@ -35,13 +35,29 @@ export default async function Home({ params }: PageProps) {
 
   const organizationJsonLd = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    name: SITE_NAME,
-    url: SITE_URL,
-    logo: `${SITE_URL}/logo-full.png`,
-    description: SITE_DESCRIPTION,
-    inLanguage: locale,
-    address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
+    "@graph": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": `${SITE_URL}/#organization`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        logo: `${SITE_URL}/logo-full.png`,
+        description: SITE_DESCRIPTION,
+        email: "globalteachinghub1@gmail.com",
+        telephone: "+923195459398",
+        areaServed: "Worldwide",
+        address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
+      },
+      {
+        // Lets Google show "Global Teaching Hub" as the site name in results.
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        inLanguage: locale,
+        publisher: { "@id": `${SITE_URL}/#organization` },
+      },
+    ],
   };
 
   return (

@@ -6,6 +6,7 @@
     "howItWorks": "Comment ça marche",
     "reviews": "Avis",
     "contact": "Contact",
+    "blog": "Blog",
     "login": "Connexion",
     "getStarted": "Commencer"
   },
@@ -456,5 +457,15 @@
         "role": "Élève"
       }
     ]
+  },
+  "Blog": {
+    "title": "Blog",
+    "subtitle": "Conseils, guides et idées pour aider les élèves à mieux apprendre.",
+    "readMore": "Lire la suite",
+    "backToBlog": "Retour au blog",
+    "englishOnly": "Cet article est actuellement disponible uniquement en anglais.",
+    "ctaTitle": "Prêt à commencer à apprendre ?",
+    "ctaButton": "Réserver un cours d'essai gratuit",
+    "ctaCourses": "Voir les cours"
   }
 }

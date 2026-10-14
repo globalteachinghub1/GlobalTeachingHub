@@ -15,6 +15,7 @@ export async function Footer() {
   ];
 
   const RESOURCES = [
+    { label: tNav("blog"), href: "/blog" },
     { label: t("faqs"), href: "/faq" },
     { label: t("privacyPolicy"), href: "/privacy" },
     { label: t("termsAndConditions"), href: "/terms" },

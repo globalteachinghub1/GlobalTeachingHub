@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 import { SITE_URL, localizedPath } from "@/lib/seo";
 import { routing } from "@/i18n/routing";
+import { BLOG_POSTS } from "@/lib/blog";
 
 // Courses are admin-managed and must always reflect live data, not a
 // snapshot frozen at build time.
@@ -16,6 +17,7 @@ const STATIC_ROUTES: {
   { path: "/about", changeFrequency: "monthly", priority: 0.8 },
   { path: "/courses", changeFrequency: "weekly", priority: 0.9 },
   { path: "/faq", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.6 },
   { path: "/free-trial", changeFrequency: "monthly", priority: 0.8 },
   { path: "/login", changeFrequency: "yearly", priority: 0.3 },
@@ -53,5 +55,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }))
   );
 
-  return [...staticEntries, ...courseEntries];
+  // Posts are English-only; the other locales' copies canonicalize to the
+  // English URL, so only that one is listed.
+  const blogEntries = BLOG_POSTS.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...courseEntries, ...blogEntries];
 }
