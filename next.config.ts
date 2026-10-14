@@ -20,6 +20,17 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["pdfkit"],
   // Tailwind output is small (~19 KiB gzipped), so inline it into <head> to
   // remove the render-blocking stylesheet request flagged by Lighthouse.
+  // Next always ships a small polyfill block (Array.prototype.at/flat,
+  // Object.hasOwn, ...) in the client runtime, which Lighthouse flags as
+  // "Legacy JavaScript". Every browser Next supports has these natively, so
+  // swap it for an empty module in browser bundles. Revisit on Next upgrades:
+  // if the import path in next/dist/client/app-globals.js changes, this
+  // alias silently stops matching (harmless — the polyfills just come back).
+  turbopack: {
+    resolveAlias: {
+      "../build/polyfills/polyfill-module": { browser: "./src/lib/polyfills/empty.js" },
+    },
+  },
   experimental: {
     inlineCss: true,
   },

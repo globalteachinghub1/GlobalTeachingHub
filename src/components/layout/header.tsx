@@ -1,16 +1,9 @@
 import Image from "next/image";
-import { Menu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { MobileNav } from "@/components/layout/mobile-nav";
 
 export async function Header() {
   const t = await getTranslations("Nav");
@@ -65,50 +58,12 @@ export async function Header() {
             </Link>
           </div>
 
-          <Sheet>
-            <SheetTrigger
-              render={<Button variant="ghost" size="icon" className="lg:hidden" />}
-            >
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Open menu</span>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <SheetHeader>
-                <SheetTitle className="flex items-center gap-2">
-                  <Image
-                    src="/icon.png"
-                    alt=""
-                    width={32}
-                    height={32}
-                    className="h-8 w-8 object-contain"
-                  />
-                  Global Teaching Hub
-                </SheetTitle>
-              </SheetHeader>
-              <nav className="mt-6 flex flex-col gap-1 px-4">
-                {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <div className="mt-4 flex flex-col gap-2">
-                  <Link
-                    href="/login"
-                    className={buttonVariants({ variant: "outline" })}
-                  >
-                    {t("login")}
-                  </Link>
-                  <Link href="/register" className={buttonVariants()}>
-                    {t("getStarted")}
-                  </Link>
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          <MobileNav
+            openLabel="Open menu"
+            links={NAV_LINKS}
+            loginLabel={t("login")}
+            getStartedLabel={t("getStarted")}
+          />
         </div>
       </div>
     </header>
