@@ -318,7 +318,7 @@ function StudentEditor({
           </Link>
           <div className="mt-2 flex items-center gap-3">
             <Avatar size="lg">
-              <AvatarFallback className="bg-primary/15 text-sm font-semibold text-primary">
+              <AvatarFallback className="bg-primary text-sm font-semibold text-primary-foreground">
                 {initials(student.name)}
               </AvatarFallback>
             </Avatar>

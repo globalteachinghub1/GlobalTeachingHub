@@ -62,7 +62,7 @@ export function Testimonials() {
                       </div>
                       <div className="flex items-center gap-3">
                         <Avatar className="h-10 w-10">
-                          <AvatarFallback className="bg-primary/15 text-xs font-semibold text-primary">
+                          <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">
                             {initials(testimonial.name)}
                           </AvatarFallback>
                         </Avatar>
@@ -85,17 +85,23 @@ export function Testimonials() {
           </Carousel>
         </div>
 
-        <div className="mt-6 flex justify-center gap-2">
+        <div className="mt-4 flex justify-center gap-1">
           {testimonials.map((testimonial, i) => (
             <button
               key={testimonial.name}
               type="button"
               aria-label={t("goToTestimonial", { number: i + 1 })}
+              aria-current={i === current ? "true" : undefined}
               onClick={() => api?.scrollTo(i)}
-              className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                i === current ? "bg-primary" : "bg-primary/30"
-              }`}
-            />
+              // 24px hit area (WCAG 2.5.8) around a small visual dot.
+              className="flex size-6 items-center justify-center rounded-full"
+            >
+              <span
+                className={`size-1.5 rounded-full transition-colors ${
+                  i === current ? "bg-primary" : "bg-primary/30"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

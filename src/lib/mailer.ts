@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { SITE_URL } from "@/lib/seo";
 
 const CONTACT_RECEIVER_EMAIL =
   process.env.CONTACT_RECEIVER_EMAIL ?? "globalteachinghub1@gmail.com";
@@ -230,7 +231,7 @@ export async function sendNotificationEmail({
 }
 
 function getSiteUrl() {
-  return process.env.SITE_URL ?? "http://localhost:3000";
+  return SITE_URL;
 }
 
 export async function sendPasswordResetEmail({

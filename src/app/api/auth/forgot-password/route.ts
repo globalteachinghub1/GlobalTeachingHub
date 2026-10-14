@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { SITE_URL } from "@/lib/seo";
 import { prisma } from "@/lib/prisma";
 import { generateResetToken } from "@/lib/reset-token";
 import { sendPasswordResetEmail } from "@/lib/mailer";
@@ -6,7 +7,7 @@ import { requireEmail, type FieldErrors } from "@/lib/validation";
 import { getClientIp, rateLimit, rateLimitResponse } from "@/lib/rate-limit";
 
 function getSiteUrl() {
-  return process.env.SITE_URL ?? "http://localhost:3000";
+  return SITE_URL;
 }
 
 export async function POST(request: Request) {

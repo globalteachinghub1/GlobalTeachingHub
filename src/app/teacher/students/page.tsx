@@ -120,7 +120,7 @@ export default function TeacherStudentsPage() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <Avatar size="sm">
-                          <AvatarFallback className="bg-primary/15 text-[10px] font-semibold text-primary">
+                          <AvatarFallback className="bg-primary text-[10px] font-semibold text-primary-foreground">
                             {initials(student.name)}
                           </AvatarFallback>
                         </Avatar>

@@ -1,4 +1,5 @@
 import twilio from "twilio";
+import { SITE_URL } from "@/lib/seo";
 
 function getClient() {
   const sid = process.env.TWILIO_ACCOUNT_SID;
@@ -44,7 +45,7 @@ export async function sendWhatsAppMessage({
 }
 
 function getSiteUrl() {
-  return process.env.SITE_URL ?? "http://localhost:3000";
+  return SITE_URL;
 }
 
 export async function sendInvoiceGeneratedWhatsApp({

@@ -51,8 +51,8 @@ export async function Hero() {
                 <span className="text-sm font-semibold text-foreground">
                   {t("liveClassInProgress")}
                 </span>
-                <span className="flex items-center gap-1.5 text-xs font-medium text-red-500">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-500" />
+                <span className="flex items-center gap-1.5 text-xs font-medium text-red-700 dark:text-red-400">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-red-600 dark:bg-red-400" />
                   {t("live")}
                 </span>
               </div>
@@ -63,7 +63,7 @@ export async function Hero() {
                     className="flex flex-col items-center gap-2 rounded-xl bg-secondary/70 py-4"
                   >
                     <Avatar className="h-10 w-10">
-                      <AvatarFallback className="bg-primary/15 text-xs font-semibold text-primary">
+                      <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">
                         {name.slice(0, 2).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>

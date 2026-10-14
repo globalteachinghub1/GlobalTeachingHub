@@ -2,7 +2,18 @@ import type { Metadata } from "next";
 import { routing, type Locale } from "@/i18n/routing";
 
 export const SITE_NAME = "Global Teaching Hub";
-export const SITE_URL = (process.env.SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+/**
+ * Public origin used for canonical/hreflang/sitemap/OG/email links. Set
+ * SITE_URL explicitly in every deployed environment; on Vercel we fall back
+ * to the project's production domain so a missing env var can never leak
+ * "localhost" URLs into production metadata.
+ */
+export const SITE_URL = (
+  process.env.SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000")
+).replace(/\/$/, "");
 export const SITE_DESCRIPTION =
   "Live one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.";
 

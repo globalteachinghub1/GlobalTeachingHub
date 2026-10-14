@@ -85,7 +85,7 @@ export function StudentShell({
               <PortalLanguageSwitcher />
               <ThemeToggle />
               <Avatar size="sm" className="hidden sm:flex">
-                <AvatarFallback className="bg-primary/15 text-xs font-semibold text-primary">
+                <AvatarFallback className="bg-primary text-xs font-semibold text-primary-foreground">
                   {initials(name)}
                 </AvatarFallback>
               </Avatar>

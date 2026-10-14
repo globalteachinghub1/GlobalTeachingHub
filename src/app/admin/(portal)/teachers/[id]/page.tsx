@@ -222,7 +222,7 @@ function TeacherEditor({ teacher, courses }: { teacher: TeacherDetail; courses: 
           </Link>
           <div className="mt-2 flex items-center gap-3">
             <Avatar size="lg">
-              <AvatarFallback className="bg-primary/15 text-sm font-semibold text-primary">
+              <AvatarFallback className="bg-primary text-sm font-semibold text-primary-foreground">
                 {initials(teacher.name)}
               </AvatarFallback>
             </Avatar>
@@ -368,7 +368,7 @@ function TeacherEditor({ teacher, courses }: { teacher: TeacherDetail; courses: 
                   className="flex items-center gap-3 hover:opacity-80"
                 >
                   <Avatar size="sm">
-                    <AvatarFallback className="bg-primary/15 text-[10px] font-semibold text-primary">
+                    <AvatarFallback className="bg-primary text-[10px] font-semibold text-primary-foreground">
                       {initials(student.name)}
                     </AvatarFallback>
                   </Avatar>

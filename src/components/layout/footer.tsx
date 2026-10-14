@@ -98,7 +98,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h4 className="text-sm font-semibold text-background">{title}</h4>
+      <h2 className="text-sm font-semibold text-background">{title}</h2>
       <ul className="mt-4 flex flex-col gap-3 text-sm text-background/70">
         {links.map((link) => (
           <li key={link.label}>

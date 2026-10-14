@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
   // pdfkit loads its font metrics relative to __dirname at runtime; bundling
   // it rewrites that path and breaks asset resolution, so keep it external.
   serverExternalPackages: ["pdfkit"],
+  // Tailwind output is small (~19 KiB gzipped), so inline it into <head> to
+  // remove the render-blocking stylesheet request flagged by Lighthouse.
+  experimental: {
+    inlineCss: true,
+  },
   async headers() {
     return [
       {
