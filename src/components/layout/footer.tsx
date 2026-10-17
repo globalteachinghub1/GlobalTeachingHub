@@ -60,10 +60,10 @@ export async function Footer() {
             <div className="flex items-start gap-2">
               <Mail className="mt-0.5 h-4 w-4 flex-shrink-0" />
               <a
-                href="mailto:globalteachinghub1@gmail.com"
+                href="mailto:info@globalteachinghub.com"
                 className="break-all transition hover:text-background hover:underline"
               >
-                globalteachinghub1@gmail.com
+                info@globalteachinghub.com
               </a>
             </div>
 

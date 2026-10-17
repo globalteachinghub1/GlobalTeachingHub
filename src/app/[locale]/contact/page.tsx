@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 const CONTACT_DETAILS = [
   { icon: Phone, label: "+92 319 5459398" },
-  { icon: Mail, label: "globalteachinghub1@gmail.com" },
+  { icon: Mail, label: "info@globalteachinghub.com" },
   { icon: MapPin, label: "Lahore, Pakistan" },
 ];
 

@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import { SITE_URL } from "@/lib/seo";
 
 const CONTACT_RECEIVER_EMAIL =
-  process.env.CONTACT_RECEIVER_EMAIL ?? "globalteachinghub1@gmail.com";
+  process.env.CONTACT_RECEIVER_EMAIL ?? "info@globalteachinghub.com";
 
 const GMAIL_SMTP_USER = process.env.GMAIL_SMTP_USER;
 
