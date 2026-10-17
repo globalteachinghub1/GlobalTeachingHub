@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { ContactForm } from "@/components/sections/contact-form";
 import { buttonVariants } from "@/components/ui/button";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 const WHATSAPP_NUMBER = "923195459398";
@@ -16,12 +16,7 @@ type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "Contact Us — Global Teaching Hub",
-    description: "Get in touch with Global Teaching Hub.",
-    path: "/contact",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "contact", "/contact");
 }
 
 const CONTACT_DETAILS = [

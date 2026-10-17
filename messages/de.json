@@ -21,13 +21,14 @@
     "contactUs": "Kontaktieren Sie uns",
     "helpCenter": "Hilfe-Center",
     "liveChat": "Live-Chat",
-    "rightsReserved": "Alle Rechte vorbehalten."
+    "rightsReserved": "Alle Rechte vorbehalten.",
+    "onlineClasses": "Online-Unterricht"
   },
   "LanguageSwitcher": {
     "label": "Sprache"
   },
   "Hero": {
-    "titleLine1": "Lernen von",
+    "titleLine1": "Koran & Arabisch online lernen mit",
     "titleHighlight": "Erfahrenen Lehrern",
     "titleLine2": "Jederzeit, überall.",
     "subtitle": "Live-Einzelunterricht, erfahrene Lehrer, flexible Zeitpläne und personalisiertes Lernen für Schüler aus Pakistan und der ganzen Welt.",
@@ -162,10 +163,22 @@
     "storyBody": "Global Teaching Hub begann mit einer einfachen Idee: Schüler sollten nicht zwischen Qualität und Bequemlichkeit wählen müssen. Wir haben zunächst einige Schüler mit engagierten Koran- und Tajweed-Lehrern per Videoanruf verbunden und schnell gesehen, wie viel schneller Menschen mit Einzelbetreuung und einem Lehrer lernen, dem ihr Fortschritt wirklich am Herzen liegt. Aus dieser Idee wurde eine vollständige Akademie — zunächst kamen Computerkurse hinzu, dann bauten wir die Werkzeuge, um Schüler und Familien überall auf der Welt zu unterstützen.",
     "timelineTitle": "Unser Werdegang",
     "timeline": [
-      { "title": "Der Anfang", "description": "Start mit Live-Einzelunterricht in Koran und Tajweed für eine kleine Gruppe von Schülern." },
-      { "title": "Wachsendes Lehrerteam", "description": "Wir haben mehr qualifizierte, erfahrene Lehrer eingestellt, um den Unterricht trotz wachsender Nachfrage persönlich zu halten." },
-      { "title": "Erweiterung unserer Kurse", "description": "Computerkurse kamen hinzu, von MS Office bis zu den Grundlagen der Programmierung." },
-      { "title": "Schüler weltweit erreichen", "description": "Wir haben eine mehrsprachige Plattform mit Schüler- und Elternportalen aufgebaut, um Familien überall zu unterstützen." }
+      {
+        "title": "Der Anfang",
+        "description": "Start mit Live-Einzelunterricht in Koran und Tajweed für eine kleine Gruppe von Schülern."
+      },
+      {
+        "title": "Wachsendes Lehrerteam",
+        "description": "Wir haben mehr qualifizierte, erfahrene Lehrer eingestellt, um den Unterricht trotz wachsender Nachfrage persönlich zu halten."
+      },
+      {
+        "title": "Erweiterung unserer Kurse",
+        "description": "Computerkurse kamen hinzu, von MS Office bis zu den Grundlagen der Programmierung."
+      },
+      {
+        "title": "Schüler weltweit erreichen",
+        "description": "Wir haben eine mehrsprachige Plattform mit Schüler- und Elternportalen aufgebaut, um Familien überall zu unterstützen."
+      }
     ],
     "ctaTitle": "Bereit, mit dem Lernen zu beginnen?",
     "ctaBody": "Buchen Sie eine kostenlose Probestunde und erleben Sie Global Teaching Hub selbst.",
@@ -184,12 +197,42 @@
       },
       {
         "question": "Welche Kurse bieten Sie derzeit an?",
-        "answer": "Wir bieten derzeit Koran mit Tajweed (einschließlich Übersetzung und Tafsir) sowie Computerkurse (MS Word, PowerPoint und Programmiersprachen) an. Weitere Kurse folgen in Kürze.",
+        "answer": "Wir bieten derzeit Noorani Qaida, Koran mit Tajweed, Koran mit Übersetzung, Arabische Sprache (gesprochen und geschrieben), Islamwissenschaften und Computerkurse (MS Word, PowerPoint und Programmierung) an.",
         "category": "Unterricht & Anmeldung"
       },
       {
         "question": "Wie buche ich eine kostenlose Probestunde?",
         "answer": "Klicken Sie auf der Startseite auf „Kostenlose Probestunde Buchen“, geben Sie Ihre Daten und den gewünschten Kurs ein, und unser Team kontaktiert Sie, um Ihre kostenlose Probestunde zu vereinbaren.",
+        "category": "Unterricht & Anmeldung"
+      },
+      {
+        "question": "Was kostet der Unterricht?",
+        "answer": "Die Kosten hängen vom Kurs, der Anzahl der Stunden pro Woche und Ihrem Zeitplan ab. Buchen Sie eine kostenlose Probestunde, und unser Team nennt Ihnen einen Preis, der zu Ihren Zielen passt.",
+        "category": "Unterricht & Anmeldung"
+      },
+      {
+        "question": "Kann ich meine Unterrichtszeiten selbst wählen?",
+        "answer": "Ja. Der Unterricht wird zu einer Zeit geplant, die Ihnen passt, und da jede Stunde online stattfindet, können Sie von überall auf der Welt lernen.",
+        "category": "Unterricht & Anmeldung"
+      },
+      {
+        "question": "Wer kann am Unterricht teilnehmen?",
+        "answer": "Schüler jeden Alters sind willkommen: kleine Kinder, Jugendliche und Erwachsene, auch absolute Anfänger.",
+        "category": "Unterricht & Anmeldung"
+      },
+      {
+        "question": "Kann ich eine Lehrerin anfragen?",
+        "answer": "Ja. Lehrerinnen sind verfügbar. Erwähnen Sie es einfach bei der Buchung Ihrer kostenlosen Probestunde.",
+        "category": "Unterricht & Anmeldung"
+      },
+      {
+        "question": "Welche Qualifikationen haben Ihre Lehrkräfte?",
+        "answer": "Zu unserem Team gehören Hafiz- und Qari-Lehrer, Rezitatoren mit Ijazah und Absolventen des Dars-e-Nizami (Alim), und jede Lehrkraft ist auf ihren Kurs spezialisiert.",
+        "category": "Unterricht & Anmeldung"
+      },
+      {
+        "question": "Wie lange dauert eine Unterrichtsstunde?",
+        "answer": "Die Dauer ist flexibel. Wir legen sie gemeinsam mit Ihnen nach Alter, Niveau und Zeitplan des Schülers fest.",
         "category": "Unterricht & Anmeldung"
       },
       {
@@ -269,9 +312,18 @@
     "panelSubtitle": "Live-Einzelunterricht, erfahrene Lehrer und ein Dashboard rund um Ihren Fortschritt.",
     "rightsReserved": "Alle Rechte vorbehalten.",
     "features": [
-      { "title": "Live-Einzelunterricht", "description": "Echte Lehrer, in Echtzeit — keine vorab aufgezeichneten Videos." },
-      { "title": "Flexible Zeitplanung", "description": "Buchen Sie Unterricht nach Ihrem Zeitplan, nicht umgekehrt." },
-      { "title": "Fortschritt verfolgen", "description": "Sehen Sie Ihre Anmeldungen, Rechnungen und Ihren Fortschritt an einem Ort." }
+      {
+        "title": "Live-Einzelunterricht",
+        "description": "Echte Lehrer, in Echtzeit — keine vorab aufgezeichneten Videos."
+      },
+      {
+        "title": "Flexible Zeitplanung",
+        "description": "Buchen Sie Unterricht nach Ihrem Zeitplan, nicht umgekehrt."
+      },
+      {
+        "title": "Fortschritt verfolgen",
+        "description": "Sehen Sie Ihre Anmeldungen, Rechnungen und Ihren Fortschritt an einem Ort."
+      }
     ]
   },
   "RegisterPage": {
@@ -282,9 +334,18 @@
     "panelSubtitle": "Erstellen Sie Ihr kostenloses Konto und buchen Sie Ihre erste Live-Stunde in wenigen Minuten.",
     "rightsReserved": "Alle Rechte vorbehalten.",
     "features": [
-      { "title": "Buchen Sie Ihre erste kostenlose Probestunde", "description": "Testen Sie eine Live-Stunde, bevor Sie sich verpflichten." },
-      { "title": "Einzelunterricht lernen", "description": "Jede Stunde ist nur Sie und Ihr Lehrer, keine Gruppe." },
-      { "title": "Schließen Sie sich Schülern weltweit an", "description": "Tausende Schüler lernen bereits mit uns." }
+      {
+        "title": "Buchen Sie Ihre erste kostenlose Probestunde",
+        "description": "Testen Sie eine Live-Stunde, bevor Sie sich verpflichten."
+      },
+      {
+        "title": "Einzelunterricht lernen",
+        "description": "Jede Stunde ist nur Sie und Ihr Lehrer, keine Gruppe."
+      },
+      {
+        "title": "Schließen Sie sich Schülern weltweit an",
+        "description": "Tausende Schüler lernen bereits mit uns."
+      }
     ]
   },
   "ContactPage": {
@@ -299,7 +360,8 @@
     "noCourses": "Derzeit sind keine Kurse verfügbar — schauen Sie bald wieder vorbei.",
     "searchPlaceholder": "Kurse durchsuchen...",
     "noResults": "Keine Kurse entsprechen Ihrer Suche.",
-    "getInTouch": "Kontakt Aufnehmen"
+    "getInTouch": "Kontakt Aufnehmen",
+    "moreTitle": "Weitere Lernangebote"
   },
   "FreeTrialPage": {
     "title": "Kostenlose Probestunde Buchen",
@@ -314,7 +376,10 @@
     "faqTitle": "Häufig Gestellte Fragen",
     "viewAllFaqs": "Alle Fragen ansehen",
     "bookDemo": "Kostenlose Probestunde Buchen",
-    "backToAllCourses": "Zurück zu allen Kursen"
+    "backToAllCourses": "Zurück zu allen Kursen",
+    "tagline": "Live-Einzelunterricht online · Flexible Zeiten · Kostenlose Probestunde",
+    "teachersTitle": "Ihre Lehrkräfte",
+    "teachersBody": "Zu unserem Team gehören Hafiz- und Qari-Lehrer, Rezitatoren mit Ijazah und Absolventen des Dars-e-Nizami (Alim), jeweils spezialisiert auf ihren Kurs. Lehrerinnen sind auf Anfrage verfügbar, und Schüler jeden Alters sind willkommen."
   },
   "Portal": {
     "checkingAccess": "Zugriff wird geprüft...",
@@ -467,5 +532,38 @@
     "ctaTitle": "Bereit, mit dem Lernen zu beginnen?",
     "ctaButton": "Kostenlose Probestunde buchen",
     "ctaCourses": "Kurse ansehen"
+  },
+  "Seo": {
+    "homeTitle": "Online Koran- & Arabischunterricht | Global Teaching Hub",
+    "homeDescription": "Live-Einzelunterricht online in Koran mit Tajweed, Arabisch und Islamwissenschaften mit erfahrenen Lehrkräften und flexiblen Zeiten. Buchen Sie noch heute eine kostenlose Probestunde.",
+    "coursesTitle": "Online-Kurse in Koran, Arabisch & Islamwissenschaften | Global Teaching Hub",
+    "coursesDescription": "Entdecken Sie Live-Einzelkurse online in Koran mit Tajweed, Koranübersetzung, Arabisch und Islamwissenschaften. Flexible Zeiten und eine kostenlose Probestunde.",
+    "courseTitle": "{name} – Online-Unterricht | Global Teaching Hub",
+    "courseDescription": "{summary} Live-Einzelunterricht online mit erfahrenen Lehrkräften und flexiblen Zeiten. Buchen Sie eine kostenlose Probestunde.",
+    "faqTitle": "FAQ: Online Koran- & Arabischunterricht | Global Teaching Hub",
+    "faqDescription": "Antworten auf häufige Fragen zu unserem Online-Unterricht in Koran, Arabisch und Islamwissenschaften: Ablauf, Kosten, Unterrichtszeiten, kostenlose Probestunde und Voraussetzungen.",
+    "aboutTitle": "Über uns | Global Teaching Hub",
+    "aboutDescription": "Global Teaching Hub ist eine Online-Akademie mit Sitz in Lahore, Pakistan, die Schülern weltweit Live-Einzelunterricht in Koran, Arabisch und Islamwissenschaften bietet.",
+    "contactTitle": "Kontakt | Global Teaching Hub",
+    "contactDescription": "Kontaktieren Sie Global Teaching Hub per Telefon, E-Mail oder Kontaktformular, um Fragen zum Online-Unterricht in Koran, Arabisch und Islamwissenschaften zu stellen oder eine kostenlose Probestunde zu buchen.",
+    "freeTrialTitle": "Kostenlose Probestunde buchen | Global Teaching Hub",
+    "freeTrialDescription": "Buchen Sie eine kostenlose Einzel-Probestunde für Koran, Arabisch oder Islamwissenschaften online. Wählen Sie Ihren Kurs und Ihre Wunschzeit, unser Team plant den Termin mit Ihnen.",
+    "blogTitle": "Blog: Tipps zu Koran, Arabisch & Online-Lernen | Global Teaching Hub",
+    "blogDescription": "Tipps und Anleitungen zur Koranrezitation mit Tajweed, zu Arabisch und zum Online-Einzelunterricht von den Lehrkräften von Global Teaching Hub.",
+    "registerTitle": "Registrieren | Global Teaching Hub",
+    "registerDescription": "Erstellen Sie Ihr Schülerkonto bei Global Teaching Hub, um am Live-Einzelunterricht online teilzunehmen.",
+    "loginTitle": "Anmelden | Global Teaching Hub",
+    "loginDescription": "Melden Sie sich bei Ihrem Schülerkonto von Global Teaching Hub an.",
+    "privacyTitle": "Datenschutzerklärung | Global Teaching Hub",
+    "privacyDescription": "Wie Global Teaching Hub Ihre personenbezogenen Daten erhebt, verwendet und schützt.",
+    "termsTitle": "Allgemeine Geschäftsbedingungen | Global Teaching Hub",
+    "termsDescription": "Die Nutzungsbedingungen für Global Teaching Hub und den Online-Unterricht."
+  },
+  "Landing": {
+    "onlineQuranClasses": "Online-Koranunterricht",
+    "quranForKids": "Koranunterricht für Kinder",
+    "femaleTeacher": "Koranlehrerinnen",
+    "nooraniQaida": "Noorani Qaida",
+    "computerCourses": "Computerkurse"
   }
 }

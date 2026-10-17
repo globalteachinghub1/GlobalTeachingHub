@@ -5,19 +5,14 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { RegisterForm } from "@/components/sections/register-form";
 import { prisma } from "@/lib/prisma";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "Sign Up — Global Teaching Hub",
-    description: "Create your Global Teaching Hub student account.",
-    path: "/register",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "register", "/register");
 }
 
 // Course list is admin-managed and must always reflect live data, not a

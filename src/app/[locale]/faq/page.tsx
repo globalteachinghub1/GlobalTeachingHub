@@ -4,7 +4,7 @@ import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FaqList } from "@/components/sections/faq-list";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 // FAQPage structured data needs a CSP nonce, which only exists per-request —
@@ -16,12 +16,7 @@ type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "FAQs — Global Teaching Hub",
-    description: "Frequently asked questions about Global Teaching Hub.",
-    path: "/faq",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "faq", "/faq");
 }
 
 type Faq = { question: string; answer: string };

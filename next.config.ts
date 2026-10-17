@@ -40,6 +40,16 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      // Private portals must never appear in search results. robots.txt
+      // already blocks crawling them, but a disallowed URL can still be
+      // indexed from inbound links; this header covers that case too.
+      ...["/admin", "/dashboard", "/teacher", "/parent"].flatMap((prefix) => [
+        { source: prefix, headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }] },
+        {
+          source: `${prefix}/:path*`,
+          headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+        },
+      ]),
     ];
   },
 };

@@ -4,19 +4,14 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FreeTrialForm } from "@/components/sections/free-trial-form";
 import { prisma } from "@/lib/prisma";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "Book a Free Demo — Global Teaching Hub",
-    description: "Book a free demo class with Global Teaching Hub.",
-    path: "/free-trial",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "freeTrial", "/free-trial");
 }
 
 // Courses are admin-managed and must always reflect live data, not a

@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, SITE_KEYWORDS, OG_IMAGE } from "@/lib/seo";
+import { SITE_NAME, SITE_URL, SITE_TITLE, SITE_DESCRIPTION, SITE_KEYWORDS, OG_IMAGE } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const TITLE = `${SITE_NAME} — Learn from Expert Teachers, Anytime, Anywhere`;
+const TITLE = SITE_TITLE;
 
 // GA4 measurement ID (e.g. "G-XXXXXXXXXX"). Unset → no analytics at all.
 const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID;
@@ -30,7 +30,9 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
   category: "education",
-  alternates: { canonical: SITE_URL },
+  // No site-wide canonical here: every page that inherited it (404s, portal
+  // pages, any page without its own metadata) would declare the homepage as
+  // its canonical. Public pages set their own via buildMetadata().
   robots: {
     index: true,
     follow: true,

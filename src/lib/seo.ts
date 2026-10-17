@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
 
 export const SITE_NAME = "Global Teaching Hub";
@@ -14,8 +15,10 @@ export const SITE_URL = (
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : "http://localhost:3000")
 ).replace(/\/$/, "");
+/** English fallbacks; per-locale copies live in the "Seo" messages namespace. */
+export const SITE_TITLE = `Online Quran & Arabic Classes | ${SITE_NAME}`;
 export const SITE_DESCRIPTION =
-  "Live one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.";
+  "Live one-to-one online Quran with Tajweed, Arabic and Islamic Studies classes with experienced teachers and flexible schedules. Book a free demo today.";
 
 /** Default social-share card, served by src/app/og-image.png/route.tsx. */
 export const OG_IMAGE = {
@@ -26,14 +29,15 @@ export const OG_IMAGE = {
 };
 
 export const SITE_KEYWORDS = [
-  "online tutoring",
-  "online tutor",
-  "live online classes",
+  "online Quran classes",
+  "learn Quran with Tajweed online",
+  "online Quran teacher",
+  "Quran translation classes online",
+  "online Arabic classes",
+  "online Islamic Studies classes",
   "one-to-one online classes",
-  "online courses",
-  "online tuition",
-  "online tuition in Pakistan",
-  "education platform",
+  "live online classes",
+  "online tutoring",
   SITE_NAME,
 ];
 
@@ -100,5 +104,33 @@ export function buildMetadata({
       description,
       images: [OG_IMAGE.url],
     },
+  };
+}
+
+/**
+ * buildMetadata() for a static marketing page whose localized title and
+ * description are the `${key}Title` / `${key}Description` entries of the
+ * "Seo" messages namespace.
+ */
+export async function pageMetadata(locale: Locale, key: string, path: string): Promise<Metadata> {
+  const t = await getTranslations({ locale, namespace: "Seo" });
+  return buildMetadata({
+    title: t(`${key}Title`),
+    description: t(`${key}Description`),
+    path,
+    locale,
+  });
+}
+
+/** schema.org BreadcrumbList for a page; `items` run from the site root down. */
+export function breadcrumbJsonLd(locale: Locale, items: { name: string; path: string }[]) {
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: `${SITE_URL}${localizedPath(locale, item.path)}`,
+    })),
   };
 }

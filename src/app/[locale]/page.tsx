@@ -9,7 +9,7 @@ import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { Testimonials } from "@/components/sections/testimonials";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { AppDownload } from "@/components/sections/app-download";
-import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, buildMetadata } from "@/lib/seo";
+import { SITE_NAME, SITE_URL, SITE_DESCRIPTION, pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 // Courses are admin-managed and must always reflect live data, not a
@@ -20,12 +20,7 @@ type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: `${SITE_NAME} — Learn from Expert Teachers, Anytime, Anywhere`,
-    description: SITE_DESCRIPTION,
-    path: "/",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "home", "/");
 }
 
 export default async function Home({ params }: PageProps) {
@@ -47,6 +42,14 @@ export default async function Home({ params }: PageProps) {
         telephone: "+923195459398",
         areaServed: "Worldwide",
         address: { "@type": "PostalAddress", addressLocality: "Lahore", addressCountry: "PK" },
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: "globalteachinghub1@gmail.com",
+          telephone: "+923195459398",
+          availableLanguage: ["English", "Urdu", "Arabic"],
+        },
+        knowsAbout: ["Quran recitation", "Tajweed", "Quran translation", "Arabic language", "Islamic Studies"],
       },
       {
         // Lets Google show "Global Teaching Hub" as the site name in results.

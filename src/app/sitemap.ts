@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { SITE_URL, localizedPath } from "@/lib/seo";
 import { routing } from "@/i18n/routing";
 import { BLOG_POSTS } from "@/lib/blog";
+import { LANDING_PAGES } from "@/lib/landing-pages";
 
 // Courses are admin-managed and must always reflect live data, not a
 // snapshot frozen at build time.
@@ -20,7 +21,6 @@ const STATIC_ROUTES: {
   { path: "/blog", changeFrequency: "weekly", priority: 0.7 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.6 },
   { path: "/free-trial", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/login", changeFrequency: "yearly", priority: 0.3 },
   { path: "/register", changeFrequency: "yearly", priority: 0.5 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.2 },
   { path: "/terms", changeFrequency: "yearly", priority: 0.2 },
@@ -64,5 +64,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticEntries, ...courseEntries, ...blogEntries];
+  // Landing pages are English-only too, for the same reason.
+  const landingEntries = LANDING_PAGES.map((page) => ({
+    url: `${SITE_URL}/${page.slug}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticEntries, ...landingEntries, ...courseEntries, ...blogEntries];
 }

@@ -2,19 +2,14 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "Terms & Conditions — Global Teaching Hub",
-    description: "Terms and Conditions for Global Teaching Hub.",
-    path: "/terms",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "terms", "/terms");
 }
 
 type Section = { title: string; body: string };

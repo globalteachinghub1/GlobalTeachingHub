@@ -21,13 +21,14 @@
     "contactUs": "Contact Us",
     "helpCenter": "Help Center",
     "liveChat": "Live Chat",
-    "rightsReserved": "All Rights Reserved."
+    "rightsReserved": "All Rights Reserved.",
+    "onlineClasses": "Online Classes"
   },
   "LanguageSwitcher": {
     "label": "Language"
   },
   "Hero": {
-    "titleLine1": "Learn from",
+    "titleLine1": "Learn Quran & Arabic Online with",
     "titleHighlight": "Expert Teachers",
     "titleLine2": "Anytime, Anywhere.",
     "subtitle": "Live one-to-one classes, experienced teachers, flexible schedules, and personalized learning for students from Pakistan and around the world.",
@@ -196,12 +197,42 @@
       },
       {
         "question": "Which courses do you currently offer?",
-        "answer": "We currently offer Quran with Tajweed (including Translation and Tafseer) and Computer Courses (MS Word, PowerPoint, and Programming Languages). More courses will be added soon.",
+        "answer": "We currently offer Noorani Qaida, Quran with Tajweed, Quran with Translation, Arabic Language (spoken and written), Islamic Studies and Computer Courses (MS Word, PowerPoint and programming).",
         "category": "Classes & Enrollment"
       },
       {
         "question": "How do I book a free demo class?",
         "answer": "Click “Book a Free Demo” on the homepage, fill in your details and preferred course, and our team will contact you to schedule your free trial class.",
+        "category": "Classes & Enrollment"
+      },
+      {
+        "question": "How much do the classes cost?",
+        "answer": "Fees depend on the course, how many classes you take each week and your schedule. Book a free demo class and our team will share pricing that fits your goals.",
+        "category": "Classes & Enrollment"
+      },
+      {
+        "question": "Can I choose my class timings?",
+        "answer": "Yes. Classes are scheduled at a time that suits you, and because every lesson is online you can learn from anywhere in the world.",
+        "category": "Classes & Enrollment"
+      },
+      {
+        "question": "Who can join your classes?",
+        "answer": "Students of any age are welcome: young children, teenagers and adults, including complete beginners.",
+        "category": "Classes & Enrollment"
+      },
+      {
+        "question": "Can I request a female teacher?",
+        "answer": "Yes. Female teachers are available. Just mention it when you book your free demo class.",
+        "category": "Classes & Enrollment"
+      },
+      {
+        "question": "What qualifications do your teachers have?",
+        "answer": "Our teachers include Hafiz and Qari Quran teachers, Ijazah-certified reciters and Dars-e-Nizami (Alim) graduates, and every teacher specialises in the course they teach.",
+        "category": "Classes & Enrollment"
+      },
+      {
+        "question": "How long is each class?",
+        "answer": "Class length is flexible. We agree it with you based on the student's age, level and schedule.",
         "category": "Classes & Enrollment"
       },
       {
@@ -329,7 +360,8 @@
     "noCourses": "No courses are available right now — check back soon.",
     "searchPlaceholder": "Search courses...",
     "noResults": "No courses match your search.",
-    "getInTouch": "Get in Touch"
+    "getInTouch": "Get in Touch",
+    "moreTitle": "More ways to learn"
   },
   "FreeTrialPage": {
     "title": "Book a Free Demo",
@@ -344,7 +376,10 @@
     "faqTitle": "Frequently Asked Questions",
     "viewAllFaqs": "View all FAQs",
     "bookDemo": "Book a Free Demo",
-    "backToAllCourses": "Back to all courses"
+    "backToAllCourses": "Back to all courses",
+    "tagline": "Live one-to-one online classes · Flexible schedules · Free demo class",
+    "teachersTitle": "Your Teachers",
+    "teachersBody": "Our teachers include Hafiz and Qari Quran teachers, Ijazah-certified reciters and Dars-e-Nizami (Alim) graduates, each specialising in the course they teach. Female teachers are available on request, and students of any age are welcome."
   },
   "Portal": {
     "checkingAccess": "Checking access...",
@@ -497,5 +532,38 @@
     "ctaTitle": "Ready to start learning?",
     "ctaButton": "Book a Free Trial",
     "ctaCourses": "Browse Courses"
+  },
+  "Seo": {
+    "homeTitle": "Online Quran & Arabic Classes | Global Teaching Hub",
+    "homeDescription": "Live one-to-one online Quran with Tajweed, Arabic and Islamic Studies classes with experienced teachers and flexible schedules. Book a free demo today.",
+    "coursesTitle": "Online Quran, Arabic & Islamic Studies Courses | Global Teaching Hub",
+    "coursesDescription": "Explore live one-to-one online courses in Quran with Tajweed, Quran translation, Arabic and Islamic Studies. Flexible schedules and a free demo class.",
+    "courseTitle": "{name} Classes Online | Global Teaching Hub",
+    "courseDescription": "{summary} Live one-to-one online classes with expert teachers and flexible schedules. Book a free demo.",
+    "faqTitle": "FAQs: Online Quran & Arabic Classes | Global Teaching Hub",
+    "faqDescription": "Answers to common questions about our online Quran, Arabic and Islamic Studies classes: how lessons work, fees, timings, free demo classes and what you need to join.",
+    "aboutTitle": "About Us | Global Teaching Hub",
+    "aboutDescription": "Global Teaching Hub is an online academy based in Lahore, Pakistan, teaching live one-to-one Quran, Arabic and Islamic Studies classes to students worldwide.",
+    "contactTitle": "Contact Us | Global Teaching Hub",
+    "contactDescription": "Contact Global Teaching Hub by phone, email or our contact form to ask about online Quran, Arabic and Islamic Studies classes or to book a free demo.",
+    "freeTrialTitle": "Book a Free Demo Class | Global Teaching Hub",
+    "freeTrialDescription": "Book a free one-to-one demo class for online Quran, Arabic or Islamic Studies. Choose your course and preferred time, and our team will schedule it with you.",
+    "blogTitle": "Blog: Quran, Arabic & Online Learning Tips | Global Teaching Hub",
+    "blogDescription": "Learning tips, study guides and insights on Quran recitation with Tajweed, Arabic and online one-to-one learning from Global Teaching Hub teachers.",
+    "registerTitle": "Sign Up | Global Teaching Hub",
+    "registerDescription": "Create your Global Teaching Hub student account to join live one-to-one online classes.",
+    "loginTitle": "Login | Global Teaching Hub",
+    "loginDescription": "Log in to your Global Teaching Hub student account.",
+    "privacyTitle": "Privacy Policy | Global Teaching Hub",
+    "privacyDescription": "How Global Teaching Hub collects, uses and protects your personal information.",
+    "termsTitle": "Terms & Conditions | Global Teaching Hub",
+    "termsDescription": "The terms and conditions for using Global Teaching Hub and its online classes."
+  },
+  "Landing": {
+    "onlineQuranClasses": "Online Quran Classes",
+    "quranForKids": "Quran Classes for Kids",
+    "femaleTeacher": "Female Quran Teachers",
+    "nooraniQaida": "Noorani Qaida",
+    "computerCourses": "Computer Courses"
   }
 }

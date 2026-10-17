@@ -5,20 +5,14 @@ import { Link } from "@/i18n/navigation";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BLOG_POSTS, formatPostDate } from "@/lib/blog";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "Blog — Global Teaching Hub",
-    description:
-      "Learning tips, study guides, and insights on online tutoring, Quran with Tajweed, and computer skills from Global Teaching Hub teachers.",
-    path: "/blog",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "blog", "/blog");
 }
 
 export default async function BlogPage({ params }: PageProps) {

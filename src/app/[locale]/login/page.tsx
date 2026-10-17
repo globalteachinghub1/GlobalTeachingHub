@@ -4,19 +4,18 @@ import { Clock, TrendingUp, Video } from "lucide-react";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LoginForm } from "@/components/sections/login-form";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "Login — Global Teaching Hub",
-    description: "Login to your Global Teaching Hub student account.",
-    path: "/login",
-    locale: locale as Locale,
-  });
+  // A sign-in form has nothing worth ranking; keep it out of search results.
+  return {
+    ...(await pageMetadata(locale as Locale, "login", "/login")),
+    robots: { index: false, follow: true },
+  };
 }
 
 const FEATURE_ICONS = [Video, Clock, TrendingUp];

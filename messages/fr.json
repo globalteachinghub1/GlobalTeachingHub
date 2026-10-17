@@ -21,13 +21,14 @@
     "contactUs": "Nous Contacter",
     "helpCenter": "Centre d'Aide",
     "liveChat": "Chat en Direct",
-    "rightsReserved": "Tous droits réservés."
+    "rightsReserved": "Tous droits réservés.",
+    "onlineClasses": "Cours en ligne"
   },
   "LanguageSwitcher": {
     "label": "Langue"
   },
   "Hero": {
-    "titleLine1": "Apprenez avec des",
+    "titleLine1": "Apprenez le Coran et l'arabe en ligne avec des",
     "titleHighlight": "Enseignants Experts",
     "titleLine2": "N'importe quand, n'importe où.",
     "subtitle": "Cours particuliers en direct, enseignants expérimentés, horaires flexibles et apprentissage personnalisé pour les élèves du Pakistan et du monde entier.",
@@ -162,10 +163,22 @@
     "storyBody": "Global Teaching Hub est né d'une idée simple : les élèves ne devraient pas avoir à choisir entre qualité et confort. Nous avons commencé en mettant en relation quelques élèves avec des enseignants dévoués de Coran et de Tajwid par appel vidéo, et nous avons rapidement constaté à quel point on apprend plus vite avec une attention individuelle et un enseignant réellement investi dans nos progrès. Cette idée est devenue une académie complète — en ajoutant d'abord des Cours d'Informatique, puis en développant les outils nécessaires pour accompagner élèves et familles partout dans le monde.",
     "timelineTitle": "Notre Parcours",
     "timeline": [
-      { "title": "Les Débuts", "description": "Lancement de cours en direct, individuels, de Coran et Tajwid pour un petit groupe d'élèves." },
-      { "title": "Une Équipe Pédagogique Grandissante", "description": "Nous avons recruté davantage d'enseignants qualifiés et expérimentés pour garder des cours personnalisés malgré une demande croissante." },
-      { "title": "Élargissement de Nos Cours", "description": "Ajout des Cours d'Informatique, de MS Office aux bases de la programmation." },
-      { "title": "Des Élèves Partout dans le Monde", "description": "Construction d'une plateforme multilingue avec des portails élèves et parents pour accompagner les familles où qu'elles soient." }
+      {
+        "title": "Les Débuts",
+        "description": "Lancement de cours en direct, individuels, de Coran et Tajwid pour un petit groupe d'élèves."
+      },
+      {
+        "title": "Une Équipe Pédagogique Grandissante",
+        "description": "Nous avons recruté davantage d'enseignants qualifiés et expérimentés pour garder des cours personnalisés malgré une demande croissante."
+      },
+      {
+        "title": "Élargissement de Nos Cours",
+        "description": "Ajout des Cours d'Informatique, de MS Office aux bases de la programmation."
+      },
+      {
+        "title": "Des Élèves Partout dans le Monde",
+        "description": "Construction d'une plateforme multilingue avec des portails élèves et parents pour accompagner les familles où qu'elles soient."
+      }
     ],
     "ctaTitle": "Prêt à commencer à apprendre ?",
     "ctaBody": "Réservez un cours d'essai gratuit et découvrez Global Teaching Hub par vous-même.",
@@ -184,12 +197,42 @@
       },
       {
         "question": "Quels cours proposez-vous actuellement ?",
-        "answer": "Nous proposons actuellement le Coran avec Tajwid (y compris la Traduction et le Tafsir) et des Cours d'Informatique (MS Word, PowerPoint et langages de programmation). D'autres cours seront bientôt ajoutés.",
+        "answer": "Nous proposons actuellement la Noorani Qaida, le Coran avec Tajwid, le Coran avec Traduction, la Langue Arabe (orale et écrite), les Études Islamiques et des Cours d'Informatique (MS Word, PowerPoint et programmation).",
         "category": "Cours et Inscription"
       },
       {
         "question": "Comment réserver un cours d'essai gratuit ?",
         "answer": "Cliquez sur « Réserver un Cours d'Essai Gratuit » sur la page d'accueil, indiquez vos coordonnées et le cours souhaité, et notre équipe vous contactera pour planifier votre cours d'essai gratuit.",
+        "category": "Cours et Inscription"
+      },
+      {
+        "question": "Combien coûtent les cours ?",
+        "answer": "Le tarif dépend du cours, du nombre de séances par semaine et de votre emploi du temps. Réservez un cours d'essai gratuit et notre équipe vous proposera un tarif adapté à vos objectifs.",
+        "category": "Cours et Inscription"
+      },
+      {
+        "question": "Puis-je choisir les horaires de mes cours ?",
+        "answer": "Oui. Les cours sont planifiés au moment qui vous convient et, comme chaque leçon a lieu en ligne, vous pouvez apprendre où que vous soyez dans le monde.",
+        "category": "Cours et Inscription"
+      },
+      {
+        "question": "Qui peut suivre vos cours ?",
+        "answer": "Les élèves de tout âge sont les bienvenus : jeunes enfants, adolescents et adultes, y compris les débutants complets.",
+        "category": "Cours et Inscription"
+      },
+      {
+        "question": "Puis-je demander une enseignante ?",
+        "answer": "Oui. Des enseignantes sont disponibles ; il suffit de le préciser en réservant votre cours d'essai gratuit.",
+        "category": "Cours et Inscription"
+      },
+      {
+        "question": "Quelles sont les qualifications de vos enseignants ?",
+        "answer": "Notre équipe compte des enseignants Hafiz et Qari, des récitateurs titulaires d'une Ijazah et des diplômés du Dars-e-Nizami (Alim), chacun spécialisé dans le cours qu'il enseigne.",
+        "category": "Cours et Inscription"
+      },
+      {
+        "question": "Combien de temps dure chaque cours ?",
+        "answer": "La durée est flexible : nous la fixons avec vous selon l'âge, le niveau et l'emploi du temps de l'élève.",
         "category": "Cours et Inscription"
       },
       {
@@ -269,9 +312,18 @@
     "panelSubtitle": "Cours particuliers en direct, enseignants experts et un tableau de bord centré sur votre progression.",
     "rightsReserved": "Tous droits réservés.",
     "features": [
-      { "title": "Cours particuliers en direct", "description": "De vrais enseignants, en temps réel — pas de vidéos préenregistrées." },
-      { "title": "Horaires flexibles", "description": "Réservez des cours selon votre emploi du temps, pas l'inverse." },
-      { "title": "Suivez votre progression", "description": "Retrouvez vos inscriptions, factures et progrès en un seul endroit." }
+      {
+        "title": "Cours particuliers en direct",
+        "description": "De vrais enseignants, en temps réel — pas de vidéos préenregistrées."
+      },
+      {
+        "title": "Horaires flexibles",
+        "description": "Réservez des cours selon votre emploi du temps, pas l'inverse."
+      },
+      {
+        "title": "Suivez votre progression",
+        "description": "Retrouvez vos inscriptions, factures et progrès en un seul endroit."
+      }
     ]
   },
   "RegisterPage": {
@@ -282,9 +334,18 @@
     "panelSubtitle": "Créez votre compte gratuit et réservez votre premier cours en direct en quelques minutes.",
     "rightsReserved": "Tous droits réservés.",
     "features": [
-      { "title": "Réservez votre premier cours d'essai gratuit", "description": "Essayez un cours en direct avant de vous engager." },
-      { "title": "Apprenez en tête-à-tête", "description": "Chaque cours, c'est juste vous et votre enseignant, sans la foule." },
-      { "title": "Rejoignez des élèves du monde entier", "description": "Des milliers d'élèves apprennent déjà avec nous." }
+      {
+        "title": "Réservez votre premier cours d'essai gratuit",
+        "description": "Essayez un cours en direct avant de vous engager."
+      },
+      {
+        "title": "Apprenez en tête-à-tête",
+        "description": "Chaque cours, c'est juste vous et votre enseignant, sans la foule."
+      },
+      {
+        "title": "Rejoignez des élèves du monde entier",
+        "description": "Des milliers d'élèves apprennent déjà avec nous."
+      }
     ]
   },
   "ContactPage": {
@@ -299,7 +360,8 @@
     "noCourses": "Aucun cours n'est disponible pour le moment — revenez bientôt.",
     "searchPlaceholder": "Rechercher des cours...",
     "noResults": "Aucun cours ne correspond à votre recherche.",
-    "getInTouch": "Contactez-Nous"
+    "getInTouch": "Contactez-Nous",
+    "moreTitle": "D'autres façons d'apprendre"
   },
   "FreeTrialPage": {
     "title": "Réserver un Cours d'Essai Gratuit",
@@ -314,7 +376,10 @@
     "faqTitle": "Foire Aux Questions",
     "viewAllFaqs": "Voir toutes les questions",
     "bookDemo": "Réserver un Cours d'Essai Gratuit",
-    "backToAllCourses": "Retour à tous les cours"
+    "backToAllCourses": "Retour à tous les cours",
+    "tagline": "Cours particuliers en direct en ligne · Horaires flexibles · Cours d'essai gratuit",
+    "teachersTitle": "Vos enseignants",
+    "teachersBody": "Notre équipe compte des enseignants Hafiz et Qari, des récitateurs titulaires d'une Ijazah et des diplômés du Dars-e-Nizami (Alim), chacun spécialisé dans le cours qu'il enseigne. Des enseignantes sont disponibles sur demande, et les élèves de tout âge sont les bienvenus."
   },
   "Portal": {
     "checkingAccess": "Vérification de l'accès...",
@@ -467,5 +532,38 @@
     "ctaTitle": "Prêt à commencer à apprendre ?",
     "ctaButton": "Réserver un cours d'essai gratuit",
     "ctaCourses": "Voir les cours"
+  },
+  "Seo": {
+    "homeTitle": "Cours de Coran et d'Arabe en Ligne | Global Teaching Hub",
+    "homeDescription": "Cours particuliers en direct en ligne de Coran avec Tajwid, d'arabe et d'études islamiques avec des enseignants expérimentés et des horaires flexibles. Réservez dès aujourd'hui un cours d'essai gratuit.",
+    "coursesTitle": "Cours de Coran, d'Arabe et d'Études Islamiques en Ligne | Global Teaching Hub",
+    "coursesDescription": "Découvrez nos cours particuliers en direct en ligne de Coran avec Tajwid, de traduction du Coran, d'arabe et d'études islamiques. Horaires flexibles et cours d'essai gratuit.",
+    "courseTitle": "Cours de {name} en Ligne | Global Teaching Hub",
+    "courseDescription": "{summary} Cours particuliers en direct en ligne avec des enseignants experts et des horaires flexibles. Réservez un cours d'essai gratuit.",
+    "faqTitle": "FAQ : Cours de Coran et d'Arabe en Ligne | Global Teaching Hub",
+    "faqDescription": "Réponses aux questions fréquentes sur nos cours en ligne de Coran, d'arabe et d'études islamiques : déroulement, tarifs, horaires, cours d'essai gratuit et prérequis.",
+    "aboutTitle": "À Propos | Global Teaching Hub",
+    "aboutDescription": "Global Teaching Hub est une académie en ligne basée à Lahore, au Pakistan, qui propose des cours particuliers en direct de Coran, d'arabe et d'études islamiques aux élèves du monde entier.",
+    "contactTitle": "Contactez-Nous | Global Teaching Hub",
+    "contactDescription": "Contactez Global Teaching Hub par téléphone, e-mail ou via notre formulaire pour vous renseigner sur les cours en ligne de Coran, d'arabe et d'études islamiques ou réserver un cours d'essai gratuit.",
+    "freeTrialTitle": "Réserver un Cours d'Essai Gratuit | Global Teaching Hub",
+    "freeTrialDescription": "Réservez un cours d'essai particulier gratuit de Coran, d'arabe ou d'études islamiques en ligne. Choisissez votre cours et votre horaire, notre équipe le planifiera avec vous.",
+    "blogTitle": "Blog : Conseils Coran, Arabe et Apprentissage en Ligne | Global Teaching Hub",
+    "blogDescription": "Conseils et guides sur la récitation du Coran avec Tajwid, l'arabe et l'apprentissage particulier en ligne, par les enseignants de Global Teaching Hub.",
+    "registerTitle": "Inscription | Global Teaching Hub",
+    "registerDescription": "Créez votre compte élève Global Teaching Hub pour rejoindre des cours particuliers en direct en ligne.",
+    "loginTitle": "Connexion | Global Teaching Hub",
+    "loginDescription": "Connectez-vous à votre compte élève Global Teaching Hub.",
+    "privacyTitle": "Politique de Confidentialité | Global Teaching Hub",
+    "privacyDescription": "Comment Global Teaching Hub collecte, utilise et protège vos informations personnelles.",
+    "termsTitle": "Conditions Générales | Global Teaching Hub",
+    "termsDescription": "Les conditions générales d'utilisation de Global Teaching Hub et de ses cours en ligne."
+  },
+  "Landing": {
+    "onlineQuranClasses": "Cours de Coran en ligne",
+    "quranForKids": "Cours de Coran pour enfants",
+    "femaleTeacher": "Enseignantes de Coran",
+    "nooraniQaida": "Noorani Qaida",
+    "computerCourses": "Cours d'informatique"
   }
 }

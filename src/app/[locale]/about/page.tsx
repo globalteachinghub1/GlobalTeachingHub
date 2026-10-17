@@ -7,19 +7,14 @@ import { Footer } from "@/components/layout/footer";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
 import { Card, CardContent } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
-import { buildMetadata } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildMetadata({
-    title: "About Us — Global Teaching Hub",
-    description: "Learn about Global Teaching Hub's mission and story.",
-    path: "/about",
-    locale: locale as Locale,
-  });
+  return pageMetadata(locale as Locale, "about", "/about");
 }
 
 export default async function AboutPage({ params }: PageProps) {

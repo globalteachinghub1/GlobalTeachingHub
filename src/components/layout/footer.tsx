@@ -2,10 +2,14 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { LANDING_LINKS } from "@/lib/landing-pages";
 
 export async function Footer() {
   const t = await getTranslations("Footer");
   const tNav = await getTranslations("Nav");
+  const tLanding = await getTranslations("Landing");
+
+  const ONLINE_CLASSES = LANDING_LINKS.map(({ key, href }) => ({ label: tLanding(key), href }));
 
   const QUICK_LINKS = [
     { label: tNav("home"), href: "/" },
@@ -29,7 +33,7 @@ export async function Footer() {
 
   return (
     <footer className="bg-foreground text-background">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-5 lg:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 py-16 sm:grid-cols-2 sm:px-6 lg:grid-cols-6 lg:px-8">
         <div className="sm:col-span-2 lg:col-span-2">
           <Link href="/" className="flex items-center gap-2 font-bold text-background">
             <Image
@@ -77,6 +81,7 @@ export async function Footer() {
           </div>
         </div>
 
+        <FooterColumn title={t("onlineClasses")} links={ONLINE_CLASSES} />
         <FooterColumn title={t("quickLinks")} links={QUICK_LINKS} />
         <FooterColumn title={t("resources")} links={RESOURCES} />
         <FooterColumn title={t("support")} links={SUPPORT} />

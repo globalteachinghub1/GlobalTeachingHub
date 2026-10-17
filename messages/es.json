@@ -21,13 +21,14 @@
     "contactUs": "Contáctanos",
     "helpCenter": "Centro de Ayuda",
     "liveChat": "Chat en Vivo",
-    "rightsReserved": "Todos los derechos reservados."
+    "rightsReserved": "Todos los derechos reservados.",
+    "onlineClasses": "Clases en línea"
   },
   "LanguageSwitcher": {
     "label": "Idioma"
   },
   "Hero": {
-    "titleLine1": "Aprende con",
+    "titleLine1": "Aprende Corán y Árabe en Línea con",
     "titleHighlight": "Profesores Expertos",
     "titleLine2": "En Cualquier Momento y Lugar.",
     "subtitle": "Clases en vivo uno a uno, profesores experimentados, horarios flexibles y aprendizaje personalizado para estudiantes de Pakistán y de todo el mundo.",
@@ -162,10 +163,22 @@
     "storyBody": "Global Teaching Hub comenzó con una idea simple: los estudiantes no deberían tener que elegir entre calidad y comodidad. Empezamos conectando a un pequeño grupo de estudiantes con profesores dedicados de Corán y Tajwid por videollamada, y pronto vimos lo mucho más rápido que se aprende con atención uno a uno y un profesor que realmente se preocupa por tu progreso. Esa idea creció hasta convertirse en una academia completa: primero añadimos Cursos de Computación, y luego construimos las herramientas para apoyar a estudiantes y familias en cualquier parte del mundo.",
     "timelineTitle": "Nuestro Recorrido",
     "timeline": [
-      { "title": "Los Inicios", "description": "Lanzamos clases en vivo, uno a uno, de Corán y Tajwid para un pequeño grupo de estudiantes." },
-      { "title": "Crecimiento del Equipo Docente", "description": "Incorporamos más profesores calificados y experimentados para mantener las clases personalizadas a medida que crecía la demanda." },
-      { "title": "Ampliación de Nuestros Cursos", "description": "Añadimos Cursos de Computación, desde MS Office hasta fundamentos de programación." },
-      { "title": "Llegando a Estudiantes de Todo el Mundo", "description": "Construimos una plataforma multilingüe con portales para estudiantes y padres, para apoyar a familias en cualquier lugar." }
+      {
+        "title": "Los Inicios",
+        "description": "Lanzamos clases en vivo, uno a uno, de Corán y Tajwid para un pequeño grupo de estudiantes."
+      },
+      {
+        "title": "Crecimiento del Equipo Docente",
+        "description": "Incorporamos más profesores calificados y experimentados para mantener las clases personalizadas a medida que crecía la demanda."
+      },
+      {
+        "title": "Ampliación de Nuestros Cursos",
+        "description": "Añadimos Cursos de Computación, desde MS Office hasta fundamentos de programación."
+      },
+      {
+        "title": "Llegando a Estudiantes de Todo el Mundo",
+        "description": "Construimos una plataforma multilingüe con portales para estudiantes y padres, para apoyar a familias en cualquier lugar."
+      }
     ],
     "ctaTitle": "¿Listo para empezar a aprender?",
     "ctaBody": "Reserva una clase de prueba gratuita y descubre Global Teaching Hub por ti mismo.",
@@ -184,12 +197,42 @@
       },
       {
         "question": "¿Qué cursos ofrecen actualmente?",
-        "answer": "Actualmente ofrecemos Corán con Tajwid (incluyendo Traducción y Tafsir) y Cursos de Computación (MS Word, PowerPoint y lenguajes de programación). Pronto se añadirán más cursos.",
+        "answer": "Actualmente ofrecemos Noorani Qaida, Corán con Tajwid, Corán con Traducción, Lengua Árabe (hablada y escrita), Estudios Islámicos y Cursos de Computación (MS Word, PowerPoint y programación).",
         "category": "Clases e Inscripción"
       },
       {
         "question": "¿Cómo reservo una clase de prueba gratuita?",
         "answer": "Haz clic en “Reserva una Clase Gratis” en la página de inicio, completa tus datos y el curso de tu preferencia, y nuestro equipo te contactará para programar tu clase de prueba gratuita.",
+        "category": "Clases e Inscripción"
+      },
+      {
+        "question": "¿Cuánto cuestan las clases?",
+        "answer": "El precio depende del curso, de cuántas clases tomes por semana y de tu horario. Reserva una clase de prueba gratis y nuestro equipo te indicará un precio acorde a tus objetivos.",
+        "category": "Clases e Inscripción"
+      },
+      {
+        "question": "¿Puedo elegir el horario de mis clases?",
+        "answer": "Sí. Las clases se programan en el horario que mejor te convenga y, como todas las lecciones son en línea, puedes aprender desde cualquier lugar del mundo.",
+        "category": "Clases e Inscripción"
+      },
+      {
+        "question": "¿Quién puede unirse a las clases?",
+        "answer": "Son bienvenidos estudiantes de cualquier edad: niños pequeños, adolescentes y adultos, incluidos principiantes absolutos.",
+        "category": "Clases e Inscripción"
+      },
+      {
+        "question": "¿Puedo pedir una profesora?",
+        "answer": "Sí. Hay profesoras disponibles; solo indícalo al reservar tu clase de prueba gratis.",
+        "category": "Clases e Inscripción"
+      },
+      {
+        "question": "¿Qué formación tienen los profesores?",
+        "answer": "Nuestro equipo incluye profesores Hafiz y Qari, recitadores con Iyaza (Ijazah) y graduados de Dars-e-Nizami (Alim), y cada profesor está especializado en el curso que imparte.",
+        "category": "Clases e Inscripción"
+      },
+      {
+        "question": "¿Cuánto dura cada clase?",
+        "answer": "La duración es flexible y la acordamos contigo según la edad, el nivel y el horario del estudiante.",
         "category": "Clases e Inscripción"
       },
       {
@@ -269,9 +312,18 @@
     "panelSubtitle": "Clases en vivo uno a uno, profesores expertos y un panel diseñado en torno a tu progreso.",
     "rightsReserved": "Todos los derechos reservados.",
     "features": [
-      { "title": "Clases en vivo uno a uno", "description": "Profesores reales, en tiempo real — no videos pregrabados." },
-      { "title": "Horarios flexibles", "description": "Reserva clases según tu rutina, no al revés." },
-      { "title": "Sigue tu progreso", "description": "Ve tus inscripciones, facturas y avances en un solo lugar." }
+      {
+        "title": "Clases en vivo uno a uno",
+        "description": "Profesores reales, en tiempo real — no videos pregrabados."
+      },
+      {
+        "title": "Horarios flexibles",
+        "description": "Reserva clases según tu rutina, no al revés."
+      },
+      {
+        "title": "Sigue tu progreso",
+        "description": "Ve tus inscripciones, facturas y avances en un solo lugar."
+      }
     ]
   },
   "RegisterPage": {
@@ -282,9 +334,18 @@
     "panelSubtitle": "Crea tu cuenta gratuita y reserva tu primera clase en vivo en minutos.",
     "rightsReserved": "Todos los derechos reservados.",
     "features": [
-      { "title": "Reserva tu primera clase gratis", "description": "Prueba una clase en vivo antes de comprometerte a algo." },
-      { "title": "Aprende uno a uno", "description": "Cada clase es solo tú y tu profesor, sin multitudes." },
-      { "title": "Únete a estudiantes de todo el mundo", "description": "Miles de estudiantes ya aprenden con nosotros." }
+      {
+        "title": "Reserva tu primera clase gratis",
+        "description": "Prueba una clase en vivo antes de comprometerte a algo."
+      },
+      {
+        "title": "Aprende uno a uno",
+        "description": "Cada clase es solo tú y tu profesor, sin multitudes."
+      },
+      {
+        "title": "Únete a estudiantes de todo el mundo",
+        "description": "Miles de estudiantes ya aprenden con nosotros."
+      }
     ]
   },
   "ContactPage": {
@@ -299,7 +360,8 @@
     "noCourses": "No hay cursos disponibles por el momento — vuelve pronto.",
     "searchPlaceholder": "Buscar cursos...",
     "noResults": "Ningún curso coincide con tu búsqueda.",
-    "getInTouch": "Ponte en Contacto"
+    "getInTouch": "Ponte en Contacto",
+    "moreTitle": "Más formas de aprender"
   },
   "FreeTrialPage": {
     "title": "Reserva una Clase Gratis",
@@ -314,7 +376,10 @@
     "faqTitle": "Preguntas Frecuentes",
     "viewAllFaqs": "Ver todas las preguntas",
     "bookDemo": "Reserva una Clase Gratis",
-    "backToAllCourses": "Volver a todos los cursos"
+    "backToAllCourses": "Volver a todos los cursos",
+    "tagline": "Clases individuales en vivo en línea · Horarios flexibles · Clase de prueba gratis",
+    "teachersTitle": "Tus profesores",
+    "teachersBody": "Nuestro equipo incluye profesores Hafiz y Qari, recitadores con Iyaza (Ijazah) y graduados de Dars-e-Nizami (Alim), cada uno especializado en el curso que imparte. Hay profesoras disponibles bajo petición y son bienvenidos estudiantes de cualquier edad."
   },
   "Portal": {
     "checkingAccess": "Verificando acceso...",
@@ -467,5 +532,38 @@
     "ctaTitle": "¿Listo para empezar a aprender?",
     "ctaButton": "Reserva una clase de prueba gratis",
     "ctaCourses": "Ver cursos"
+  },
+  "Seo": {
+    "homeTitle": "Clases de Corán y Árabe en Línea | Global Teaching Hub",
+    "homeDescription": "Clases individuales en vivo en línea de Corán con Tajwid, árabe y estudios islámicos con profesores experimentados y horarios flexibles. Reserva hoy una clase de prueba gratis.",
+    "coursesTitle": "Cursos de Corán, Árabe y Estudios Islámicos en Línea | Global Teaching Hub",
+    "coursesDescription": "Descubre cursos individuales en vivo en línea de Corán con Tajwid, traducción del Corán, árabe y estudios islámicos. Horarios flexibles y una clase de prueba gratis.",
+    "courseTitle": "Clases de {name} en Línea | Global Teaching Hub",
+    "courseDescription": "{summary} Clases individuales en vivo en línea con profesores expertos y horarios flexibles. Reserva una clase de prueba gratis.",
+    "faqTitle": "Preguntas Frecuentes: Clases de Corán y Árabe en Línea | Global Teaching Hub",
+    "faqDescription": "Respuestas a las preguntas más comunes sobre nuestras clases en línea de Corán, árabe y estudios islámicos: cómo funcionan, precios, horarios, clase de prueba gratis y requisitos.",
+    "aboutTitle": "Sobre Nosotros | Global Teaching Hub",
+    "aboutDescription": "Global Teaching Hub es una academia en línea con sede en Lahore, Pakistán, que imparte clases individuales en vivo de Corán, árabe y estudios islámicos a estudiantes de todo el mundo.",
+    "contactTitle": "Contáctanos | Global Teaching Hub",
+    "contactDescription": "Contacta con Global Teaching Hub por teléfono, correo electrónico o nuestro formulario para preguntar por las clases en línea de Corán, árabe y estudios islámicos o reservar una clase de prueba gratis.",
+    "freeTrialTitle": "Reserva una Clase de Prueba Gratis | Global Teaching Hub",
+    "freeTrialDescription": "Reserva una clase de prueba individual gratis de Corán, árabe o estudios islámicos en línea. Elige tu curso y tu horario preferido y nuestro equipo la programará contigo.",
+    "blogTitle": "Blog: Consejos de Corán, Árabe y Aprendizaje en Línea | Global Teaching Hub",
+    "blogDescription": "Consejos y guías sobre la recitación del Corán con Tajwid, el árabe y el aprendizaje individual en línea, de los profesores de Global Teaching Hub.",
+    "registerTitle": "Registrarse | Global Teaching Hub",
+    "registerDescription": "Crea tu cuenta de estudiante en Global Teaching Hub para unirte a clases individuales en vivo en línea.",
+    "loginTitle": "Iniciar Sesión | Global Teaching Hub",
+    "loginDescription": "Inicia sesión en tu cuenta de estudiante de Global Teaching Hub.",
+    "privacyTitle": "Política de Privacidad | Global Teaching Hub",
+    "privacyDescription": "Cómo Global Teaching Hub recopila, utiliza y protege tu información personal.",
+    "termsTitle": "Términos y Condiciones | Global Teaching Hub",
+    "termsDescription": "Los términos y condiciones de uso de Global Teaching Hub y sus clases en línea."
+  },
+  "Landing": {
+    "onlineQuranClasses": "Clases de Corán en línea",
+    "quranForKids": "Clases de Corán para niños",
+    "femaleTeacher": "Profesoras de Corán",
+    "nooraniQaida": "Noorani Qaida",
+    "computerCourses": "Cursos de computación"
   }
 }

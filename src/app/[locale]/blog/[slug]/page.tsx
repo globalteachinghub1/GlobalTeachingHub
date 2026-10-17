@@ -103,10 +103,23 @@ export default async function BlogPostPage({ params }: PageProps) {
             </time>
             <h1 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">{post.title}</h1>
             <div className="mt-8 space-y-5 leading-relaxed text-foreground/90">
-              {post.content.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
+              {post.content.map((paragraph, i) =>
+                paragraph.startsWith("## ") ? (
+                  <h2 key={i} className="pt-4 text-2xl font-bold text-foreground">
+                    {paragraph.slice(3)}
+                  </h2>
+                ) : (
+                  <p key={i}>{paragraph}</p>
+                )
+              )}
             </div>
+            {post.related && (
+              <p className="mt-8 font-medium">
+                <Link href={post.related.href} className="text-primary hover:underline">
+                  {post.related.label} →
+                </Link>
+              </p>
+            )}
           </article>
 
           <div className="mt-16 rounded-2xl border bg-card p-8 text-center">
